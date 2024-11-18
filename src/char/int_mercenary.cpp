@@ -57,6 +57,9 @@ bool mercenary_owner_tosql(uint32 char_id, struct mmo_charstatus *status)
 
 bool mercenary_owner_delete(uint32 char_id)
 {
+	if (SQL_ERROR == Sql_Query(sql_handle, "DELETE FROM `%s` WHERE `mer_id` IN ( SELECT `merc_id` FROM `%s` WHERE `char_id` = '%d' )", schema_config.skillcooldown_mercenary_db, schema_config.mercenary_owner_db, char_id))
+		Sql_ShowDebug(sql_handle);
+
 	if( SQL_ERROR == Sql_Query(sql_handle, "DELETE FROM `%s` WHERE `char_id` = '%d'", schema_config.mercenary_owner_db, char_id) )
 		Sql_ShowDebug(sql_handle);
 
@@ -90,6 +93,32 @@ bool mapif_mercenary_save(struct s_mercenary* merc)
 		flag = false;
 	}
 
+	// Save skill cooldowns
+	if (SQL_ERROR == Sql_Query(sql_handle, "REPLACE INTO `%s` (`mer_id`, `skill`, `tick`) VALUES (%d, ?, ?)", schema_config.skillcooldown_mercenary_db, merc->mercenary_id)) {
+		Sql_ShowDebug(sql_handle);
+		flag = false;
+	} else {
+		SqlStmt *stmt = SqlStmt_Malloc(sql_handle);
+
+		for (uint16 i = 0; i < MAX_SKILLCOOLDOWN; ++i) {
+			if (merc->scd[i].skill_id == 0) {
+				continue;
+			}
+
+			if (merc->scd[i].tick == 0) {
+				continue;
+			}
+			if (SQL_ERROR == SqlStmt_BindParam(stmt, 0, SQLDT_USHORT, &merc->scd[i].skill_id, 0)
+				|| SQL_ERROR == SqlStmt_BindParam(stmt, 1, SQLDT_LONGLONG, &merc->scd[i].tick, 0)
+				|| SQL_ERROR == SqlStmt_Execute(stmt)) {
+				SqlStmt_ShowDebug(stmt);
+				flag = false;
+				break;
+			}
+		}
+		SqlStmt_Free(stmt);
+	}
+
 	return flag;
 }
 
@@ -121,6 +150,42 @@ bool mapif_mercenary_load(int32 merc_id, uint32 char_id, struct s_mercenary *mer
 	Sql_FreeResult(sql_handle);
 	if( charserv_config.save_log )
 		ShowInfo("Mercenary loaded (ID: %d / Class: %d / CID: %d).\n", merc->mercenary_id, merc->class_, merc->char_id);
+
+	// Load Mercenary Skill Cooldown
+	if (SQL_ERROR == Sql_Query(sql_handle, "SELECT `skill`,`tick` FROM `%s` WHERE `mer_id`=%d", schema_config.skillcooldown_mercenary_db, merc_id)) {
+		Sql_ShowDebug(sql_handle);
+		return false;
+	}
+
+	uint16 count = 0;
+
+	while (SQL_SUCCESS == Sql_NextRow(sql_handle)) {
+		if (count == MAX_SKILLCOOLDOWN) {
+			ShowWarning("Too many skillcooldowns for mercenary %d, skipping.\n", merc_id);
+			break;
+		}
+
+		// Skill
+		Sql_GetData(sql_handle, 0, &data, nullptr);
+		uint16 skill_id = static_cast<uint16>(strtoul(data, nullptr, 10));
+
+		if (skill_id < MC_SKILLBASE || skill_id >= MC_SKILLBASE + MAX_MERCSKILL)
+			continue; // invalid skill ID
+		merc->scd[count].skill_id = skill_id;
+
+		// Tick
+		Sql_GetData(sql_handle, 1, &data, nullptr);
+		merc->scd[count].tick = strtoll(data, nullptr, 10);
+
+		count++;
+	}
+	Sql_FreeResult(sql_handle);
+
+	// Clear the data once loaded.
+	if (count > 0) {
+		if (SQL_ERROR == Sql_Query(sql_handle, "DELETE FROM `%s` WHERE `mer_id`='%d'", schema_config.skillcooldown_mercenary_db, merc_id))
+			Sql_ShowDebug(sql_handle);
+	}
 
 	return true;
 }
