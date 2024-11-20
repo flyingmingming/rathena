@@ -22702,7 +22702,7 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK1);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK2);
 				//find me
-				status_change_end(bl, SC_MAGICPOWER);	
+				//status_change_end(bl, SC_MAGICPOWER);	
 			}
 		}
 			
