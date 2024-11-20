@@ -22699,8 +22699,11 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 			sc->getSCE(SC_MAGICPOWER)->val4 = 1;
 			status_calc_bl_(bl, status_db.getCalcFlag(SC_MAGICPOWER));
 			if(bl->type == BL_PC){// update current display.
+				//find me
+				status_change_end(bl, SC_MAGICPOWER);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK1);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK2);
+				
 			}
 		}
 	}
