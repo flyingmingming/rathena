@@ -4627,6 +4627,8 @@ static TIMER_FUNC(skill_timerskill){
 				}
 					[[fallthrough]];
 				case WZ_JUPITEL:
+						// SC_MAGICPOWER needs to switch states before any damage is actually dealt
+						skill_toggle_magicpower(src, ud->skill_id);				
 					// Official behaviour is to hit as long as there is a line of sight, regardless of distance
 					if (skl->type > 0 && !status_isdead(*target) && path_search_long(nullptr,src->m,src->x,src->y,target->x,target->y,CELL_CHKWALL)) {
 						// Apply canact delay here to prevent hacks (unlimited casting)
