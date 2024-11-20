@@ -1,0 +1,39 @@
+function	script	vip_system	{
+	set .@time, getarg(0); // retrieve the time (in seconds) from index 0 of the argument
+	set .@current_time, vip_status(3); // get the actual vip remaining time
+	set .@renew_time, .@time + .@current_time;
+	set .@type, getarg(1);
+
+
+	if (vip_status(VIP_STATUS_ACTIVE)) {
+		if (.@type == 3) {
+			bonus_script_clear 1;
+			atcommand "@vip -10y " + strcharinfo(0) + "";	
+			sc_end SC_EXPBOOST_VIPRED;
+			sc_end SC_JEXPBOOST_VIPRED;
+			sc_end SC_ITEMBOOST_VIPRED;
+			end;
+		}
+		dispbottom "You are still a VIP member.";
+	} else {
+		atcommand "@vip +" + .@time + "s " + strcharinfo(0) + "";	
+		if (.@type == 1) {
+			bonus_script "{}",.@time,0,0,EFST_VIPSTATE_RED;
+			sc_start SC_EXPBOOST_VIPRED,.@time*1000,30;
+			sc_start SC_JEXPBOOST_VIPRED,.@time*1000,30;
+			sc_start SC_ITEMBOOST_VIPRED,.@time*1000,30;
+		} else if (.@type == 2) {
+			bonus_script "{}",.@time,0,0,EFST_VIPSTATE_BLUE;
+		} else {
+			bonus_script_clear 1;
+			atcommand "@vip -10y " + strcharinfo(0) + "";	
+			sc_end SC_EXPBOOST_VIPRED;
+			sc_end SC_JEXPBOOST_VIPRED;
+			sc_end SC_ITEMBOOST_VIPRED;
+			end;			
+		}
+	}
+//-------------------------------------------------------
+}
+
+

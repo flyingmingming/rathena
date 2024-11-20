@@ -47,7 +47,7 @@
 #define HP_SP_TABLES
 
 /// Uncomment to enable VIP system.
-//#define VIP_ENABLE
+#define VIP_ENABLE
 
 /// Enable VIP script changes? (requires VIP_ENABLE)
 /// The primary effects of this are restrictions on non-VIP players, such as requiring
@@ -105,7 +105,7 @@
 #endif
 
 /// Uncomment to forcibly disable the detailed loading output.
-/// This will noticeably decrease the boot time of the map server by not having to print32 so many status messages.
+/// This will noticeably decrease the boot time of the map server by not having to print so many status messages.
 //#undef DETAILED_LOADING_OUTPUT
 
 /**

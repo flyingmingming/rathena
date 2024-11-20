@@ -38,7 +38,7 @@ std::unordered_map<int, std::shared_ptr<MapGuild>> guild_db;
 CastleDatabase castle_db;
 
 static DBMap* guild_expcache_db; // uint32 char_id -> struct guild_expcache*
-static DBMap* guild_infoevent_db; // int32 guild_id -> struct eventlist*
+static DBMap* guild_infoevent_db; // int guild_id -> struct eventlist*
 
 struct eventlist {
 	char name[EVENT_NAME_LENGTH];
@@ -52,7 +52,7 @@ struct eventlist {
 
 //Guild EXP cache
 struct guild_expcache {
-	int32 guild_id, account_id, char_id;
+	int guild_id, account_id, char_id;
 	t_exp exp;
 };
 static struct eri *expcache_ers; //For handling of guild exp payment.
@@ -216,7 +216,7 @@ static short guild_skill_get_index(uint16 skill_id) {
 /*==========================================
  * Retrieves and validates the sd pointer for this guild member [Skotlex]
  *------------------------------------------*/
-static TBL_PC* guild_sd_check(int32 guild_id, uint32 account_id, uint32 char_id) {
+static TBL_PC* guild_sd_check(int guild_id, uint32 account_id, uint32 char_id) {
 	TBL_PC* sd = map_id2sd(account_id);
 
 	if (!(sd && sd->status.char_id == char_id))
@@ -243,7 +243,7 @@ uint16 guild_skill_get_max( uint16 id ){
 }
 
 // Retrieve skill_lv learned by guild
-int32 guild_checkskill(const struct mmo_guild &g, int32 id) {
+int guild_checkskill(const struct mmo_guild &g, int id) {
 	if ((id = guild_skill_get_index(id)) < 0)
 		return 0;
 	return g.skill[id].lv;
@@ -518,7 +518,7 @@ void CastleDatabase::loadingFinished(){
 }
 
 /// lookup: guild id -> guild
-std::shared_ptr<MapGuild> guild_search(int32 guild_id) {
+std::shared_ptr<MapGuild> guild_search(int guild_id) {
 	return util::umap_find(guild_db, guild_id);
 }
 
@@ -574,23 +574,23 @@ std::shared_ptr<guild_castle> CastleDatabase::find_by_clientid( uint16 client_id
 }
 
 map_session_data* guild_getavailablesd(const struct mmo_guild &g) {
-	int32 i;
+	int i;
 
 	ARR_FIND( 0, g.max_member, i, g.member[i].sd != nullptr );
 	return( i < g.max_member ) ? g.member[i].sd : nullptr;
 }
 
 /// lookup: player AID/CID -> member index
-int32 guild_getindex(const struct mmo_guild &g, uint32 account_id, uint32 char_id) {
-	int32 i;
+int guild_getindex(const struct mmo_guild &g, uint32 account_id, uint32 char_id) {
+	int i;
 
 	ARR_FIND( 0, g.max_member, i, g.member[i].account_id == account_id && g.member[i].char_id == char_id );
 	return( i < g.max_member ) ? i : -1;
 }
 
 /// lookup: player sd -> member position
-int32 guild_getposition(const map_session_data& sd) {
-	int32 i;
+int guild_getposition(const map_session_data& sd) {
+	int i;
 
 	if (!sd.guild)
 		return -1;
@@ -621,8 +621,8 @@ void guild_makemember( struct guild_member& m, map_session_data& sd ){
  * Server cache to be flushed to inter the Guild EXP
  * @see DBApply
  */
-int32 guild_payexp_timer_sub(DBKey key, DBData *data, va_list ap) {
-	int32 i;
+int guild_payexp_timer_sub(DBKey key, DBData *data, va_list ap) {
+	int i;
 	struct guild_expcache *c;
 
 	c = (struct guild_expcache *)db_data2ptr(data);
@@ -653,13 +653,13 @@ TIMER_FUNC(guild_payexp_timer){
  * Send xy coords to a guild
  * @param g Reference to a guild
  */
-int32 guild_send_xy_timer_sub(const struct mmo_guild& g) {
+int guild_send_xy_timer_sub(const struct mmo_guild& g) {
 	if (g.connect_member <= 0) {
 		// no members connected to this guild so do not iterate
 		return 0;
 	}
 
-	for (int32 i = 0; i < g.max_member; i++) {
+	for (int i = 0; i < g.max_member; i++) {
 		map_session_data* sd = g.member[i].sd;
 		if( sd != nullptr && sd->fd && (sd->guild_x != sd->bl.x || sd->guild_y != sd->bl.y) && !sd->bg_id ) {
 			clif_guild_xy( *sd );
@@ -679,7 +679,7 @@ static TIMER_FUNC(guild_send_xy_timer){
 	return 0;
 }
 
-int32 guild_send_dot_remove(map_session_data *sd) {
+int guild_send_dot_remove(map_session_data *sd) {
 	if (sd->status.guild_id)
 		clif_guild_xy_remove( *sd );
 	return 0;
@@ -719,7 +719,7 @@ bool guild_create( map_session_data& sd, const char* name ){
 }
 
 //Whether or not to create guild
-int32 guild_created(uint32 account_id,int32 guild_id) {
+int guild_created(uint32 account_id,int guild_id) {
 	map_session_data *sd=map_id2sd(account_id);
 
 	if(sd==nullptr)
@@ -733,7 +733,7 @@ int32 guild_created(uint32 account_id,int32 guild_id) {
 	clif_guild_created( *sd, 0 );
 
 	if(battle_config.guild_emperium_check){
-		int32 index = pc_search_inventory(sd,ITEMID_EMPERIUM);
+		int index = pc_search_inventory(sd,ITEMID_EMPERIUM);
 
 		if( index > 0 )
 			pc_delitem(sd,index,1,0,0,LOG_TYPE_CONSUME);	//emperium consumption
@@ -742,12 +742,12 @@ int32 guild_created(uint32 account_id,int32 guild_id) {
 }
 
 //Information request
-int32 guild_request_info(int32 guild_id) {
+int guild_request_info(int guild_id) {
 	return intif_guild_request_info(guild_id);
 }
 
 //Information request with event
-int32 guild_npc_request_info(int32 guild_id,const char *event) {
+int guild_npc_request_info(int guild_id,const char *event) {
 	if( guild_search(guild_id) ) {
 		if( event && *event )
 			npc_event_doall(event);
@@ -780,8 +780,8 @@ static void guild_trade_bound_cancel( map_session_data& sd ){
 }
 
 //Confirmation of the character belongs to guild
-int32 guild_check_member(const struct mmo_guild &g) {
-	int32 i;
+int guild_check_member(const struct mmo_guild &g) {
+	int i;
 	map_session_data *sd;
 	struct s_mapiterator* iter;
 
@@ -804,7 +804,7 @@ int32 guild_check_member(const struct mmo_guild &g) {
 }
 
 //Delete association with guild_id for all characters
-int32 guild_recv_noinfo(int32 guild_id) {
+int guild_recv_noinfo(int guild_id) {
 	map_session_data *sd;
 	struct s_mapiterator* iter;
 
@@ -819,9 +819,9 @@ int32 guild_recv_noinfo(int32 guild_id) {
 }
 
 //Get and display information for all member
-int32 guild_recv_info(const struct mmo_guild &sg) {
+int guild_recv_info(const struct mmo_guild &sg) {
 	struct mmo_guild before;
-	int32 i,bm,m;
+	int i,bm,m;
 	DBData data;
 	map_session_data *sd;
 	bool guild_new = false;
@@ -844,7 +844,9 @@ int32 guild_recv_info(const struct mmo_guild &sg) {
 #endif
 
 			//Also set the guild master flag.
+			sd->guild = g;
 			sd->state.gmaster_flag = 1;
+			clif_name_area(&sd->bl); // [LuzZza]
 			clif_guild_masterormember(*sd);
 		}
 	} else {
@@ -871,9 +873,11 @@ int32 guild_recv_info(const struct mmo_guild &sg) {
 		sd = g->guild.member[i].sd;
 		if( sd==nullptr )
 			continue;
-		if( sd->guild == nullptr || sd->guild != g ){
+		if( sd->guild == nullptr ){
 			sd->guild = g;
 			clif_name_area(&sd->bl);
+		}else{
+			sd->guild = g;
 		}
 		if(channel_config.ally_tmpl.name[0] && (channel_config.ally_tmpl.opt&CHAN_OPT_AUTOJOIN)) {
 			channel_gjoin(sd,3); //make all member join guildchan+allieschan
@@ -980,7 +984,7 @@ bool guild_invite( map_session_data& sd, map_session_data* tsd ){
 		return false;
 	}
 
-	int32 i;
+	int i;
 
 	//search an empty spot in guild
 	ARR_FIND( 0, g->guild.max_member, i, g->guild.member[i].account_id == 0 );
@@ -999,7 +1003,7 @@ bool guild_invite( map_session_data& sd, map_session_data* tsd ){
 
 /// Guild invitation reply.
 /// flag: 0:rejected, 1:accepted
-bool guild_reply_invite( map_session_data& sd, int32 guild_id, int32 flag ){
+bool guild_reply_invite( map_session_data& sd, int guild_id, int flag ){
 	// subsequent requests may override the value
 	if( sd.guild_invite != guild_id ){
 		return false; // mismatch
@@ -1042,7 +1046,7 @@ bool guild_reply_invite( map_session_data& sd, int32 guild_id, int32 flag ){
 		return false;
 	}
 
-	int32 i;
+	int i;
 
 	ARR_FIND( 0, g->guild.max_member, i, g->guild.member[i].account_id == 0 );
 
@@ -1071,7 +1075,7 @@ bool guild_reply_invite( map_session_data& sd, int32 guild_id, int32 flag ){
 //- Otherwise sd pointer is set up.
 //- Player must be authed and must belong to a guild before invoking this method
 void guild_member_joined(map_session_data *sd) {
-	int32 i;
+	int i;
 	auto g = guild_search(sd->status.guild_id);
 	if (!g) {
 		guild_request_info(sd->status.guild_id);
@@ -1091,7 +1095,6 @@ void guild_member_joined(map_session_data *sd) {
 	else {
 		g->guild.member[i].sd = sd;
 		sd->guild = g;
-		clif_name_area(&sd->bl);
 
 		if( channel_config.ally_tmpl.name[0] && (channel_config.ally_tmpl.opt&CHAN_OPT_AUTOJOIN) ) {
 			channel_gjoin(sd,3);
@@ -1102,7 +1105,7 @@ void guild_member_joined(map_session_data *sd) {
 /*==========================================
  * Add a player to a given guild_id
  *----------------------------------------*/
-int32 guild_member_added(int32 guild_id,uint32 account_id,uint32 char_id,int32 flag) {
+int guild_member_added(int guild_id,uint32 account_id,uint32 char_id,int flag) {
 	map_session_data *sd= map_id2sd(account_id),*sd2;
 	auto g = guild_search(guild_id);
 
@@ -1135,14 +1138,13 @@ int32 guild_member_added(int32 guild_id,uint32 account_id,uint32 char_id,int32 f
 	clif_guild_belonginfo( *sd );
 	clif_guild_notice( *sd );
 
-	// Send emblem update to self and people around
-	clif_guild_emblem_area(&sd->bl);
+	//TODO: send new emblem info to others
 
 	if( sd2!=nullptr )
 		clif_guild_inviteack( *sd2, 2 );
 
-	// Update display name
-	clif_name_area(&sd->bl);
+	//Next line commented because it do nothing, look at guild_recv_info [LuzZza]
+	//clif_charnameupdate(sd); //Update display name [Skotlex]
 
 	if (g->instance_id > 0)
 		instance_reqinfo(sd, g->instance_id);
@@ -1153,7 +1155,7 @@ int32 guild_member_added(int32 guild_id,uint32 account_id,uint32 char_id,int32 f
 /*==========================================
  * Player request leaving a given guild_id
  *----------------------------------------*/
-bool guild_leave( map_session_data& sd, int32 guild_id, uint32 account_id, uint32 char_id, const char* mes ){
+bool guild_leave( map_session_data& sd, int guild_id, uint32 account_id, uint32 char_id, const char* mes ){
 	auto& g = sd.guild;
 
 	if( g == nullptr ){
@@ -1186,7 +1188,7 @@ bool guild_leave( map_session_data& sd, int32 guild_id, uint32 account_id, uint3
 /*==========================================
  * Request remove a player to a given guild_id
  *----------------------------------------*/
-bool guild_expulsion( map_session_data& sd, int32 guild_id, uint32 account_id, uint32 char_id, const char* mes ){
+bool guild_expulsion( map_session_data& sd, int guild_id, uint32 account_id, uint32 char_id, const char* mes ){
 	auto& g = sd.guild;
 
 	if( g == nullptr ){
@@ -1219,7 +1221,7 @@ bool guild_expulsion( map_session_data& sd, int32 guild_id, uint32 account_id, u
 	}
 
 	// find the member and perform expulsion
-	int32 i = guild_getindex( g->guild, account_id, char_id );
+	int i = guild_getindex( g->guild, account_id, char_id );
 
 	if( i < 0 ){
 		return false;
@@ -1246,8 +1248,8 @@ bool guild_expulsion( map_session_data& sd, int32 guild_id, uint32 account_id, u
 * @param name
 * @param mes
 */
-int32 guild_member_withdraw(int32 guild_id, uint32 account_id, uint32 char_id, int32 flag, const char* name, const char* mes) {
-	int32 i;
+int guild_member_withdraw(int guild_id, uint32 account_id, uint32 char_id, int flag, const char* name, const char* mes) {
+	int i;
 	auto g = guild_search(guild_id);
 	map_session_data* sd = map_charid2sd(char_id);
 	map_session_data* online_member_sd;
@@ -1304,9 +1306,7 @@ int32 guild_member_withdraw(int32 guild_id, uint32 account_id, uint32 char_id, i
 		status_change_end(&sd->bl,SC_SOULCOLD);
 		status_change_end(&sd->bl,SC_HAWKEYES);
 		status_change_end(&sd->bl,SC_EMERGENCY_MOVE);
-
-		// Send emblem update to self and people around
-		clif_guild_emblem_area(&sd->bl);
+		//@TODO: Send emblem update to self and people around
 	}
 	return 0;
 }
@@ -1318,16 +1318,16 @@ int32 guild_member_withdraw(int32 guild_id, uint32 account_id, uint32 char_id, i
 * @param account_id
 * @param guild_id
 */
-void guild_retrieveitembound(uint32 char_id, uint32 account_id, int32 guild_id) {
+void guild_retrieveitembound(uint32 char_id, uint32 account_id, int guild_id) {
 	TBL_PC *sd = map_charid2sd(char_id);
 	if (sd) { //Character is online
-		int32 idxlist[MAX_INVENTORY];
-		int32 j;
+		int idxlist[MAX_INVENTORY];
+		int j;
 		j = pc_bound_chk(sd,BOUND_GUILD,idxlist);
 		if (j) {
 			struct s_storage* stor = guild2storage(sd->status.guild_id);
 			auto g = guild_search(guild_id);
-			int32 i;
+			int i;
 			if (stor && stor->status) { //Someone is in guild storage, close them
 				for (i = 0; i < g->guild.max_member; i++) {
 					TBL_PC *pl_sd = g->guild.member[i].sd;
@@ -1348,7 +1348,7 @@ void guild_retrieveitembound(uint32 char_id, uint32 account_id, int32 guild_id) 
 		if (!g)
 			return;
 		if (stor && stor->status) { //Someone is in guild storage, close them
-			int32 i;
+			int i;
 			for (i = 0; i < g->guild.max_member; i++) {
 				TBL_PC *pl_sd = g->guild.member[i].sd;
 				if (pl_sd && pl_sd->state.storage_flag == 2)
@@ -1360,7 +1360,7 @@ void guild_retrieveitembound(uint32 char_id, uint32 account_id, int32 guild_id) 
 }
 #endif
 
-int32 guild_send_memberinfoshort(map_session_data *sd,int32 online) { // cleaned up [LuzZza]
+int guild_send_memberinfoshort(map_session_data *sd,int online) { // cleaned up [LuzZza]
 	nullpo_ret(sd);
 
 	if(sd->status.guild_id <= 0)
@@ -1375,7 +1375,7 @@ int32 guild_send_memberinfoshort(map_session_data *sd,int32 online) { // cleaned
 		sd->status.account_id,sd->status.char_id,online,sd->status.base_level,sd->status.class_);
 
 	if(!online){
-		int32 i=guild_getindex(g->guild, sd->status.account_id,sd->status.char_id);
+		int i=guild_getindex(g->guild, sd->status.account_id,sd->status.char_id);
 		if(i>=0)
 			g->guild.member[i].sd=nullptr;
 		else
@@ -1394,9 +1394,9 @@ int32 guild_send_memberinfoshort(map_session_data *sd,int32 online) { // cleaned
 	return 0;
 }
 
-int32 guild_recv_memberinfoshort(int32 guild_id,uint32 account_id,uint32 char_id,int32 online,int32 lv,int32 class_) { // cleaned up [LuzZza]
+int guild_recv_memberinfoshort(int guild_id,uint32 account_id,uint32 char_id,int online,int lv,int class_) { // cleaned up [LuzZza]
 
-	int32 i,alv,c,idx=-1,om=0,oldonline=-1;
+	int i,alv,c,idx=-1,om=0,oldonline=-1;
 	auto g = guild_search(guild_id);
 
 	if(g == nullptr)
@@ -1459,7 +1459,7 @@ int32 guild_recv_memberinfoshort(int32 guild_id,uint32 account_id,uint32 char_id
 /*====================================================
  * Send a message to whole guild
  *---------------------------------------------------*/
-int32 guild_send_message(map_session_data *sd, const char *mes, size_t len) {
+int guild_send_message(map_session_data *sd, const char *mes, size_t len) {
 	nullpo_ret(sd);
 
 	if(sd->status.guild_id==0)
@@ -1476,7 +1476,7 @@ int32 guild_send_message(map_session_data *sd, const char *mes, size_t len) {
 /*====================================================
  * Guild receive a message, will be displayed to whole member
  *---------------------------------------------------*/
-int32 guild_recv_message( int32 guild_id, uint32 account_id, const char *mes, size_t len ){
+int guild_recv_message( int guild_id, uint32 account_id, const char *mes, size_t len ){
 	auto g = guild_search(guild_id);
 	if (!g)
 		return 0;
@@ -1487,28 +1487,28 @@ int32 guild_recv_message( int32 guild_id, uint32 account_id, const char *mes, si
 /*====================================================
  * Member changing position in guild
  *---------------------------------------------------*/
-int32 guild_change_memberposition(int32 guild_id,uint32 account_id,uint32 char_id,short idx) {
+int guild_change_memberposition(int guild_id,uint32 account_id,uint32 char_id,short idx) {
 	return intif_guild_change_memberinfo(guild_id,account_id,char_id,GMI_POSITION,&idx,sizeof(idx));
 }
 
 /*====================================================
  * Notification of new position for member
  *---------------------------------------------------*/
-int32 guild_memberposition_changed(struct mmo_guild &g,int32 idx,int32 pos) {
+int guild_memberposition_changed(struct mmo_guild &g,int idx,int pos) {
 
 	g.member[idx].position=pos;
 	clif_guild_memberpositionchanged(g,idx);
 
 	// Update char position in client [LuzZza]
 	if(g.member[idx].sd != nullptr)
-		clif_guild_position_selected(*g.member[idx].sd);
+		clif_name_area(&g.member[idx].sd->bl);
 	return 0;
 }
 
 /*====================================================
  * Change guild title or member
  *---------------------------------------------------*/
-int32 guild_change_position(int32 guild_id,int32 idx, int32 mode, int32 exp_mode, const char *name) {
+int guild_change_position(int guild_id,int idx, int mode, int exp_mode, const char *name) {
 	struct guild_position p;
 
 	exp_mode = cap_value(exp_mode, 0, battle_config.guild_exp_limit);
@@ -1521,9 +1521,9 @@ int32 guild_change_position(int32 guild_id,int32 idx, int32 mode, int32 exp_mode
 /*====================================================
  * Notification of member has changed his guild title
  *---------------------------------------------------*/
-int32 guild_position_changed(int32 guild_id,int32 idx,struct guild_position *p) {
+int guild_position_changed(int guild_id,int idx,struct guild_position *p) {
 	auto g = guild_search(guild_id);
-	int32 i;
+	int i;
 	if(g==nullptr)
 		return 0;
 	memcpy(&g->guild.position[idx],p,sizeof(struct guild_position));
@@ -1532,14 +1532,14 @@ int32 guild_position_changed(int32 guild_id,int32 idx,struct guild_position *p) 
 	// Update char name in client [LuzZza]
 	for(i=0;i<g->guild.max_member;i++)
 		if(g->guild.member[i].position == idx && g->guild.member[i].sd != nullptr)
-			clif_guild_position_selected(*g->guild.member[i].sd);
+			clif_name_area(&g->guild.member[i].sd->bl);
 	return 0;
 }
 
 /*====================================================
  * Change guild notice
  *---------------------------------------------------*/
-int32 guild_change_notice(map_session_data *sd,int32 guild_id,const char *mes1,const char *mes2) {
+int guild_change_notice(map_session_data *sd,int guild_id,const char *mes1,const char *mes2) {
 	nullpo_ret(sd);
 
 	if(guild_id!=sd->status.guild_id)
@@ -1550,8 +1550,8 @@ int32 guild_change_notice(map_session_data *sd,int32 guild_id,const char *mes1,c
 /*====================================================
  * Notification of guild has changed his notice
  *---------------------------------------------------*/
-int32 guild_notice_changed(int32 guild_id,const char *mes1,const char *mes2) {
-	int32 i;
+int guild_notice_changed(int guild_id,const char *mes1,const char *mes2) {
+	int i;
 	auto g = guild_search(guild_id);
 	if (!g)
 		return 0;
@@ -1584,7 +1584,7 @@ bool guild_check_emblem_change_condition( map_session_data& sd ){
 /*====================================================
  * Change guild emblem
  *---------------------------------------------------*/
-int32 guild_change_emblem( map_session_data& sd, int32 len, const char* data ){
+int guild_change_emblem( map_session_data& sd, int len, const char* data ){
 	if (!guild_check_emblem_change_condition(sd)) {
 		return 0;
 	}
@@ -1595,7 +1595,7 @@ int32 guild_change_emblem( map_session_data& sd, int32 len, const char* data ){
 /*====================================================
  * Change guild emblem version
  *---------------------------------------------------*/
-int32 guild_change_emblem_version( map_session_data& sd, int32 version ){
+int guild_change_emblem_version( map_session_data& sd, int version ){
 	if (!guild_check_emblem_change_condition(sd)) {
 		return 0;
 	}
@@ -1606,8 +1606,8 @@ int32 guild_change_emblem_version( map_session_data& sd, int32 version ){
 /*====================================================
  * Notification of guild emblem changed
  *---------------------------------------------------*/
-int32 guild_emblem_changed(int32 len,int32 guild_id,int32 emblem_id,const char *data) {
-	int32 i;
+int guild_emblem_changed(int len,int guild_id,int emblem_id,const char *data) {
+	int i;
 	map_session_data *sd;
 	auto g = guild_search(guild_id);
 	if (!g)
@@ -1680,7 +1680,7 @@ static DBData create_expcache(DBKey key, va_list args) {
  *---------------------------------------------------*/
 t_exp guild_payexp(map_session_data *sd,t_exp exp) {
 	struct guild_expcache *c;
-	int32 per;
+	int per;
 
 	nullpo_ret(sd);
 
@@ -1751,17 +1751,17 @@ void guild_skillup(map_session_data* sd, uint16 skill_id) {
 /*====================================================
  * Notification of guildskill skill_id increase request
  *---------------------------------------------------*/
-int32 guild_skillupack(int32 guild_id,uint16 skill_id,uint32 account_id) {
+int guild_skillupack(int guild_id,uint16 skill_id,uint32 account_id) {
 	map_session_data *sd = map_id2sd(account_id);
 	auto g = guild_search(guild_id);
-	int32 i;
+	int i;
 	short idx = guild_skill_get_index(skill_id);
 
 	if (g == nullptr || idx == -1)
 		return 0;
 	if (sd != nullptr) {
-		int32 lv = g->guild.skill[idx].lv;
-		int32 range = skill_get_range(skill_id, lv);
+		int lv = g->guild.skill[idx].lv;
+		int range = skill_get_range(skill_id, lv);
 		clif_skillup(sd,skill_id,lv,range,1);
 
 		/* Guild Aura handling */
@@ -1810,8 +1810,8 @@ void guild_guildaura_refresh(map_session_data *sd, uint16 skill_id, uint16 skill
  *	0 = allied
  *	1 = enemy
  *---------------------------------------------------*/
-int32 guild_get_alliance_count(const struct mmo_guild &g,int32 flag) {
-	int32 i,c;
+int guild_get_alliance_count(const struct mmo_guild &g,int flag) {
+	int i,c;
 
 	for(i=c=0;i<MAX_GUILDALLIANCE;i++){
 		if(	g.alliance[i].guild_id>0 &&
@@ -1822,9 +1822,9 @@ int32 guild_get_alliance_count(const struct mmo_guild &g,int32 flag) {
 }
 
 // Blocks all guild skills which have a common delay time.
-void guild_block_skill(map_session_data *sd, int32 time) {
+void guild_block_skill(map_session_data *sd, int time) {
 	uint16 skill_id[] = { GD_BATTLEORDER, GD_REGENERATION, GD_RESTORE, GD_EMERGENCYCALL };
-	int32 i;
+	int i;
 	for (i = 0; i < 4; i++)
 		skill_blockpc_start(sd, skill_id[i], time);
 }
@@ -1836,8 +1836,8 @@ void guild_block_skill(map_session_data *sd, int32 time) {
  *	1 = enemy
  * Returns true if yes.
  *---------------------------------------------------*/
-int32 guild_check_alliance(int32 guild_id1, int32 guild_id2, int32 flag) {
-	int32 i;
+int guild_check_alliance(int guild_id1, int guild_id2, int flag) {
+	int i;
 
 	auto g = guild_search(guild_id1);
 	if (g == nullptr)
@@ -1850,8 +1850,8 @@ int32 guild_check_alliance(int32 guild_id1, int32 guild_id2, int32 flag) {
 /*====================================================
  * Player sd, asking player tsd an alliance between their 2 guilds
  *---------------------------------------------------*/
-int32 guild_reqalliance(map_session_data *sd,map_session_data *tsd) {
-	int32 i;
+int guild_reqalliance(map_session_data *sd,map_session_data *tsd) {
+	int i;
 
 	if(is_agit_start()) {	// Disable alliance creation during woe [Valaris]
 		clif_displaymessage(sd->fd,msg_txt(sd,676)); //"Alliances cannot be made during Guild Wars!"
@@ -1912,7 +1912,7 @@ int32 guild_reqalliance(map_session_data *sd,map_session_data *tsd) {
 /*====================================================
  * Player sd, answer to player tsd (account_id) for an alliance request
  *---------------------------------------------------*/
-int32 guild_reply_reqalliance(map_session_data *sd,uint32 account_id,int32 flag) {
+int guild_reply_reqalliance(map_session_data *sd,uint32 account_id,int flag) {
 	map_session_data *tsd;
 
 	nullpo_ret(sd);
@@ -1926,7 +1926,7 @@ int32 guild_reply_reqalliance(map_session_data *sd,uint32 account_id,int32 flag)
 		return 0;
 
 	if (flag == 1) { // consent
-		int32 i;
+		int i;
 
 		auto &g = sd->guild;
 		auto &tg = tsd->guild;
@@ -1971,7 +1971,7 @@ int32 guild_reply_reqalliance(map_session_data *sd,uint32 account_id,int32 flag)
 /*====================================================
  * Player sd asking to break alliance with guild guild_id
  *---------------------------------------------------*/
-int32 guild_delalliance(map_session_data *sd,int32 guild_id,int32 flag) {
+int guild_delalliance(map_session_data *sd,int guild_id,int flag) {
 	nullpo_ret(sd);
 
 	if(is_agit_start()) {	// Disable alliance breaking during woe [Valaris]
@@ -1986,8 +1986,8 @@ int32 guild_delalliance(map_session_data *sd,int32 guild_id,int32 flag) {
 /*====================================================
  * Player sd, asking player tsd a formal enemy relation between their 2 guilds
  *---------------------------------------------------*/
-int32 guild_opposition(map_session_data *sd,map_session_data *tsd) {
-	int32 i;
+int guild_opposition(map_session_data *sd,map_session_data *tsd) {
+	int i;
 
 	nullpo_ret(sd);
 
@@ -2027,13 +2027,13 @@ int32 guild_opposition(map_session_data *sd,map_session_data *tsd) {
 /*====================================================
  * Notification of a relationship between 2 guilds
  *---------------------------------------------------*/
-int32 guild_allianceack(int32 guild_id1,int32 guild_id2,uint32 account_id1,uint32 account_id2,int32 flag,const char *name1,const char *name2)
+int guild_allianceack(int guild_id1,int guild_id2,uint32 account_id1,uint32 account_id2,int flag,const char *name1,const char *name2)
 {
 	struct mmo_guild *g[2];
-	int32 guild_id[2];
+	int guild_id[2];
 	const char *guild_name[2];
 	map_session_data *sd[2];
-	int32 j,i;
+	int j,i;
 
 	guild_id[0] = guild_id1;
 	guild_id[1] = guild_id2;
@@ -2111,10 +2111,10 @@ int32 guild_allianceack(int32 guild_id1,int32 guild_id2,uint32 account_id1,uint3
  * Notification for the guild disbanded
  * @see DBApply
  */
-int32 guild_broken_sub(struct mmo_guild &g, int32 guild_id) {
-	for (int32 i = 0; i < MAX_GUILDALLIANCE; i++) {  // Destroy all relationships
+int guild_broken_sub(struct mmo_guild &g, int guild_id) {
+	for (int i = 0; i < MAX_GUILDALLIANCE; i++) {  // Destroy all relationships
 		if (g.alliance[i].guild_id == guild_id) {
-			for (int32 j = 0; j < g.max_member; j++) {
+			for (int j = 0; j < g.max_member; j++) {
 				if (g.member[j].sd)
 					clif_guild_delalliance(*g.member[j].sd, guild_id, g.alliance[i].opposition);
 			}
@@ -2129,7 +2129,7 @@ int32 guild_broken_sub(struct mmo_guild &g, int32 guild_id) {
  * Invoked on Castles when a guild is broken. [Skotlex]
  * @see DBApply
  */
-void castle_guild_broken_sub(int32 guild_id) {
+void castle_guild_broken_sub(int guild_id) {
 	for (const auto &it : castle_db) {
 		std::shared_ptr<guild_castle> gc = it.second;
 		if (gc->guild_id == guild_id) {
@@ -2146,9 +2146,9 @@ void castle_guild_broken_sub(int32 guild_id) {
 }
 
 //Invoked on /breakguild "Guild name"
-int32 guild_broken(int32 guild_id,int32 flag) {
+int guild_broken(int guild_id,int flag) {
 	auto g = guild_search(guild_id);
-	int32 i;
+	int i;
 
 	if (flag != 0 || g == nullptr)
 		return 0;
@@ -2190,7 +2190,7 @@ int32 guild_broken(int32 guild_id,int32 flag) {
 * @param guild_id
 * @param sd New guild master
 */
-bool guild_gm_change( int32 guild_id, uint32 char_id, bool showMessage ){
+bool guild_gm_change( int guild_id, uint32 char_id, bool showMessage ){
 	auto g = guild_search( guild_id );
 
 	if( g == nullptr ){
@@ -2201,7 +2201,7 @@ bool guild_gm_change( int32 guild_id, uint32 char_id, bool showMessage ){
 		return false;
 	}
 
-	int32 i;
+	int i;
 
 	ARR_FIND( 0, MAX_GUILD, i, g->guild.member[i].char_id == char_id );
 
@@ -2226,9 +2226,9 @@ bool guild_gm_change( int32 guild_id, uint32 char_id, bool showMessage ){
 * @param account_id
 * @param char_id
 */
-int32 guild_gm_changed(int32 guild_id, uint32 account_id, uint32 char_id, time_t time) {
+int guild_gm_changed(int guild_id, uint32 account_id, uint32 char_id, time_t time) {
 	struct guild_member gm;
-	int32 pos, i;
+	int pos, i;
 
 	auto g = guild_search(guild_id);
 
@@ -2286,12 +2286,12 @@ int32 guild_gm_changed(int32 guild_id, uint32 account_id, uint32 char_id, time_t
 * @param sd Player who breaks the guild
 * @param name Guild name
 */
-int32 guild_break( map_session_data& sd, const char* name ){
+int guild_break( map_session_data& sd, const char* name ){
 	struct unit_data *ud;
-	int32 i;
+	int i;
 #ifdef BOUND_ITEMS
-	int32 j;
-	int32 idxlist[MAX_INVENTORY];
+	int j;
+	int idxlist[MAX_INVENTORY];
 #endif
 
 	auto& g = sd.guild;
@@ -2387,7 +2387,7 @@ void guild_castle_map_init(void) {
  * @param index Type of data to change
  * @param value New value
  */
-int32 guild_castledatasave(int32 castle_id, int32 index, int32 value) {
+int guild_castledatasave(int castle_id, int index, int value) {
 	std::shared_ptr<guild_castle> gc = castle_db.find(castle_id);
 
 	if (gc == nullptr) {
@@ -2398,7 +2398,7 @@ int32 guild_castledatasave(int32 castle_id, int32 index, int32 value) {
 	switch (index) {
 	case CD_GUILD_ID: // The castle's owner has changed? Update or remove Guardians too. [Skotlex]
 	{
-		int32 i;
+		int i;
 		gc->guild_id = value;
 		for (i = 0; i < MAX_GUARDIANS; i++){
 			struct mob_data *gd;
@@ -2411,7 +2411,7 @@ int32 guild_castledatasave(int32 castle_id, int32 index, int32 value) {
 		gc->economy = value; break;
 	case CD_CURRENT_DEFENSE: // defense invest change -> recalculate guardian hp
 	{
-		int32 i;
+		int i;
 		gc->defense = value;
 		for (i = 0; i < MAX_GUARDIANS; i++){
 			struct mob_data *gd;
@@ -2448,9 +2448,9 @@ int32 guild_castledatasave(int32 castle_id, int32 index, int32 value) {
 }
 
 void guild_castle_reconnect_sub(void *key, void *data, va_list ap) {
-	int32 castle_id = GetWord((int)__64BPRTSIZE(key), 0);
-	int32 index = GetWord((int)__64BPRTSIZE(key), 1);
-	intif_guild_castle_datasave(castle_id, index, *(int32 *)data);
+	int castle_id = GetWord((int)__64BPRTSIZE(key), 0);
+	int index = GetWord((int)__64BPRTSIZE(key), 1);
+	intif_guild_castle_datasave(castle_id, index, *(int *)data);
 	aFree(data);
 }
 
@@ -2462,14 +2462,14 @@ void guild_castle_reconnect_sub(void *key, void *data, va_list ap) {
  * @param index
  * @param value
  */
-void guild_castle_reconnect(int32 castle_id, int32 index, int32 value) {
+void guild_castle_reconnect(int castle_id, int index, int value) {
 	static struct linkdb_node *gc_save_pending = nullptr;
 
 	if (castle_id < 0) { // char-server reconnected
 		linkdb_foreach(&gc_save_pending, guild_castle_reconnect_sub);
 		linkdb_final(&gc_save_pending);
 	} else {
-		int32 *data;
+		int *data;
 		CREATE(data, int, 1);
 		*data = value;
 		linkdb_replace(&gc_save_pending, (void*)__64BPRTSIZE((MakeDWord(castle_id, index))), data);
@@ -2480,10 +2480,10 @@ void guild_castle_reconnect(int32 castle_id, int32 index, int32 value) {
 * @param len
 * @param gc Guild Castle data
 */
-int32 guild_castledataloadack(int32 len, struct guild_castle *gc) {
-	int32 i;
-	int32 n = (len-4) / sizeof(struct guild_castle);
-	int32 ev;
+int guild_castledataloadack(int len, struct guild_castle *gc) {
+	int i;
+	int n = (len-4) / sizeof(struct guild_castle);
+	int ev;
 
 	nullpo_ret(gc);
 
@@ -2617,8 +2617,8 @@ bool guild_agit3_end(void){
 }
 
 // How many castles does this guild have?
-int32 guild_checkcastles(const struct mmo_guild &g) {
-	int32 nb_cas = 0;
+int guild_checkcastles(const struct mmo_guild &g) {
+	int nb_cas = 0;
 	for (const auto &it : castle_db) {
 		if (it.second->guild_id == g.guild_id)
 			nb_cas++;
@@ -2627,8 +2627,8 @@ int32 guild_checkcastles(const struct mmo_guild &g) {
 }
 
 // Are these two guilds allied?
-bool guild_isallied(int32 guild_id, int32 guild_id2) {
-	int32 i;
+bool guild_isallied(int guild_id, int guild_id2) {
+	int i;
 	auto g = guild_search(guild_id);
 	if (!g)
 		return false;
@@ -2638,7 +2638,7 @@ bool guild_isallied(int32 guild_id, int32 guild_id2) {
 }
 
 bool guild_has_permission( map_session_data& sd, enum e_guild_permission permission ){
-	int32 position = guild_getposition( sd );
+	int position = guild_getposition( sd );
 
 	if( position < 0 ){
 		return false;
@@ -2648,7 +2648,7 @@ bool guild_has_permission( map_session_data& sd, enum e_guild_permission permiss
 }
 
 void guild_flag_add(struct npc_data *nd) {
-	int32 i;
+	int i;
 
 	/* check */
 	for( i = 0; i < guild_flags_count; i++ ) {
@@ -2665,7 +2665,7 @@ void guild_flag_add(struct npc_data *nd) {
 }
 
 void guild_flag_remove(struct npc_data *nd) {
-	int32 i, cursor;
+	int i, cursor;
 	if( guild_flags_count == 0 )
 		return;
 	/* find it */
@@ -2692,7 +2692,7 @@ void guild_flag_remove(struct npc_data *nd) {
 /**
  * @see DBApply
  */
-static int32 eventlist_db_final(DBKey key, DBData *data, va_list ap) {
+static int eventlist_db_final(DBKey key, DBData *data, va_list ap) {
 	struct eventlist *next = nullptr;
 	struct eventlist *current = (struct eventlist *)db_data2ptr(data);
 	while (current != nullptr) {
@@ -2706,14 +2706,14 @@ static int32 eventlist_db_final(DBKey key, DBData *data, va_list ap) {
 /**
  * @see DBApply
  */
-static int32 guild_expcache_db_final(DBKey key, DBData *data, va_list ap) {
+static int guild_expcache_db_final(DBKey key, DBData *data, va_list ap) {
 	ers_free(expcache_ers, db_data2ptr(data));
 	return 0;
 }
 
 /* called when scripts are reloaded/unloaded */
 void guild_flags_clear(void) {
-	int32 i;
+	int i;
 	for( i = 0; i < guild_flags_count; i++ ) {
 		if( guild_flags[i] )
 			guild_flags[i] = nullptr;

@@ -23,7 +23,7 @@ using namespace rathena;
 
 void mail_clear(map_session_data *sd)
 {
-	int32 i;
+	int i;
 
 	for( i = 0; i < MAIL_MAX_ITEM; i++ ){
 		sd->mail.item[i].nameid = 0;
@@ -36,9 +36,9 @@ void mail_clear(map_session_data *sd)
 	return;
 }
 
-int32 mail_removeitem(map_session_data *sd, short flag, int32 idx, int32 amount)
+int mail_removeitem(map_session_data *sd, short flag, int idx, int amount)
 {
-	int32 i;
+	int i;
 
 	nullpo_ret(sd);
 
@@ -179,9 +179,9 @@ enum mail_attach_result mail_setitem(map_session_data *sd, short idx, uint32 amo
 		// clif_updatestatus(*sd, SP_ZENY);
 		return MAIL_ATTACH_SUCCESS;
 	} else { // Item Transfer
-		int32 i;
+		int i;
 #if PACKETVER >= 20150513
-		int32 j, total = 0;
+		int j, total = 0;
 #endif
 
 		idx -= 2;
@@ -282,13 +282,13 @@ enum mail_attach_result mail_setitem(map_session_data *sd, short idx, uint32 amo
 
 bool mail_setattachment(map_session_data *sd, struct mail_message *msg)
 {
-	int32 i, amount;
+	int i, amount;
 
 	nullpo_retr(false,sd);
 	nullpo_retr(false,msg);
 
 	for( i = 0, amount = 0; i < MAIL_MAX_ITEM; i++ ){
-		int32 index = sd->mail.item[i].index;
+		int index = sd->mail.item[i].index;
 
 		if( sd->mail.item[i].nameid == 0 || sd->mail.item[i].amount == 0 ){
 			memset(&msg->item[i], 0x00, sizeof(struct item));
@@ -329,8 +329,8 @@ bool mail_setattachment(map_session_data *sd, struct mail_message *msg)
 	return true;
 }
 
-void mail_getattachment(map_session_data* sd, struct mail_message* msg, int32 zeny, struct item* item){
-	int32 i;
+void mail_getattachment(map_session_data* sd, struct mail_message* msg, int zeny, struct item* item){
+	int i;
 	bool item_received = false;
 
 	for( i = 0; i < MAIL_MAX_ITEM; i++ ){
@@ -399,7 +399,7 @@ void mail_getattachment(map_session_data* sd, struct mail_message* msg, int32 ze
 	}
 }
 
-int32 mail_openmail(map_session_data *sd)
+int mail_openmail(map_session_data *sd)
 {
 	nullpo_ret(sd);
 
@@ -412,7 +412,7 @@ int32 mail_openmail(map_session_data *sd)
 }
 
 void mail_deliveryfail(map_session_data *sd, struct mail_message *msg){
-	int32 i, zeny = 0;
+	int i, zeny = 0;
 
 	nullpo_retv(sd);
 	nullpo_retv(msg);
@@ -459,7 +459,7 @@ bool mail_invalid_operation(map_session_data *sd)
 * @param body_msg Mail message
 * @param body_len Message's length
 */
-void mail_send(map_session_data *sd, const char *dest_name, const char *title, const char *body_msg, int32 body_len) {
+void mail_send(map_session_data *sd, const char *dest_name, const char *title, const char *body_msg, int body_len) {
 	struct mail_message msg;
 
 	nullpo_retv(sd);
@@ -489,7 +489,7 @@ void mail_send(map_session_data *sd, const char *dest_name, const char *title, c
 		body_len = MAIL_BODY_LENGTH;
 
 	if( !mail_setattachment(sd, &msg) ) { // Invalid Append condition
-		int32 i;
+		int i;
 
 		clif_Mail_send(sd, WRITE_MAIL_FAILED); // fail
 		for( i = 0; i < MAIL_MAX_ITEM; i++ ){
@@ -524,7 +524,7 @@ void mail_send(map_session_data *sd, const char *dest_name, const char *title, c
 }
 
 void mail_refresh_remaining_amount( map_session_data* sd ){
-	int32 doy = date_get_dayofyear();
+	int doy = date_get_dayofyear();
 
 	nullpo_retv(sd);
 

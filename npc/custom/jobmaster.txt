@@ -43,21 +43,6 @@ function Is_Baby	{
 	return ((getarg(0, eaclass())&EAJL_BABY)>0);
 }
 
-// Checks if the player can change to fourth class.
-// Note: This does not include the level checks.
-function	Can_Change_Fourth	{
-	// To change to fourth class you need to be:
-	// * Transcendent Third Class
-	if( !.FourthClass )
-		return false; // Fourth job change disabled
-	if( (eaclass()&(EAJL_THIRD|EAJL_UPPER)) != (EAJL_THIRD|EAJL_UPPER) )
-		return false; // Not Transcendent Third Class
-	if( eaclass()&EAJL_FOURTH )
-		return false; // Already Fourth Class
-	if( roclass(eaclass()|EAJL_FOURTH) < 0 )
-		return false; // Job has no Fourth Class
-	return true;
-}
 
 // Checks if the player can change to third class.
 // Note: This does not include the level checks.
@@ -144,7 +129,6 @@ function	Job_Options	{
 
 	// initialisation
 	.@eac = eaclass();
-	.@fourth_possible = Can_Change_Fourth();
 	.@third_possible = Can_Change_Third();
 	.@rebirth_possible = Can_Rebirth();
 	.@first_eac = .@eac&EAJ_BASEMASK;
@@ -168,11 +152,7 @@ function	Job_Options	{
 		Require_Level(.Req_Third[0], .Req_Third[1]);
 		Job_Options(.@job_opt, roclass(.@eac|EAJL_THIRD));
 	}
-	if( .@fourth_possible ) {
-		// Fourth Job change (displayed below rebirth)
-		Require_Level(.Req_Fourth[0], .Req_Fourth[1]);
-		Job_Options(.@job_opt, roclass(.@eac|EAJL_FOURTH));
-	}
+	
 	 
 	if (.SecondExpanded && 
 	   (.@eac&EAJ_UPPERMASK) == EAJ_SUPER_NOVICE && // is Super Novice
@@ -183,27 +163,6 @@ function	Job_Options	{
 			Require_Level(.Req_Exp_SNOVI[0], .Req_Exp_SNOVI[1]);
 			Job_Options(.@job_opt,roclass(.@eac|EAJL_THIRD)); // Expanded SN is "third" cls
 		}
-	}
-
-	// babies don't get to become 4th jobs
-	if (.FourthExpanded && .@eac == EAJ_REBELLION) {
-		Require_Level(.Req_Fourth[0], .Req_Fourth[1]);
-		Job_Options(.@job_opt, roclass(EAJ_NIGHT_WATCH));
-	}
-
-	if (.FourthExpanded && .@eac == EAJ_KAGEROUOBORO) {
-		Require_Level(.Req_Fourth[0], .Req_Fourth[1]);
-		Job_Options(.@job_opt, roclass(EAJ_SHINKIRO_SHIRANUI));
-	}
-
-	if (.FourthExpanded && .@eac == EAJ_SUPER_NOVICE_E) {
-		Require_Level(.Req_Fourth[0], .Req_Fourth[1]);
-		Job_Options(.@job_opt, roclass(EAJ_HYPER_NOVICE));
-	}
-	
-	if (.FourthExpanded && .@eac == EAJ_SUMMONER) {
-		Require_Level(.Req_SHandler[0], .Req_SHandler[1]);
-		Job_Options(.@job_opt, roclass(EAJ_SPIRIT_HANDLER));
 	}
 
 	if (.SecondExpanded && 
@@ -397,10 +356,7 @@ function	Get_Job_Equip	{
 	// Note: The item is dropping, when the player can't hold it.
 	// But that's better than not giving the item at all.
 	.@eac = eaclass();
-	if( .@eac&EAJL_FOURTH ) {
-		// Fourth Class Items
-		getitem 490087,1; // Hourglass Necklace
-	} else if( .@eac&EAJL_THIRD ) {
+		if( .@eac&EAJL_THIRD ) {
 		// Third Class Items
 		getitem 2795,1;	//	Green Apple Ring for every 3rd Class
 		switch(BaseJob) {
@@ -503,16 +459,14 @@ OnInit:
 	.NPCName$ = "[Job Master]";
 	
 	// Settings
-	.FourthClass = true;				// Enable fourth classes?
-	.FourthExpanded = true;				// Enable new expanded fourth classes: Ex. Hyper Novice, Rebellion, Shinkiro/Shiranui?
-	.ThirdClass = true;					// Enable third classes?
+	.ThirdClass = false;					// Enable third classes?
 	.RebirthClass = true;				// Enable rebirth classes?
 	.SecondExpanded = true;				// Enable new expanded second classes: Ex. Super Novice, Kagerou/Oboro, Rebellion?
 	.BabyNovice = true;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
 	.BabyClass = true;					// Enable Baby classes?
 	.BabyThird = true;					// Enable Baby third classes?
-	.BabyExpanded = true;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
-	.BabySummoner = true;				// Enable Baby Summoner?
+	.BabyExpanded = false;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
+	.BabySummoner = false;				// Enable Baby Summoner?
 	.LastJob = true;					// Enforce linear class changes?
 	.SkillPointCheck = true;			// Force player to use up all skill points?
 	.Platinum = true;					// Get platinum skills automatically?
@@ -523,7 +477,6 @@ OnInit:
 	setarray .Req_Second[0],1,40; 		// Minimum base level, job level to turn into 2nd class
 	setarray .Req_Rebirth[0],99,50;		// Minimum base level, job level to rebirth
 	setarray .Req_Third[0],99,50;		// Minimum base level, job level to change to third class
-	setarray .Req_Fourth[0],200,70;		// Minimum base level, job level to change to fourth class
 	setarray .Req_Exp_NJ_GS[0],99,70; 	// Minimum base level, job level to turn into Expanded Ninja and Gunslinger
 	setarray .Req_Exp_SNOVI[0],99,99; 	// Minimum base level, job level to turn into Expanded Super Novice
 	setarray .Req_SHandler[0],200,60;	// Minimum base level, job level to turn into Spirit Handler

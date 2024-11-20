@@ -348,4 +348,4 @@ einbech,67,37,4	script	Guide#4ein::EinGuide2	852,{
 	end;
 }
 
-einbech,48,214,4	duplicate(EinGuide2)	Guide#5ein	852
+//einbech,48,214,4	duplicate(EinGuide2)	Guide#5ein	852

@@ -4,7 +4,6 @@
 #ifndef MAPINDEX_HPP
 #define MAPINDEX_HPP
 
-#include "cbasetypes.hpp"
 #include "mmo.hpp"
 
 #define MAX_MAPINDEX 2000
@@ -64,8 +63,8 @@ unsigned short mapindex_name2idx(const char* name, const char *func);
 const char* mapindex_idx2name(unsigned short id, const char *func);
 #define mapindex_id2name(mapindex) mapindex_idx2name((mapindex), __FUNCTION__)
 
-int32 mapindex_addmap(int32 index, const char* name);
-int32 mapindex_removemap(int32 index);
+int mapindex_addmap(int index, const char* name);
+int mapindex_removemap(int index);
 
 void mapindex_check_mapdefault(const char *mapname);
 

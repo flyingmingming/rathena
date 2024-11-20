@@ -62,7 +62,7 @@ namespace rathena{
 	namespace tool_yaml2sql{
 		class Yaml2SqlTool : public Core{
 			protected:
-				bool initialize( int32 argc, char* argv[] ) override;
+				bool initialize( int argc, char* argv[] ) override;
 
 			public:
 				Yaml2SqlTool() : Core( e_core_type::TOOL ){
@@ -75,9 +75,9 @@ namespace rathena{
 using namespace rathena::tool_yaml2sql;
 
 #ifndef WIN32
-int32 getch( void ){
+int getch( void ){
     struct termios oldattr, newattr;
-    int32 ch;
+    int ch;
     tcgetattr( STDIN_FILENO, &oldattr );
     newattr = oldattr;
     newattr.c_lflag &= ~( ICANON | ECHO );
@@ -212,7 +212,7 @@ bool process( const std::string& type, uint32 version, const std::vector<std::st
 	return true;
 }
 
-bool Yaml2SqlTool::initialize( int32 argc, char* argv[] ){
+bool Yaml2SqlTool::initialize( int argc, char* argv[] ){
 	const std::string path_db = std::string( db_path );
 	const std::string path_db_mode = path_db + "/" + DBPATH;
 	const std::string path_db_import = path_db + "/" + DBIMPORT + "/";
@@ -953,6 +953,6 @@ static bool mob_db_yaml2sql(const std::string &file, const std::string &table) {
 	return true;
 }
 
-int32 main( int32 argc, char *argv[] ){
+int main( int argc, char *argv[] ){
 	return main_core<Yaml2SqlTool>( argc, argv );
 }

@@ -6062,7 +6062,7 @@ Body:
       if (readparam(bStr)>=95) {
          bonus bHit,10;
          bonus bAspdRate,3;
-      }
+      }  
   - Id: 1388
     AegisName: Two_Handed_Axe_C
     Name: Two-Handed Axe

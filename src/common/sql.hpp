@@ -69,14 +69,14 @@ struct Sql* Sql_Malloc(void);
 
 
 /// Retrieves the last error number.
-uint32 Sql_GetError( Sql* self );
+unsigned int Sql_GetError( Sql* self );
 
 
 
 /// Establishes a connection.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_Connect(Sql* self, const char* user, const char* passwd, const char* host, uint16 port, const char* db);
+int Sql_Connect(Sql* self, const char* user, const char* passwd, const char* host, uint16 port, const char* db);
 
 
 
@@ -84,7 +84,7 @@ int32 Sql_Connect(Sql* self, const char* user, const char* passwd, const char* h
 /// Retrieves the timeout of the connection.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_GetTimeout(Sql* self, uint32* out_timeout);
+int Sql_GetTimeout(Sql* self, uint32* out_timeout);
 
 
 
@@ -92,7 +92,7 @@ int32 Sql_GetTimeout(Sql* self, uint32* out_timeout);
 /// Retrieves the name of the columns of a table into out_buf, with the separator after each name.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_GetColumnNames(Sql* self, const char* table, char* out_buf, size_t buf_len, char sep);
+int Sql_GetColumnNames(Sql* self, const char* table, char* out_buf, size_t buf_len, char sep);
 
 
 
@@ -100,14 +100,14 @@ int32 Sql_GetColumnNames(Sql* self, const char* table, char* out_buf, size_t buf
 /// Changes the encoding of the connection.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_SetEncoding(Sql* self, const char* encoding);
+int Sql_SetEncoding(Sql* self, const char* encoding);
 
 
 
 /// Pings the connection.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_Ping(Sql* self);
+int Sql_Ping(Sql* self);
 
 
 
@@ -132,7 +132,7 @@ size_t Sql_EscapeStringLen(Sql* self, char* out_to, const char* from, size_t fro
 /// The query is constructed as if it was sprintf.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_Query(Sql* self, const char* query, ...);
+int Sql_Query(Sql* self, const char* query, ...);
 
 
 
@@ -141,7 +141,7 @@ int32 Sql_Query(Sql* self, const char* query, ...);
 /// The query is constructed as if it was svprintf.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_QueryV(Sql* self, const char* query, va_list args);
+int Sql_QueryV(Sql* self, const char* query, va_list args);
 
 
 
@@ -150,7 +150,7 @@ int32 Sql_QueryV(Sql* self, const char* query, va_list args);
 /// The query is used directly.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_QueryStr(Sql* self, const char* query);
+int Sql_QueryStr(Sql* self, const char* query);
 
 
 
@@ -186,7 +186,7 @@ uint64 Sql_NumRowsAffected(Sql* self);
 /// The data of the previous row is no longer valid.
 ///
 /// @return SQL_SUCCESS, SQL_ERROR or SQL_NO_DATA
-int32 Sql_NextRow(Sql* self);
+int Sql_NextRow(Sql* self);
 
 
 
@@ -194,7 +194,7 @@ int32 Sql_NextRow(Sql* self);
 /// The data remains valid until the next row is fetched or the result is freed.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 Sql_GetData(Sql* self, size_t col, char** out_buf, size_t* out_len);
+int Sql_GetData(Sql* self, size_t col, char** out_buf, size_t* out_len);
 
 
 
@@ -247,7 +247,7 @@ struct SqlStmt* SqlStmt_Malloc(Sql* sql);
 /// The query is constructed as if it was sprintf.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_Prepare(SqlStmt* self, const char* query, ...);
+int SqlStmt_Prepare(SqlStmt* self, const char* query, ...);
 
 
 
@@ -256,7 +256,7 @@ int32 SqlStmt_Prepare(SqlStmt* self, const char* query, ...);
 /// The query is constructed as if it was svprintf.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_PrepareV(SqlStmt* self, const char* query, va_list args);
+int SqlStmt_PrepareV(SqlStmt* self, const char* query, va_list args);
 
 
 
@@ -265,7 +265,7 @@ int32 SqlStmt_PrepareV(SqlStmt* self, const char* query, va_list args);
 /// The query is used directly.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_PrepareStr(SqlStmt* self, const char* query);
+int SqlStmt_PrepareStr(SqlStmt* self, const char* query);
 
 
 
@@ -281,7 +281,7 @@ size_t SqlStmt_NumParams(SqlStmt* self);
 /// All parameters should have bindings.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_BindParam(SqlStmt* self, size_t idx, SqlDataType buffer_type, void* buffer, size_t buffer_len);
+int SqlStmt_BindParam(SqlStmt* self, size_t idx, SqlDataType buffer_type, void* buffer, size_t buffer_len);
 
 
 
@@ -289,7 +289,7 @@ int32 SqlStmt_BindParam(SqlStmt* self, size_t idx, SqlDataType buffer_type, void
 /// Any previous result is freed and all column bindings are removed.
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_Execute(SqlStmt* self);
+int SqlStmt_Execute(SqlStmt* self);
 
 
 
@@ -313,7 +313,7 @@ size_t SqlStmt_NumColumns(SqlStmt* self);
 /// and the nul-terminator (an extra byte).
 ///
 /// @return SQL_SUCCESS or SQL_ERROR
-int32 SqlStmt_BindColumn(SqlStmt* self, size_t idx, SqlDataType buffer_type, void* buffer, size_t buffer_len, uint32* out_length, int8* out_is_null);
+int SqlStmt_BindColumn(SqlStmt* self, size_t idx, SqlDataType buffer_type, void* buffer, size_t buffer_len, uint32* out_length, int8* out_is_null);
 
 
 
@@ -328,7 +328,7 @@ uint64 SqlStmt_NumRows(SqlStmt* self);
 /// All column bindings will be filled with data.
 ///
 /// @return SQL_SUCCESS, SQL_ERROR or SQL_NO_DATA
-int32 SqlStmt_NextRow(SqlStmt* self);
+int SqlStmt_NextRow(SqlStmt* self);
 
 
 

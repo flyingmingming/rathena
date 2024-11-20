@@ -45,10 +45,10 @@
 /// when redirecting output:
 /// if true prints escape sequences
 /// if false removes the escape sequences
-int32 stdout_with_ansisequence = 0;
+int stdout_with_ansisequence = 0;
 
-int32 msg_silent = 0; //Specifies how silent the console is.
-int32 console_msg_log = 0;//[Ind] msg error logging
+int msg_silent = 0; //Specifies how silent the console is.
+int console_msg_log = 0;//[Ind] msg error logging
 char console_log_filepath[32] = "./log/unknown.log";
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -190,7 +190,7 @@ Escape sequences for Select Character Set
 #define is_console(handle) (FILE_TYPE_CHAR==GetFileType(handle))
 
 ///////////////////////////////////////////////////////////////////////////////
-int32	VFPRINTF(HANDLE handle, const char *fmt, va_list argptr)
+int	VFPRINTF(HANDLE handle, const char *fmt, va_list argptr)
 {
 	/////////////////////////////////////////////////////////////////
 	/* XXX Two streams are being used. Disabled to avoid inconsistency [flaviojs]
@@ -205,7 +205,7 @@ int32	VFPRINTF(HANDLE handle, const char *fmt, va_list argptr)
 	if(!fmt || !*fmt)
 		return 0;
 
-	// Print32 everything to the buffer
+	// Print everything to the buffer
 	BUFVPRINTF(tempbuf,fmt,argptr);
 
 	if( !is_console(handle) && stdout_with_ansisequence )
@@ -349,7 +349,7 @@ int32	VFPRINTF(HANDLE handle, const char *fmt, va_list argptr)
 					//    \033[1J - Clears the screen from start to cursor. The cursor position is unchanged.
 					//    \033[2J - Clears the screen and moves the cursor to the home position (line 1, column 1).
 					uint8 num = (numbers[numpoint]>>4)*10+(numbers[numpoint]&0x0F);
-					int32 cnt;
+					int cnt;
 					DWORD tmp;
 					COORD origin = {0,0};
 					if(num==1)
@@ -507,9 +507,9 @@ int32	VFPRINTF(HANDLE handle, const char *fmt, va_list argptr)
 	return 0;
 }
 
-int32	FPRINTF(HANDLE handle, const char *fmt, ...)
+int	FPRINTF(HANDLE handle, const char *fmt, ...)
 {
-	int32 ret;
+	int ret;
 	va_list argptr;
 	va_start(argptr, fmt);
 	ret = VFPRINTF(handle,fmt,argptr);
@@ -528,7 +528,7 @@ int32	FPRINTF(HANDLE handle, const char *fmt, ...)
 #define is_console(file) (0!=isatty(fileno(file)))
 
 //vprintf_without_ansiformats
-int32	VFPRINTF(FILE *file, const char *fmt, va_list argptr)
+int	VFPRINTF(FILE *file, const char *fmt, va_list argptr)
 {
 	char *p, *q;
 	NEWBUF(tempbuf); // temporary buffer
@@ -542,7 +542,7 @@ int32	VFPRINTF(FILE *file, const char *fmt, va_list argptr)
 		return 0;
 	}
 
-	// Print32 everything to the buffer
+	// Print everything to the buffer
 	BUFVPRINTF(tempbuf,fmt,argptr);
 
 	// start with processing
@@ -643,9 +643,9 @@ int32	VFPRINTF(FILE *file, const char *fmt, va_list argptr)
 	FREEBUF(tempbuf);
 	return 0;
 }
-int32	FPRINTF(FILE *file, const char *fmt, ...)
+int	FPRINTF(FILE *file, const char *fmt, ...)
 {
-	int32 ret;
+	int ret;
 	va_list argptr;
 	va_start(argptr, fmt);
 	ret = VFPRINTF(file,fmt,argptr);
@@ -662,7 +662,7 @@ int32	FPRINTF(FILE *file, const char *fmt, ...)
 
 char timestamp_format[20] = ""; //For displaying Timestamps
 
-int32 _vShowMessage(enum msg_type flag, const char *string, va_list ap)
+int _vShowMessage(enum msg_type flag, const char *string, va_list ap)
 {
 	va_list apcopy;
 	char prefix[100];
@@ -716,7 +716,7 @@ int32 _vShowMessage(enum msg_type flag, const char *string, va_list ap)
 	    (flag == MSG_SQL && msg_silent&16) ||
 	    (flag == MSG_DEBUG && msg_silent&32)
 	)
-		return 0; //Do not print32 it.
+		return 0; //Do not print it.
 
 	if (timestamp_format[0] && flag != MSG_NONE)
 	{	//Display time format. [Skotlex]
@@ -800,9 +800,9 @@ void ClearScreen(void)
 	ShowMessage(CL_CLS);	// to prevent empty string passed messages
 #endif
 }
-int32 _ShowMessage(enum msg_type flag, const char *string, ...)
+int _ShowMessage(enum msg_type flag, const char *string, ...)
 {
-	int32 ret;
+	int ret;
 	va_list ap;
 	va_start(ap, string);
 	ret = _vShowMessage(flag, string, ap);

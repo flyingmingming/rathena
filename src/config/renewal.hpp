@@ -17,6 +17,7 @@
  * @INFO: This file holds general-purpose renewal settings, for class-specific ones check /src/config/classes folder
  **/
 
+/*
 /// Game renewal server mode
 /// (disable by commenting the line)
 ///
@@ -72,7 +73,7 @@
 ///
 /// Leave this line to enable renewal calculation for increasing status/parameter points
 #define RENEWAL_STAT
-
+*/
 #endif
 
 #endif /* CONFIG_RENEWAL_HPP */
