@@ -4627,7 +4627,6 @@ static TIMER_FUNC(skill_timerskill){
 				}
 					[[fallthrough]];
 				case WZ_JUPITEL:
-					skill_toggle_magicpower(src, skl->skill_id); // Only the first hit will be amplified
 					// Official behaviour is to hit as long as there is a line of sight, regardless of distance
 					if (skl->type > 0 && !status_isdead(*target) && path_search_long(nullptr,src->m,src->x,src->y,target->x,target->y,CELL_CHKWALL)) {
 						// Apply canact delay here to prevent hacks (unlimited casting)
@@ -22702,12 +22701,11 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 			if(bl->type == BL_PC){// update current display.
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK1);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK2);
-		
-				
+				//find me
+				status_change_end(bl, SC_MAGICPOWER);	
 			}
 		}
-		//find me
-		status_change_end(bl, SC_MAGICPOWER);				
+			
 	}
 }
 
