@@ -13475,6 +13475,8 @@ TIMER_FUNC(skill_castend_id){
 
 		map_freeblock_lock();
 
+		skill_toggle_magicpower(src, ud->skill_id);
+
 		if (skill_get_casttype(ud->skill_id) == CAST_NODAMAGE)
 			skill_castend_nodamage_id(src,target,ud->skill_id,ud->skill_lv,tick,flag);
 		else
@@ -22693,7 +22695,7 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 		return;
 		
 	if (sc && sc->count && sc->getSCE(SC_MAGICPOWER)) {
-		if ( (sc->getSCE(SC_MAGICPOWER)->val4) || (sc->getSCE(SC_MAGICPOWER)->val4 == 1) ) {
+		if ( sc->getSCE(SC_MAGICPOWER)->val4 ) {
 			status_change_end(bl, SC_MAGICPOWER);
 		} else {
 			sc->getSCE(SC_MAGICPOWER)->val4 = 1;
