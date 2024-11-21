@@ -2359,9 +2359,7 @@ int skill_additional_effect( struct block_list* src, struct block_list *bl, uint
 			sd->state.autocast = 1;
 			skill_consume_requirement(sd,skill,autospl_skill_lv,1);
 #ifndef RENEWAL
-			clif_displaymessage( sd->fd, "skilladdeff - Start of toggle" );
-			skill_toggle_magicpower(src, skill);
-			
+			skill_toggle_magicpower(src, skill);	
 #endif
 			switch (type) {
 				case CAST_GROUND:
