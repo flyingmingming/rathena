@@ -2387,7 +2387,7 @@ int unit_skilluse_pos2( struct block_list *src, short skill_x, short skill_y, ui
 
 	// SC_MAGICPOWER needs to switch states at start of cast
 #ifndef RENEWAL
-//	skill_toggle_magicpower(src, skill_id);
+	skill_toggle_magicpower(src, skill_id);
 #endif
 
 	// In official this is triggered even if no cast time.
@@ -2406,11 +2406,6 @@ int unit_skilluse_pos2( struct block_list *src, short skill_x, short skill_y, ui
 	if( sd && battle_config.prevent_logout_trigger&PLT_SKILL )
 		sd->canlog_tick = gettick();
 
-/*find me
-	if(src->type != BL_MOB)
-		sd->cantele_tick = gettick();
-		//clif_displaymessage(sd->fd,"unitskillusepos2 - Fly wing or Teleport cannot be used since you were into battle recently"); 
-end find me*/
 
 	return 1;
 }
