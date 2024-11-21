@@ -22686,6 +22686,7 @@ void skill_poisoningweapon( map_session_data& sd, t_itemid nameid ){
 
 /**
  * Toggles the effect of Mystical Amplifcation (Pre-renewal).
+ * @param sd: Player data
  * @param bl: Object
  * @param skill_id: Skill invoking to determine if Magic type
  */
@@ -22700,15 +22701,19 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 	if (sc && sc->count && sc->getSCE(SC_MAGICPOWER)) {
 		if ( sc->getSCE(SC_MAGICPOWER)->val4 ) {
 			status_change_end(bl, SC_MAGICPOWER, INVALID_TIMER);
+			clif_displaymessage(sd->fd, "toggle_magicpower: end");
 		} else {
 			sc->getSCE(SC_MAGICPOWER)->val4 = 1;
 			status_calc_bl_(bl, status_db.getCalcFlag(SC_MAGICPOWER));
 			if(bl->type == BL_PC){// update current display.
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK1);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK2);
+				clif_displaymessage(sd->fd, "toggle_magicpower: start");
 			}
 		}
 	}
+
+	
 }
 
 void skill_magicdecoy( map_session_data& sd, t_itemid nameid ){
