@@ -22691,7 +22691,11 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 	// non-offensive and non-magic skills do not affect the status
 	if (skill_get_nk(skill_id, NK_NODAMAGE) || !(skill_get_type(skill_id)&BF_MAGIC))
 		return;
-		status_change_end(bl, SC_MAGICPOWER);
+		if (sc->getSCE(SC_MAGICPOWER)->val4 = 1)
+		{
+			status_change_end(bl, SC_MAGICPOWER);
+		}
+		
 	if (sc && sc->count && sc->getSCE(SC_MAGICPOWER)) {
 		if (sc->getSCE(SC_MAGICPOWER)->val4) {
 			status_change_end(bl, SC_MAGICPOWER);
