@@ -84,7 +84,7 @@ Body:
     # Can do everything Players can
     Inherit:
       Player: true
-      VIP Blue: true
+      VIP: true
     Level: 0
     Commands:
       autoloot: true
