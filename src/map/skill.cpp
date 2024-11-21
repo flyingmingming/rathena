@@ -22694,6 +22694,8 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 {
 	status_change *sc = status_get_sc(bl);
 
+	map_session_data *sd = (map_session_data*)bl;
+
 	// non-offensive and non-magic skills do not affect the status
 	if (skill_get_nk(skill_id, NK_NODAMAGE) || !(skill_get_type(skill_id)&BF_MAGIC))
 		return;
