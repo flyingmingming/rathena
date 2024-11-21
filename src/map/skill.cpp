@@ -13768,8 +13768,6 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 				clif_skill_poseffect(src,skill_id,skill_lv,x,y,tick);
 	}
 
-	// SC_MAGICPOWER needs to switch states before any damage is actually dealt
-	skill_toggle_magicpower(src, skill_id);
 
 	switch(skill_id)
 	{
