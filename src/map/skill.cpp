@@ -13475,7 +13475,7 @@ TIMER_FUNC(skill_castend_id){
 
 		map_freeblock_lock();
 
-		skill_toggle_magicpower(src, ud->skill_id);
+		
 
 		if (skill_get_casttype(ud->skill_id) == CAST_NODAMAGE)
 			skill_castend_nodamage_id(src,target,ud->skill_id,ud->skill_lv,tick,flag);
@@ -13767,6 +13767,9 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 			else
 				clif_skill_poseffect(src,skill_id,skill_lv,x,y,tick);
 	}
+
+	// SC_MAGICPOWER needs to switch states before any damage is actually dealt
+	skill_toggle_magicpower(src, skill_id);
 
 	switch(skill_id)
 	{
@@ -22696,7 +22699,7 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 		
 	if (sc && sc->count && sc->getSCE(SC_MAGICPOWER)) {
 		if ( sc->getSCE(SC_MAGICPOWER)->val4 ) {
-			status_change_end(bl, SC_MAGICPOWER);
+			status_change_end(bl, SC_MAGICPOWER, INVALID_TIMER);
 		} else {
 			sc->getSCE(SC_MAGICPOWER)->val4 = 1;
 			status_calc_bl_(bl, status_db.getCalcFlag(SC_MAGICPOWER));
