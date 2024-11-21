@@ -2118,7 +2118,7 @@ int unit_skilluse_id2(struct block_list *src, int target_id, uint16 skill_id, ui
 
 	// SC_MAGICPOWER needs to switch states at start of cast
 #ifndef RENEWAL
-//	skill_toggle_magicpower(src, skill_id);
+	skill_toggle_magicpower(src, skill_id);
 #endif
 
 	// In official this is triggered even if no cast time.

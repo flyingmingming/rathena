@@ -22708,6 +22708,10 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 			}
 		}
 	}
+	else
+	{
+		status_change_end(bl, SC_MAGICPOWER, INVALID_TIMER);
+	}
 }
 
 void skill_magicdecoy( map_session_data& sd, t_itemid nameid ){
