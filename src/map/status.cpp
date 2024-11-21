@@ -3718,7 +3718,7 @@ int status_calc_pc_sub(map_session_data* sd, uint8 opt)
 
 	if (sd->special_state.no_walk_delay)
 		clif_status_load(&sd->bl, EFST_ENDURE, 0);
-
+		
 	memset(&sd->special_state,0,sizeof(sd->special_state));
 
 	if (pc_isvip(sd)) // Magic Stone requirement avoidance for VIP.

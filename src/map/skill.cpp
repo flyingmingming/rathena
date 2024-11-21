@@ -22712,6 +22712,7 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK1);
 				clif_updatestatus(*((map_session_data *)bl),SP_MATK2);
 				clif_displaymessage(sd->fd, "toggle_magicpower: start");
+				clif_status_load(&sd->bl,EFST_MAGICPOWER,0);
 			}
 		}
 	}
