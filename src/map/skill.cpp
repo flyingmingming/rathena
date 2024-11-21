@@ -13769,6 +13769,7 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 	}
 
 
+
 	switch(skill_id)
 	{
 	case PR_BENEDICTIO:
