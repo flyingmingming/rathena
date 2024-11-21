@@ -22693,7 +22693,7 @@ void skill_toggle_magicpower(struct block_list *bl, uint16 skill_id)
 		return;
 		
 	if (sc && sc->count && sc->getSCE(SC_MAGICPOWER)) {
-		if (sc->getSCE(SC_MAGICPOWER)->val4 || sc->getSCE(SC_MAGICPOWER)->1) {
+		if ( (sc->getSCE(SC_MAGICPOWER)->val4) || (sc->getSCE(SC_MAGICPOWER)->val4 == 1) ) {
 			status_change_end(bl, SC_MAGICPOWER);
 		} else {
 			sc->getSCE(SC_MAGICPOWER)->val4 = 1;
