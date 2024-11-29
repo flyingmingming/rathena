@@ -260,6 +260,8 @@ static int buildin_autoattack_sub(struct block_list *bl, va_list ap) {
     return 1;
 }
 
+
+
 TIMER_FUNC(autoattack_timer);
 
 void autoattack_motion(map_session_data* sd, int mob_id){
@@ -287,7 +289,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 	return;
 }
 
-static TIMER_FUNC(autoattack_timer) {
+TIMER_FUNC(autoattack_timer) {
     map_session_data *sd = NULL;
     int mob_id = (int)data;
     sd = map_id2sd(id);
