@@ -54,6 +54,7 @@
 #include "storage.hpp"
 #include "trade.hpp"
 #include "vending.hpp"
+#include <unordered_set>
 
 using namespace rathena;
 
@@ -236,6 +237,166 @@ static const char* atcommand_help_string( const char* command ){
 	// push the result from the method
 	return info->help.c_str();
 }
+
+
+/*==========================================
+ * Commands
+ * @autoattack on
+ * @autoattack +<mobID>
+ * @autoattack -<mobID>
+ * @autoattack list
+ * @autoattack off
+ *------------------------------------------
+ * Credits:
+ *  Author - goddameit
+ * 	zomba44 (Code Update)
+ *  Remix (Additional Commands)
+ *------------------------------------------*/
+static int buildin_autoattack_sub(struct block_list *bl, va_list ap) {
+    int *target_id = va_arg(ap, int *);
+    *target_id = bl->id;
+    struct mob_data **md2 = va_arg(ap, struct mob_data **);
+    *md2 = BL_CAST(BL_MOB, bl);
+    return 1;
+}
+
+TIMER_FUNC(autoattack_timer);
+
+void autoattack_motion(map_session_data* sd, int mob_id){
+	int i, target_id;
+	struct mob_data* md2;
+	
+	for (i = 0;i <= 9;i++) {
+		target_id = 0;
+		map_foreachinarea(buildin_autoattack_sub, sd->bl.m, sd->bl.x - i, sd->bl.y - i, sd->bl.x + i, sd->bl.y + i, BL_MOB, &target_id, &md2);
+		if (target_id) {
+			if (mob_id != 0 && mob_id == md2->mob_id) {
+				unit_attack(&sd->bl, target_id, 1);
+			} else if (mob_id == 0) {
+				unit_attack(&sd->bl, target_id, 1);
+			} else {
+				target_id = 0;
+			}
+			break;
+		}
+		target_id = 0;
+	}
+	if (!target_id) {
+		unit_walktoxy(&sd->bl, sd->bl.x + (rand() % 2 == 0 ? -1 : 1)*(rand() % 10), sd->bl.y + (rand() % 2 == 0 ? -1 : 1)*(rand() % 10), 0);
+	}
+	return;
+}
+
+static TIMER_FUNC(autoattack_timer) {
+    map_session_data *sd = NULL;
+    int mob_id = (int)data;
+    sd = map_id2sd(id);
+
+    if (sd == NULL)
+        return 0;
+    if (sd->state.autoattack) {
+        autoattack_motion(sd, mob_id);
+        add_timer(gettick() + 1000, autoattack_timer, sd->bl.id, data);
+    }
+    return 0;
+}
+
+std::unordered_set<int> added_monsters;
+
+ACMD_FUNC(autoattack) {
+    nullpo_retr(-1, sd);
+    int mob_id = 0;
+
+    if (!message || !*message) {
+        clif_displaymessage(fd, "Usage:");
+        clif_displaymessage(fd, "@autoattack on - Attack all monsters");
+        clif_displaymessage(fd, "@autoattack +<monsterID> - Add a specific monster");
+        clif_displaymessage(fd, "@autoattack -<monsterID> - Remove a specific monster");
+        clif_displaymessage(fd, "@autoattack list - Show a list of target monsters");
+        clif_displaymessage(fd, "@autoattack off - Deactivate auto attack");
+        return 0;
+    }
+
+    if (strcmp(message, "off") == 0) {
+        sd->state.autoattack = 0;
+        unit_stop_attack(&sd->bl);
+        clif_displaymessage(fd, "Auto Attack has been deactivated.");
+        return 0;
+    }
+
+    if (strcmp(message, "on") == 0) {
+        if (!added_monsters.empty()) {
+            clif_displaymessage(fd, "Auto Attack: Targeting monsters in the list.");
+            for (int monster_id : added_monsters) {
+                add_timer(gettick() + 2000, autoattack_timer, sd->bl.id, (intptr_t)monster_id);
+            }
+            clif_displaymessage(fd, "Auto Attack is now activated.");
+            sd->state.autoattack = 1;
+        } else {
+            clif_displaymessage(fd, "Auto Attack: Targeting all monsters.");
+            int mob_id = 0;
+            add_timer(gettick() + 2000, autoattack_timer, sd->bl.id, (intptr_t)mob_id);
+            clif_displaymessage(fd, "Auto Attack is now activated.");
+            sd->state.autoattack = 1;
+        }
+        return 0;
+    }
+
+    if (strcmp(message, "list") == 0) {
+        clif_displaymessage(fd, "List of target monsters:");
+        for (int added_mob_id : added_monsters) {
+            std::shared_ptr<s_mob_db> mob = mob_db.find(added_mob_id);
+            if (mob) {
+                char atcmd_output[CHAT_SIZE_MAX];
+                sprintf(atcmd_output, "- [%d] %s", mob->id, mob->jname.c_str());
+                clif_displaymessage(fd, atcmd_output);
+            }
+        }
+        return 0;
+    }  
+
+    if (message[0] == '+' || message[0] == '-') {
+        mob_id = atoi(message + 1);
+        if (mob_id == 0) {
+            clif_displaymessage(fd, msg_txt(sd, 40)); // Invalid monster ID or name.
+            return -1;
+        }
+
+        if (message[0] == '+') {
+            if (added_monsters.find(mob_id) != added_monsters.end()) {
+                clif_displaymessage(fd, "This monster is already added.");
+                return -1;
+            }
+            added_monsters.insert(mob_id);
+            clif_displaymessage(fd, "Monster added to target list.");
+        } else {
+            auto it = added_monsters.find(mob_id);
+            if (it == added_monsters.end()) {
+                clif_displaymessage(fd, "This monster is not added.");
+                return -1;
+            }
+            added_monsters.erase(it);
+            clif_displaymessage(fd, "Monster removed from target list.");
+        }
+        return 0;
+    }
+
+    if (sd->state.autoattack) {
+        sd->state.autoattack = 0;
+        unit_stop_attack(&sd->bl);
+        clif_displaymessage(fd, "Auto Attack has been deactivated.");
+    } else {
+        sd->state.autoattack = 1;
+        add_timer(gettick() + 2000, autoattack_timer, sd->bl.id, (intptr_t)mob_id);
+        clif_displaymessage(fd, "Auto Attack activated.");
+    }
+    return 0;
+}
+
+
+
+
+
 
 
 /*==========================================
@@ -11054,6 +11215,7 @@ void atcommand_basecommands(void) {
 	 **/
 	AtCommandInfo atcommand_base[] = {
 #include <custom/atcommand_def.inc>
+		ACMD_DEF(autoattack),
 		ACMD_DEF2R("warp", mapmove, ATCMD_NOCONSOLE),
 		ACMD_DEF(where),
 		ACMD_DEF(jumpto),
