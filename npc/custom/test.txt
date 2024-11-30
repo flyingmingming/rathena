@@ -1,2 +1,2 @@
-nov_isla,120,120,1	script	TestNPC	526,{
+nov_isla,120,120,1	script	TestNPC	478,{
 }
