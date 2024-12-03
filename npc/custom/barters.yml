@@ -44,22 +44,12 @@
 Header:
   Type: BARTER_DB
   Version: 1
-  
+
 Body:
-  - Name: barter_test
+  - Name: barter_test_xx
     Items:
       - Index: 0
-        Item: Apple
+        Item: Teleport_Ep17_02
         RequiredItems:
           - Index: 0
-            Item: Apple
-            Amount: 5
-      - Index: 1
-        Item: Apple
-        RequiredItems:
-          - Index: 0
-            Item: Apple
-            Amount: 20
-          - Index: 1
-            Item: Banana
-            Amount: 20            
+            Item: BarMealTicket          
