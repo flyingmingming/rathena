@@ -2,14 +2,12 @@
 
 OnHourlyRewards:
 
-    if(checkvending()){
+    if(checkvending(strcharinfo(0))){
         message strcharinfo(0),"[Hourly Rewards]: No Hourly Rewards for Venders , Relogin to change that .";
         end;
     }
 
-    if(vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))){
-        .reward = 2;
-    }
+
 
 
 
@@ -35,7 +33,15 @@ end;
 
 Hourly_Rewards:
 
-	#ascendance_points += .reward;            //put the Hourly Rewards here
+    if(vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))){
+        #ascendance_points += 1;            //put the Hourly Rewards here
+    }
+    else
+    {
+        #ascendance_points += 2;            //put the Hourly Rewards here
+    }
+
+	
 	message strcharinfo(0),"You have gained " + .reward + " ascendance points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
 
 return;
