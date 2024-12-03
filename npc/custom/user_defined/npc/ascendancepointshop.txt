@@ -1,8 +1,9 @@
 -	script	ascendance_points_shop	-1,{
 
 OnBuyItem:
+	dispbottom "Test";
 	.@size = getarraysize(@bought_nameid);
-	dispbottom "" + .@size;
+
 	for (.@i = 0; .@i < .@size; .@i++) {
 		.@j = inarray(.Shop, @bought_nameid[.@i]);
 		.@cost += (.Shop[.@j+1] * @bought_quantity[.@i]);
