@@ -7,7 +7,7 @@ OnHourlyRewards:
         end;
     }
 
-    if(vip_status(VIP_STATUS_ACTIVE)){
+    if(vip_status(VIP_STATUS_ACTIVE),strcharinfo(0)){
         .reward = 2;
     }
 
@@ -30,6 +30,7 @@ OnInit:
     .vip = 0;                       //	1 = only for VIP / 0 = for everyone  , DEFAULT = 0
     .reward_time = 1000;            //	1000 = 1 secend | 60000 = 1 min | 3600000 = 1 houre  , DEFAULT = 3600000 (1 hr)
     .reward = 1;                    //  hourly points reward
+    
 end;
 
 Hourly_Rewards:
