@@ -1,10 +1,5 @@
 -	script	ascendance_points_shop	-1,{
 
-SetStart:
-callshop "points_shop",1;
-npcshopattach "point_shop";
-end;
-
 OnBuyItem:
 	dispbottom "Test";
 	.@size = getarraysize(@bought_nameid);
@@ -49,4 +44,4 @@ OnInit:
 
 }
 
--	shop	points_shop	-1,512:-1
+//-	shop	points_shop	-1,512:-1
