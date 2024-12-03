@@ -1,55 +1,9 @@
 -	script	cmd_ascendance_points_shop	-1,{
 
-OnBuyItem:
-	dispbottom "Test";
-	.@size = getarraysize(@bought_nameid);
-
-	for (.@i = 0; .@i < .@size; .@i++) {
-		.@j = inarray(.Shop, @bought_nameid[.@i]);
-		.@cost += (.Shop[.@j+1] * @bought_quantity[.@i]);
-	}
-	if (.@cost > #ascendance_points)
-    {
-        dispbottom "You don't have enough Ascendance Points.";
-        deletearray @bought_nameid[0], .@size;
-        deletearray @bought_quantity[0], .@size;         
-        end;
-    }
-	else 
-    {
-		for (.@i = 0; .@i < .@size; .@i++) {
-			getitem @bought_nameid[.@i], @bought_quantity[.@i];
-		}
-		#ascendance_points -= .@cost;
-		mes "Thank you for the business!";
-		emotion ET_MONEY;
-	}
-	deletearray @bought_nameid[0], .@size;
-	deletearray @bought_quantity[0], .@size; 
-
-    dispbottom "You now have " + #ascendance_points + " Ascendance Points remaining.";
-end;
-
 OnInit:
-	
-	deletearray .Shop[0],getarraysize(.Shop);
-	setarray .Shop[0],      // Reward items: <ID>,<point cost> (about 10~20 points per hunt).
-		512,1,513,1,514,1,538,5,539,5,558,10,561,10;
 
-    npcshopdelitem "points_shop",512;
-	for (.@i = 0; .@i < getarraysize(.Shop); .@i += 2)
-    {
-        npcshopadditem "points_shop", .Shop[.@i], .Shop[.@i+1];
-    }
-
-
-	bindatcmd "pointshop",strnpcinfo(0)+"::OnAtcommand";
+	bindatcmd "pointshop","ascendance_points_shop";
 	end;
-
-OnAtcommand:
-    callshop "points_shop",1;
-    npcshopattach "point_shop";
-    end;
 
 }
 

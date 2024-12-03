@@ -1,5 +1,8 @@
 -	script	ascendance_points_shop	-1,{
 
+callshop "points_shop",1;
+npcshopattach "point_shop";
+
 OnBuyItem:
 	dispbottom "Test";
 	.@size = getarraysize(@bought_nameid);
