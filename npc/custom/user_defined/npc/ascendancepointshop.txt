@@ -2,6 +2,7 @@
 
 OnBuyItem:
 	.@size = getarraysize(@bought_nameid);
+	dispbottom "" + .@size;
 	for (.@i = 0; .@i < .@size; .@i++) {
 		.@j = inarray(.Shop, @bought_nameid[.@i]);
 		.@cost += (.Shop[.@j+1] * @bought_quantity[.@i]);
@@ -26,7 +27,7 @@ OnBuyItem:
 	deletearray @bought_quantity[0], .@size; 
 
     dispbottom "You now have " + #ascendance_points + " Ascendance Points remaining.";
-	end;
+end;
 
 OnInit:
 	deletearray .Shop[0],getarraysize(.Shop);
