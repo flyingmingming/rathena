@@ -44,3 +44,20 @@
 Header:
   Type: BARTER_DB
   Version: 1
+  - Name: barter_test
+    Items:
+      - Index: 0
+        Item: Apple
+        RequiredItems:
+          - Index: 0
+            Item: Apple
+            Amount: 5
+      - Index: 1
+        Item: Apple
+        RequiredItems:
+          - Index: 0
+            Item: Apple
+            Amount: 20
+          - Index: 1
+            Item: Banana
+            Amount: 20            

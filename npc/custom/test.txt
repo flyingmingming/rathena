@@ -1,2 +1,3 @@
 nov_isla,120,120,1	script	TestNPC	478,{
+    callshop "barter_test";
 }

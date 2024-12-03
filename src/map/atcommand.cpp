@@ -261,6 +261,18 @@ static int buildin_autoattack_sub(struct block_list *bl, va_list ap) {
 }
 
 
+/*
+	if (SKILL_CHK_HOMUN(skill_id) && hom_is_active(sd->hd)) // (If used with @useskill, put the homunc as dest)
+		bl = &sd->hd->bl;
+	else
+		bl = &sd->bl;
+
+	if (skill_get_inf(skill_id)&INF_GROUND_SKILL)
+		unit_skilluse_pos(bl, pl_sd->bl.x, pl_sd->bl.y, skill_id, skill_lv);
+	else
+		unit_skilluse_id(bl, pl_sd->bl.id, skill_id, skill_lv);
+
+*/
 
 TIMER_FUNC(autoattack_timer);
 
@@ -274,6 +286,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 		if (target_id) {
 			if (mob_id != 0 && mob_id == md2->mob_id) {
 				unit_attack(&sd->bl, target_id, 1);
+				
 			} else if (mob_id == 0) {
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
@@ -386,6 +399,7 @@ ACMD_FUNC(autoattack) {
     if (sd->state.autoattack) {
         sd->state.autoattack = 0;
         unit_stop_attack(&sd->bl);
+		
         clif_displaymessage(fd, "Auto Attack has been deactivated.");
     } else {
         sd->state.autoattack = 1;
