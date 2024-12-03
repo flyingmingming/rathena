@@ -5,12 +5,14 @@ OnHourlyRewards:
     if(checkvending(strcharinfo(0))){
         message strcharinfo(0),"[Hourly Rewards] No hourly rewards while vending/auto-trading/buying. Please log in again once the shop is closed.";
         addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
+        return;
     }
 
     if(Base < .min_level)
     {
         message strcharinfo(0),"[Hourly Rewards] Maximum Base level is required to gain hourly rewards.";
-        addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";     
+        addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
+        return;
     }
 
     callsub Hourly_Rewards;
