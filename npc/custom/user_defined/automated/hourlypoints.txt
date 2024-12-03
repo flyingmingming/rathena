@@ -3,21 +3,22 @@
 OnHourlyRewards:
 
     if(checkvending(strcharinfo(0))){
-        message strcharinfo(0),"[Hourly Rewards]: No Hourly Rewards for Venders , Relogin to change that .";
-        end;
+        message strcharinfo(0),"[Hourly Rewards] No hourly rewards while vending/auto-trading/buying. Please log in again once the shop is closed.";
+        addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
     }
 
-
-
-
+    if(Base < .min_level)
+    {
+        message strcharinfo(0),"[Hourly Rewards] Maximum Base level is required to gain hourly rewards.";
+        addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";     
+    }
 
     callsub Hourly_Rewards;
-    message strcharinfo(0),"You have gained " + .reward + " Ascendance Points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
+    message strcharinfo(0),"[Hourly Rewards] You have gained " + .reward + " Ascendance Points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
     addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
 end;
 
 OnPCLogoutEvent:
-
 end;
  
 OnPCLoginEvent:
@@ -25,10 +26,9 @@ OnPCLoginEvent:
 end;
 
 OnInit:
-    .idle_time = 1800;              //	this the time for idle in secend  , DEFAULT = 1800 (30 min)
-    .vip = 0;                       //	1 = only for VIP / 0 = for everyone  , DEFAULT = 0
     .reward_time = 1000;            //	1000 = 1 secend | 60000 = 1 min | 3600000 = 1 houre  , DEFAULT = 3600000 (1 hr)
     .reward = 1;                    //  hourly points reward
+    .min_level = 99;                //  level required to gain Ascendance Points
     
 end;
 
