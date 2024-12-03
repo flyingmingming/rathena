@@ -12,6 +12,7 @@ OnHourlyRewards:
 
 
     callsub Hourly_Rewards;
+    message strcharinfo(0),"You have gained " + .reward + " ascendance points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
     addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
 end;
 
@@ -34,15 +35,14 @@ end;
 Hourly_Rewards:
 
     if(!vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))){
-        #ascendance_points += 1;            //put the Hourly Rewards here
+        .reward = 1; 
+        #ascendance_points += .reward;            //put the Hourly Rewards here
     }
     else
     {
-        #ascendance_points += 2;            //put the Hourly Rewards here
+        .reward = 2;
+        #ascendance_points += .reward;            //put the Hourly Rewards here
     }
-
-	
-	message strcharinfo(0),"You have gained " + .reward + " ascendance points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
 
 return;
 
