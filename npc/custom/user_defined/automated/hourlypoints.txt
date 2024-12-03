@@ -36,14 +36,14 @@ Hourly_Rewards:
 
     if(!vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))){
         .reward = 1; 
-        #ascendance_points += .reward;            //put the Hourly Rewards here
+        //#ascendance_points += .reward;            //put the Hourly Rewards here
     }
     else
     {
         .reward = 2;
-        #ascendance_points += .reward;            //put the Hourly Rewards here
+        
     }
-
+    #ascendance_points += .reward;            //put the Hourly Rewards here
 return;
 
 }
