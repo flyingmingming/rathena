@@ -1,7 +1,9 @@
 -	script	ascendance_points_shop	-1,{
 
+SetStart:
 callshop "points_shop",1;
 npcshopattach "point_shop";
+end;
 
 OnBuyItem:
 	dispbottom "Test";

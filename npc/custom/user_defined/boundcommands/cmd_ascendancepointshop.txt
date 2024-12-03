@@ -2,7 +2,7 @@
 
 OnInit:
 
-	bindatcmd "pointshop","ascendance_points_shop";
+	bindatcmd "pointshop","ascendance_points_shop::SetStart";
 	end;
 
 }
