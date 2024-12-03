@@ -16,6 +16,7 @@ OnHourlyRewards:
     callsub Hourly_Rewards;
     message strcharinfo(0),"[Hourly Rewards] You have gained " + .reward + " Ascendance Points from hourly reward. Total: "+F_InsertComma(#ascendance_points)+".";
     addtimer .reward_time, strnpcinfo(3)+"::OnHourlyRewards";
+    
 end;
 
 OnPCLogoutEvent:
@@ -26,7 +27,7 @@ OnPCLoginEvent:
 end;
 
 OnInit:
-    .reward_time = 1000;            //	1000 = 1 secend | 60000 = 1 min | 3600000 = 1 houre  , DEFAULT = 3600000 (1 hr)
+    .reward_time = 1800000;            //	1000 = 1 secend | 60000 = 1 min | 3600000 = 1 houre  , DEFAULT = 3600000 (1 hr)
     .reward = 1;                    //  hourly points reward
     .min_level = 99;                //  level required to gain Ascendance Points
     
