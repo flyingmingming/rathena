@@ -1,7 +1,6 @@
 -	script	cmd_ascendance_points_shop	-1,{
 
 OnBuyItem:
-	dispbottom "Test";
 	.@size = getarraysize(@bought_nameid);
 
 	for (.@i = 0; .@i < .@size; .@i++) {
@@ -21,8 +20,6 @@ OnBuyItem:
 			getitem @bought_nameid[.@i], @bought_quantity[.@i];
 		}
 		#ascendance_points -= .@cost;
-		mes "Thank you for the business!";
-		emotion ET_MONEY;
 	}
 	deletearray @bought_nameid[0], .@size;
 	deletearray @bought_quantity[0], .@size; 
