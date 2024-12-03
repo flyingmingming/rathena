@@ -7,7 +7,7 @@ OnHourlyRewards:
         end;
     }
 
-    if(vip_status(VIP_STATUS_ACTIVE),strcharinfo(0)){
+    if(vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))){
         .reward = 2;
     }
 
