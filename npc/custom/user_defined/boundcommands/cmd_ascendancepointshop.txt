@@ -6,6 +6,7 @@ OnInit:
 
 OnAtcommand:
     callshop "points_shop",1;
+    npcshopattach "points_shop";
     end;
 
 }
