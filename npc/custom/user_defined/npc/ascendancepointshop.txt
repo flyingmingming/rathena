@@ -31,6 +31,7 @@ OnBuyItem:
 end;
 
 OnInit:
+	npcshopattach "point_shop";
 	deletearray .Shop[0],getarraysize(.Shop);
 	setarray .Shop[0],      // Reward items: <ID>,<point cost> (about 10~20 points per hunt).
 		512,1,513,1,514,1,538,5,539,5,558,10,561,10;
@@ -43,4 +44,4 @@ OnInit:
 
 }
 
-//-	shop	points_shop	-1,512:-1
+-	shop	points_shop	-1,512:-1
