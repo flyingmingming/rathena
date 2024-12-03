@@ -43,4 +43,4 @@ OnInit:
 
 }
 
--	shop	points_shop	-1,512:-1
+//-	shop	points_shop	-1,512:-1
