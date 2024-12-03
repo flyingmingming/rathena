@@ -1,2 +1,11 @@
 -	script	cmd_ascendance_points_shop	-1,{
+
+OnInit:
+	bindatcmd "pointshop",strnpcinfo(0)+"::ShowShop";
+	end;
+
+ShowShop:
+    callshop "points_shop",1;
+end;
+
 }
