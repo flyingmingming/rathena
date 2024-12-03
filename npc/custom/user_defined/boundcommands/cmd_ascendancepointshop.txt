@@ -1,0 +1,2 @@
+-	script	cmd_ascendance_points_shop	-1,{
+}
