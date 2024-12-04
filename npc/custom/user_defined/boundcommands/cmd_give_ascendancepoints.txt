@@ -31,7 +31,7 @@ OnAtcommand:
 
     set #ascendance_points, #ascendance_points + .@points, .@charID;
 
-    message getarg(0),"Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
-    dispbottom "Your have given " + F_InsertComma(getarg(1)) + " points to " + getarg(0) + "." ;
+    message .@charName$,"Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
+    dispbottom "Your have given " + F_InsertComma(.@points) + " points to " + .@charName$ + "." ;
 
 }
