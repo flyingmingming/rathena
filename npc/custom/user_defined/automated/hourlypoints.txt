@@ -9,7 +9,7 @@ OnHourlyRewards:
 
     if(BaseLevel < .min_level)
     {
-        message strcharinfo(0),"[Hourly Rewards] Maximum Base level is required to gain hourly rewards.";
+        message strcharinfo(0),"[Hourly Rewards] At least Base level 90 is required to gain hourly rewards.";
         end;        
     }
 
@@ -29,7 +29,7 @@ end;
 OnInit:
     .reward_time = 1800000;            //	1000 = 1 secend | 60000 = 1 min | 3600000 = 1 houre  , DEFAULT = 3600000 (1 hr)
     .reward = 1;                    //  hourly points reward
-    .min_level = 99;                //  level required to gain Ascendance Points
+    .min_level = 90;                //  level required to gain Ascendance Points
     
 end;
 

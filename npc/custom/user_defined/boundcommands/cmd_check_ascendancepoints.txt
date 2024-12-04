@@ -1,0 +1,9 @@
+-	script	cmd_check_ascendancepoints	-1,{
+OnInit:
+	bindatcmd "checkpoints",strnpcinfo(0)+"::OnAtcommand";
+    end;
+
+OnAtcommand:
+    dispbottom "You have " + F_InsertComma(#ascendance_points) + " Ascendance Points.";
+    end;
+}
