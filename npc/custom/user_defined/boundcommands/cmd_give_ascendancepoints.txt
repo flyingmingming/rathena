@@ -2,7 +2,7 @@
 
 
 OnInit:
-    .maxPoints = 5000; //set max points to be given to player
+    .maxPoints = 10000; //set max points to be given to player
 
 	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",0,99;
     end;
@@ -33,9 +33,9 @@ OnAtcommand:
         dispbottom "Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
 
         attachrid(.@origin_accountID );
-        dispbottom "Your have given " + F_InsertComma(.@points) + " points to " + .@charName$ + "." ;
+        dispbottom "Your have given " + F_InsertComma(.@points) + " points to player: " + .@charName$ + "." ;
     } else {
-        dispbottom strnpcinfo(0) + ": Char not existing.";
+        dispbottom strnpcinfo(0) + ": Character name does not exist.";
     }
 
 end;
