@@ -30,10 +30,10 @@ OnAtcommand:
     
     if (attachrid( .@target_accountID ) ) {
         set #ascendance_points, #ascendance_points + .@points;
-        dispbottom "Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
 
         attachrid(.@origin_accountID );
         dispbottom "Your have given " + F_InsertComma(.@points) + " points to player: " + .@charName$ + "." ;
+        dispbottom "Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
     } else {
         dispbottom strnpcinfo(0) + ": Character name does not exist.";
     }
