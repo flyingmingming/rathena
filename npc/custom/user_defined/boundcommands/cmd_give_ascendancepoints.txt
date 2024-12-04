@@ -9,29 +9,35 @@ OnInit:
 
 OnAtcommand:
 	if (!getarraysize(.@atcmd_parameters$)) {
-		message strcharinfo(0), "Invalid syntax.";
+		dispbottom "Invalid syntax.";
 		end;
 	}
+
 
     .@charName$ = .@atcmd_parameters$[0];
     .@points = .@atcmd_parameters$[1];
     .@charID = getcharid(0, .@charName$);
 
-    if (!.@charID)
-    {
-        dispbottom strnpcinfo(0) + ": Character is not existing.";
-        end;
-    }
+    .@target_accountID = getcharid(3,.@charname$);
+    .@origin_accountID = getcharid(3);
 
+    // checks for maximum allowed value to be given to a player
     if (.@points > .maxPoints)
     {
         dispbottom strnpcinfo(0) + ": Maximum allowed points to be given per command is " + F_InsertComma(.maxPoints) + ".";
         end;
     }
+    
+    if (attachrid( .@target_accountID ) ) {
+        set #ascendance_points, #ascendance_points + .@points;
+        dispbottom "Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
 
-    set #ascendance_points, #ascendance_points + .@points, .@charID;
+        attachrid(.@origin_accountID );
+        dispbottom "Your have given " + F_InsertComma(.@points) + " points to " + .@charName$ + "." ;
+    } else {
+        dispbottom strnpcinfo(0) + ": Char not existing.";
+    }
 
-    message .@charName$,"Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
-    dispbottom "Your have given " + F_InsertComma(.@points) + " points to " + .@charName$ + "." ;
+end;
 
 }
