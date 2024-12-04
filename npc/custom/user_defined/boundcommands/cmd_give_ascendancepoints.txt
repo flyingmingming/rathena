@@ -1,28 +1,37 @@
-function	script	give_ascendancepoints	{
+-	script	cmd_give_ascendancepoints	-1,{
 
 
 OnInit:
-	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",99;
+    .maxPoints = 5000; //set max points to be given to player
+
+	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",0,99;
     end;
 
 OnAtcommand:
+	if (!getarraysize(.@atcmd_parameters$)) {
+		message strcharinfo(0), "Invalid syntax.";
+		end;
+	}
 
-    if (!getcharid(0, getarg(0)))
+    .@charName$ = .@atcmd_parameters$[0];
+    .@points = .@atcmd_parameters$[1];
+    .@charID = getcharid(0, .@charName$);
+
+    if (!.@charID)
     {
         dispbottom strnpcinfo(0) + ": Character is not existing.";
         end;
     }
 
-    if (getarg(1) > 5000)
+    if (.@points > .maxPoints)
     {
-        dispbottom strnpcinfo(0) + ": Maximum allowed points to be given per command is 5000.";
+        dispbottom strnpcinfo(0) + ": Maximum allowed points to be given per command is " + F_InsertComma(.maxPoints) + ".";
         end;
     }
 
-    set #ascendance_points, #ascendance_points + getarg(1), getcharid(0, getarg(0));
+    set #ascendance_points, #ascendance_points + .@points, .@charID;
 
     message getarg(0),"Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
     dispbottom "Your have given " + F_InsertComma(getarg(1)) + " points to " + getarg(0) + "." ;
-    
-    end;
+
 }

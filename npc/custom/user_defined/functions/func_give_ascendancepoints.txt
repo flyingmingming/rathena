@@ -1,0 +1,28 @@
+function	script	func_give_ascendancepoints	{
+
+
+OnInit:
+	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",0,99;
+    end;
+
+OnAtcommand:
+
+    if (!getcharid(0, getarg(0)))
+    {
+        dispbottom strnpcinfo(0) + ": Character is not existing.";
+        end;
+    }
+
+    if (getarg(1) > 5000)
+    {
+        dispbottom strnpcinfo(0) + ": Maximum allowed points to be given per command is 5000.";
+        end;
+    }
+
+    set #ascendance_points, #ascendance_points + getarg(1), getcharid(0, getarg(0));
+
+    message getarg(0),"Your current Ascendance Points is now " + F_InsertComma(#ascendance_points) + " points.";
+    dispbottom "Your have given " + F_InsertComma(getarg(1)) + " points to " + getarg(0) + "." ;
+    
+    end;
+}
