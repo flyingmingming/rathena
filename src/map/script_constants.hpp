@@ -9343,7 +9343,7 @@
 	export_constant_npc(JT_NEW_NPC_3RD_END);
 
 	//custom npc
-	export_constant_npc(JT_JOB_MASTER);
+	export_constant_npc(JT_JOB_CHANGER);
 
 	#undef export_constant_npc
 
