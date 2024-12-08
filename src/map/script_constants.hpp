@@ -9341,6 +9341,10 @@
 	export_constant_npc(JT_ROZ_MQ_MOCLORD);
 	export_constant_npc(JT_ROZ_MQ_SKULD);
 	export_constant_npc(JT_NEW_NPC_3RD_END);
+
+	//custom npc
+	export_constant_npc(JT_JOB_MASTER);
+
 	#undef export_constant_npc
 
 	/* special effects */
