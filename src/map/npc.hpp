@@ -333,8 +333,6 @@ enum e_job_types
 	JT_HIDDEN_WARP_NPC = 139,
 
 	NPC_RANGE2_START = 400,
-//custom npc
-	JT_JOB_CHANGER_NPC,
 
 	JT_4_M_MUT2,
 	JT_4_M_SCIENCE,
@@ -1540,8 +1538,10 @@ enum e_job_types
 	JT_ROZ_MQ_XAVIER = 13000,
 	JT_ROZ_MQ_MOCLORD,
 	JT_ROZ_MQ_SKULD,
+//custom npc
+	JT_JOB_CHANGER_NPC = 23000,
 
-	JT_NEW_NPC_3RD_END = 30000,
+	JT_NEW_NPC_3RD_END = 27000,
 	NPC_RANGE3_END, // Official: JT_NEW_NPC_3RD_END=19999
 
 	// Unofficial
