@@ -8065,6 +8065,8 @@
 		#define export_constant_npc(a) export_constant_offset(a,3)
 	#endif
 
+	//custom npc
+	export_constant_npc(JT_JOB_CHANGER);
 	export_constant_npc(JT_WARPNPC);
 	export_constant_npc(JT_1_ETC_01);
 	export_constant_npc(JT_1_M_01);
@@ -9342,8 +9344,6 @@
 	export_constant_npc(JT_ROZ_MQ_SKULD);
 	export_constant_npc(JT_NEW_NPC_3RD_END);
 
-	//custom npc
-	export_constant_npc(JT_JOB_CHANGER);
 
 	#undef export_constant_npc
 
