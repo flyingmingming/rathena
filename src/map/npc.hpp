@@ -322,7 +322,7 @@ enum e_job_types
 	JT_4_F_KAFRA1,
 
 //custom npc
-	JT_JOB_CHANGER,
+	JT_JOB_CHANGER = 22406,
 
 	JT_2_M_THIEFMASTER,
 	JT_2_M_SWORDMASTER,
