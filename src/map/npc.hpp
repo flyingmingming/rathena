@@ -322,8 +322,8 @@ enum e_job_types
 	JT_4_F_KAFRA1,
 
 //custom npc
-	JT_JOB_CHANGER,
-		
+	JT_JOB_CHANGER = 22406,
+
 	JT_2_M_THIEFMASTER,
 	JT_2_M_SWORDMASTER,
 	JT_2_M_PHARMACIST,
@@ -1542,7 +1542,7 @@ enum e_job_types
 	JT_ROZ_MQ_MOCLORD,
 	JT_ROZ_MQ_SKULD,
 
-	JT_NEW_NPC_3RD_END = 19999,
+	JT_NEW_NPC_3RD_END = 30000,
 	NPC_RANGE3_END, // Official: JT_NEW_NPC_3RD_END=19999
 
 	// Unofficial
