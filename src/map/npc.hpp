@@ -320,10 +320,6 @@ enum e_job_types
 	JT_4_F_KAFRA3,
 	JT_4_F_KAFRA2,
 	JT_4_F_KAFRA1,
-
-//custom npc
-	JT_JOB_CHANGER,
-
 	JT_2_M_THIEFMASTER,
 	JT_2_M_SWORDMASTER,
 	JT_2_M_PHARMACIST,
@@ -337,6 +333,9 @@ enum e_job_types
 	JT_HIDDEN_WARP_NPC = 139,
 
 	NPC_RANGE2_START = 400,
+//custom npc
+	JT_JOB_CHANGER_NPC,
+
 	JT_4_M_MUT2,
 	JT_4_M_SCIENCE,
 	JT_4_F_VALKYRIE2,

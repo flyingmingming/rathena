@@ -8066,7 +8066,7 @@
 	#endif
 
 	//custom npc
-	export_constant_npc(JT_JOB_CHANGER);
+	export_constant_npc(JT_JOB_CHANGER_NPC);
 	export_constant_npc(JT_WARPNPC);
 	export_constant_npc(JT_1_ETC_01);
 	export_constant_npc(JT_1_M_01);
