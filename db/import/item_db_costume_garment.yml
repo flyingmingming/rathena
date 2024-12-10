@@ -126,7 +126,7 @@ Body:
     Locations:
       Costume_Garment: true
     ArmorLevel: 1
-    View: 240
+    View: 4403
     Script: |
       bonus bAddMaxWeight,3000;          
 #Body:
