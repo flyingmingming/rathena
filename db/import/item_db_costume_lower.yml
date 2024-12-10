@@ -89,7 +89,7 @@ Header:
   Version: 3
 
 Body:
-  - Id: 40000
+  - Id: 42000
     AegisName: C_blackeremes
     Name: Eremes Scarf (Black)
     Type: Armor
@@ -100,6 +100,94 @@ Body:
     Script: |
       bonus2 bExpAddRace,RC_All,10;
       bonus2 bDropAddRace,RC_All,5;
+  - Id: 42001
+    AegisName: C_blueremes
+    Name: Eremes Scarf (Blue)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3001
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42002
+    AegisName: C_cyaneremes
+    Name: Eremes Scarf (Cyan)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3002
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42003
+    AegisName: C_foileremes
+    Name: Eremes Scarf (Foil)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3003
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42004
+    AegisName: C_golderemes
+    Name: Eremes Scarf (Gold)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3004
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42005
+    AegisName: C_greeneremes
+    Name: Eremes Scarf (Green)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3005
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42006
+    AegisName: C_pinkeremes
+    Name: Eremes Scarf (Pink)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3006
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42007
+    AegisName: C_purperemes
+    Name: Eremes Scarf (Purple)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3007
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 42008
+    AegisName: C_whiteremes
+    Name: Eremes Scarf (White)
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 3008
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;      
 #Body:
 # THQ Quest Items
 #=============================================================
