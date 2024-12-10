@@ -89,18 +89,26 @@ Header:
   Version: 3
 
 Body:
-#middle costume
   - Id: 44400
-    AegisName: C_twin_edge
-    Name: Costume Twin Edge
+    AegisName: Wing_Of_Angel_Move
+    Name: Costume Moving Angel Wings
     Type: Armor
     Locations:
       Costume_Garment: true
     ArmorLevel: 1
-    View: 216
+    View: 61
     Script: |
-      bonus2 bExpAddRace,RC_All,10;
-      bonus2 bDropAddRace,RC_All,5;
+      bonus bAddMaxWeight,300;
+  - Id: 44401
+    AegisName: C_Bloody_Wing
+    Name: Costume Bloody Wings
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 33
+    Script: |
+      bonus bAddMaxWeight,300;
 #Body:
 # THQ Quest Items
 #=============================================================
