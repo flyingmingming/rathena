@@ -120,13 +120,13 @@ Body:
     Script: |
       bonus bAddMaxWeight,3000;   
   - Id: 44403
-    AegisName: Devil Wing
-    Name: Costume Devil Wings
+    AegisName: C_Demon_Wings
+    Name: Costume Demon Wings
     Type: Armor
     Locations:
       Costume_Garment: true
     ArmorLevel: 1
-    View: 12
+    View: 240
     Script: |
       bonus bAddMaxWeight,3000;          
 #Body:
