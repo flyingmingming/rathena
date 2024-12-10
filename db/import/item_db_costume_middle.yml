@@ -89,26 +89,39 @@ Header:
   Version: 3
 
 Body:
-#middle costume
-  - Id: 30000
-    AegisName: Side_Cap
-    Name: Side Cap
+  - Id: 43600
+    AegisName: C_nhpvisor
+    Name: NHP Visor
     Type: Armor
-    Weight: 500
-    Defense: 3
     Locations:
-      Head_Top: true
+      Costume_Head_Mid: true
     ArmorLevel: 1
-    Refineable: true
-    View: 529
+    View: 3600
     Script: |
-      bonus bVit,1;
-      bonus bDex,1;
-      bonus bMdef,3;
-      bonus2 bSubRace,RC_DemiHuman,5;
-      bonus2 bSubRace,RC_Player_Human,5;
-      bonus2 bAddRace,RC_DemiHuman,3;
-      bonus2 bAddRace,RC_Player_Human,3;
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 43601
+    AegisName: C_robovisor
+    Name: Robo Visor
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 3601
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 43602
+    AegisName: C_elvenvisor
+    Name: Elven Visor
+    Type: Armor
+    Locations:
+      Costume_Head_Mid: true
+    ArmorLevel: 1
+    View: 3602
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;            
 #Body:
 # THQ Quest Items
 #=============================================================
