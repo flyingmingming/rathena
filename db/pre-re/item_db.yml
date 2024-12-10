@@ -95,3 +95,4 @@ Footer:
   - Path: db/pre-re/item_db_etc.yml
   - Path: db/import/item_db_costume_lower.yml
   - Path: db/import/item_db_costume_middle.yml
+  - Path: db/import/item_db_costume_garment.yml
