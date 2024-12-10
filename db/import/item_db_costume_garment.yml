@@ -98,7 +98,7 @@ Body:
     ArmorLevel: 1
     View: 61
     Script: |
-      bonus bAddMaxWeight,300;
+      bonus bAddMaxWeight,3000;
   - Id: 44401
     AegisName: C_Bloody_Wing
     Name: Costume Bloody Wings
@@ -108,7 +108,27 @@ Body:
     ArmorLevel: 1
     View: 33
     Script: |
-      bonus bAddMaxWeight,300;
+      bonus bAddMaxWeight,3000;
+  - Id: 44402
+    AegisName: Wing_Of_Happiness
+    Name: Costume Wing of Happiness
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 9
+    Script: |
+      bonus bAddMaxWeight,3000;   
+  - Id: 44403
+    AegisName: Devil Wing
+    Name: Costume Devil Wings
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 12
+    Script: |
+      bonus bAddMaxWeight,3000;          
 #Body:
 # THQ Quest Items
 #=============================================================
