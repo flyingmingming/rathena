@@ -1,4 +1,4 @@
 front_lines,150,83,0	warp	frontlinestopront01	4,2,prontera,156,185
-front_lines,226,187,0	warp	flshop01	4,2,prontera,156,185 // --- shop 1
-front_lines,226,166,0	warp	flshop02	4,2,prontera,156,185 // --- shop 2
-front_lines,226,140,0	warp	flshop03	4,2,prontera,156,185 // --- shop 3
+front_lines,226,187,0	warp	flshop01	2,2,prontera,156,185 // --- shop 1
+front_lines,226,166,0	warp	flshop02	2,2,prontera,156,185 // --- shop 2
+front_lines,221,140,0	warp	flshop03	1,1,prontera,156,185 // --- shop 3
