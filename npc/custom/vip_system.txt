@@ -16,21 +16,21 @@ function	script	vip_system	{
 		}
 		dispbottom "You are still a VIP member.";
 	} else {
-		atcommand "@vip +" + .@time + "s " + strcharinfo(0) + "";	
-		if (.@type == 1) {
-			bonus_script "{}",.@time,0,0,EFST_VIPSTATE_RED;
-			sc_start SC_EXPBOOST_VIPRED,.@time*1000,30;
-			sc_start SC_JEXPBOOST_VIPRED,.@time*1000,30;
-			sc_start SC_ITEMBOOST_VIPRED,.@time*1000,30;
-		} else if (.@type == 2) {
-			bonus_script "{}",.@time,0,0,EFST_VIPSTATE_BLUE;
-		} else {
-			bonus_script_clear 1;
-			atcommand "@vip -10y " + strcharinfo(0) + "";	
-			sc_end SC_EXPBOOST_VIPRED;
-			sc_end SC_JEXPBOOST_VIPRED;
-			sc_end SC_ITEMBOOST_VIPRED;
-			end;			
+		atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
+		//if (.@type == 1) {
+		//	bonus_script "{}",.@time,0,0,EFST_VIPSTATE_RED;
+		//	sc_start SC_EXPBOOST_VIPRED,.@time*1000,30;
+		//	sc_start SC_JEXPBOOST_VIPRED,.@time*1000,30;
+		//	sc_start SC_ITEMBOOST_VIPRED,.@time*1000,30;
+		//} else if (.@type == 2) {
+		//	bonus_script "{}",.@time,0,0,EFST_VIPSTATE_BLUE;
+		//} else {
+		//	bonus_script_clear 1;
+		//	atcommand "@vip -10y " + strcharinfo(0) + "";	
+		//	sc_end SC_EXPBOOST_VIPRED;
+		//	sc_end SC_JEXPBOOST_VIPRED;
+		//	sc_end SC_ITEMBOOST_VIPRED;
+		//	end;			
 		}
 	}
 //-------------------------------------------------------

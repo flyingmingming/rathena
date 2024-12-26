@@ -1,4 +1,4 @@
--	script	FishingHole#frl::frlfishinghole	4_SHOAL,{
+-	script	Fishing Hole#frl::frlfishinghole	4_SHOAL,{
 	
 
 set .@Rod,2764; //Fishing rod
@@ -141,4 +141,4 @@ Fish:
 	}
 }
 
-front_lines,210,160,0	duplicate(frlfishinghole)	FishingHole#2frl	4_SHOAL
+front_lines,210,160,0	duplicate(frlfishinghole)	Fishing Hole#2frl	4_SHOAL

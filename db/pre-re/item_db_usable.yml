@@ -97,8 +97,6 @@ Body:
     Weight: 70
     Script: |
       itemheal rand(45,65),0;
-      sc_start SC_INCALLSTATUS,5000,3;     
-      callfunc "vip_system",15,1;
       
 #callfunc "vip_system",30;
   - Id: 502
@@ -108,8 +106,7 @@ Body:
     Buy: 200
     Weight: 100
     Script: |
-      itemheal rand(105,145),0;
-      callfunc "vip_system",15,2;      
+      itemheal rand(105,145),0;    
   - Id: 503
     AegisName: Yellow_Potion
     Name: Yellow Potion
@@ -118,12 +115,6 @@ Body:
     Weight: 130
     Script: |
       itemheal rand(175,235),0;
-      sc_end SC_INCALLSTATUS; 
-      sc_end SC_EXPBOOST_VIPRED;
-      sc_end SC_JEXPBOOST_VIPRED;
-      sc_end SC_ITEMBOOST_VIPRED;
-      callfunc "vip_system",15,3;  
-           
   - Id: 504
     AegisName: White_Potion
     Name: White Potion
