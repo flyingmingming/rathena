@@ -97,5 +97,5 @@ Footer:
   - Path: db/import/item_db_costume_middle.yml
   - Path: db/import/item_db_costume_upper.yml
   - Path: db/import/item_db_costume_garment.yml
-  - Path: db/import/item_db_costume_accessory.yml  
-  - Path: db/import/item_db.yml    
+  - Path: db/import/item_db_costume_accessory.yml
+  - Path: db/import/item_db.yml
