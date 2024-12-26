@@ -67,7 +67,7 @@ Fish:
                     delequip EQI_ACC_R;
                 }
                 dispbottom "[Fishing] Oh no! The rod has broken into pieces!..";
-                specialeffect2 ET_HUK;
+                emotion ET_HUK, playerattached();
                 end;
             //}
 
