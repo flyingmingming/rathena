@@ -3,7 +3,7 @@ function	script	vip_system	{
 	set .@current_time, vip_status(3); // get the actual vip remaining time
 	set .@renew_time, .@time + .@current_time;
 	set .@type, getarg(1);
-	
+
 	atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
 
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
@@ -13,7 +13,7 @@ function	script	vip_system	{
 	//		sc_end SC_EXPBOOST_VIPRED;
 	//		sc_end SC_JEXPBOOST_VIPRED;
 	//		sc_end SC_ITEMBOOST_VIPRED;
-			end;
+	//		end;
 	//	}
 	//	dispbottom "You are still a VIP member.";
 	//} else {
