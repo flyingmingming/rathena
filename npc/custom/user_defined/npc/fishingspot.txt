@@ -1,0 +1,56 @@
+-	script	FishingHole#frl::frlfishinghole	4_SHOAL,{
+	
+
+set .@Rod,2764; //Fishing rod
+set .@Lure,2775; //Fishing Lure
+set .@Auto,1; //Auto-Fish
+set .@AutoFail,1; //Auto-Fish on Fail
+set .@fcast,20; //fish cast time
+
+set .@fishingTitle$,"non";
+set .@rnd = rand(6,.@fcast);
+
+Fish:
+	if (isequipped(.@Rod)) && (isequipped(.@Lure)){
+		specialeffect EF_BUBBLE,"Fishing Hole";
+		soundeffect "fishingrod.wav",0;
+		dispbottom "[Fishing] Casting...";
+
+		progressbar "ffffff",.@fcast;
+		if (rand(1,20) == 2){
+		getitem 6096,1; //Fish with Blue Back
+		specialeffect2 EF_TEMP_OK;
+		soundeffectall "success.wav",0,strcharinfo(3);
+		mapannounce strcharinfo(3),strcharinfo(0)+" has caught a Blue Fish!",bc_map,"0xff77ff";
+		if(.@Auto==1){
+		goto Fish;}else{
+		end;}
+		}
+			if (rand(1,6) == 1) ||(rand(1,6) == 3) || (rand(1,6) == 6){
+			setarray .@Catch[0],579,908,909,963,956,6049,918,960,910,938,624;// List of Junk/Other
+			set .@CatchRand,.@Catch[rand(getarraysize(.@Catch))];
+			getitem .@CatchRand,1;
+			}
+			else {
+			dispbottom "[Fishing] Nothing was caught...";
+			if(.@AutoFail == 1){
+			goto Fish;} else{
+			end;}
+			}
+		if (rand(1,100) == 3){
+		setarray .@Rare[0],644,603,617;
+		set .@RareCatch, .@Rare[rand(getarraysize(.@Rare))];
+		getitem .@RareCatch,1; //Reward
+		mapannounce strcharinfo(3),strcharinfo(0)+" has caught a "+getitemname(.@RareCatch)+"!",bc_map,"0x33CC00";
+		}
+		if(.@Auto == 1){
+		goto Fish;} else{
+		end;}
+		}
+	else {
+	dispbottom "[Fishing] You need a Rod and Lure.";
+	end;
+	}
+}
+
+front_lines,210,160,0	duplicate(frlfishinghole)	FishingHole#2frl	4_SHOAL
