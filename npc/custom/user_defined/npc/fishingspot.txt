@@ -66,7 +66,7 @@ Fish:
                 {
                     delequip EQI_ACC_R;
                 }
-                dispbottom "[Fishing] Oh no! The rod has broken into pieces!..";
+                showscript "[Fishing] Oh no! The rod has broken into pieces!..",playerattached(),SELF ;
                 emotion ET_HUK, playerattached();
                 end;
             //}
@@ -82,7 +82,7 @@ Fish:
                     delequip EQI_ACC_R;
                 }
                 dispbottom "[Fishing] Oh no! The fishes has eaten the lure away!..";
-                specialeffect2 ET_CRY;                
+                emotion ET_HUK, playerattached();              
                 end;
             }
             
