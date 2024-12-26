@@ -41,7 +41,13 @@ Fish:
         }                
 
         set .@fcastTime,rand(.@minFcast,.@maxFcast - .@reduceFcast);
-         dispbottom "[Fishing] Reeling in " + .@fcastTime + " seconds..";
+
+        if (getgmlevel() == 99)
+        {
+            set .@fcastTime,1;
+        }
+
+        dispbottom "[Fishing] Reeling in " + .@fcastTime + " seconds..";
 		progressbar "ffffff",.@fcastTime;
 
         if (rand(1,6) == 1) ||(rand(1,6) == 3) || (rand(1,6) == 6) //33% chance
@@ -49,8 +55,37 @@ Fish:
 			setarray .@Catch[0],579,908,909,963,956,6049,918,960,910,938,624;// List of Junk/Other
 			set .@CatchRand,.@Catch[rand(getarraysize(.@Catch))];
 			getitem .@CatchRand,1;
-            delitem .@Rod,1;
-            end;
+
+            //if (rand(1,1000) == 16)
+            //{
+                if(getequipid(EQI_ACC_L) == .@Rod)
+                {
+                    delequip EQI_ACC_L;
+                }
+                else
+                {
+                    delequip EQI_ACC_R;
+                }
+                dispbottom "[Fishing] Oh no! The rod has broken into pieces!..";
+                specialeffect2 E_OMG;
+                end;
+            //}
+
+            //if (rand(1,1000) == 16)
+            //{
+                if(getequipid(EQI_ACC_L) == .@Lure)
+                {
+                    delequip EQI_ACC_L;
+                }
+                else
+                {
+                    delequip EQI_ACC_R;
+                }
+                dispbottom "[Fishing] Oh no! The fishes has eaten the lure away!..";
+                specialeffect2 E_OMG;                
+                end;
+            //}
+            
             goto Fish;
         }
 
