@@ -58,21 +58,21 @@ Fish:
 
             //if (rand(1,1000) == 16)
             //{
-            //    if(getequipid(EQI_ACC_L) == .@Rod)
-             //   {
-            //        delequip EQI_ACC_L;
-             //   }
-              //  else
-                //{
-                //    delequip EQI_ACC_R;
-               // }
-                //dispbottom "[Fishing] Oh no! The rod has broken into pieces!..";
-               // specialeffect2 E_WAH;
-               // end;
+                if(getequipid(EQI_ACC_L) == .@Rod)
+                {
+                    delequip EQI_ACC_L;
+                }
+                else
+                {
+                    delequip EQI_ACC_R;
+                }
+                dispbottom "[Fishing] Oh no! The rod has broken into pieces!..";
+                specialeffect2 ET_CRY;
+                end;
             //}
 
-            //if (rand(1,1000) == 16)
-            //{
+            if (rand(1,1000) == 16)
+            {
                 if(getequipid(EQI_ACC_L) == .@Lure)
                 {
                     delequip EQI_ACC_L;
@@ -82,9 +82,9 @@ Fish:
                     delequip EQI_ACC_R;
                 }
                 dispbottom "[Fishing] Oh no! The fishes has eaten the lure away!..";
-                specialeffect2 E_WAH;                
+                specialeffect2 ET_CRY;                
                 end;
-            //}
+            }
             
             goto Fish;
         }
