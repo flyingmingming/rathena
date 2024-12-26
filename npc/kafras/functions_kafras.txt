@@ -656,6 +656,9 @@ function	script	F_KafSet	{
 	} else if (.@map$ == "job3_rune01") {
 		setarray @wrpD$[0], "Izlude", "Geffen", "Payon", "Morocc", "Alberta";
 		setarray @wrpP[0], 600, 1200, 1200, 1200, 1800;
+	} else if (.@map$ == "front_lines") {
+		setarray @wrpD$[0], "Prontera";
+		setarray @wrpP[0], 1200;	
 	}
 
 	.@warp_size = getarraysize(@wrpD$);

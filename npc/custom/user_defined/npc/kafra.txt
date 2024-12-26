@@ -2,7 +2,7 @@
 //============================================================
 front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 	cutin "kafra_06",2;
-	//callfunc "F_KafSet";
+	callfunc "F_KafSet";
 	mes "[Kafra Employee]";
 	mes "Welcome to the";
 	mes "Kafra Corporation~";
