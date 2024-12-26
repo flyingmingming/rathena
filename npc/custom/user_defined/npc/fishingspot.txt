@@ -54,6 +54,7 @@ Fish:
 		}
 
         dispbottom "[Fishing] Nothing was caught...";
+        goto Fish;
     }
 	else 
     {
