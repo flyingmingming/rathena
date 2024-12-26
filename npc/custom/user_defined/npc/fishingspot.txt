@@ -8,7 +8,7 @@ set .@AutoFail,1; //Auto-Fish on Fail
 set .@fcast,20; //fish cast time
 
 set .@fishingTitle$,"non";
-set .@rnd = rand(6,.@fcast);
+set .@rnd = rand(6,20);
 
 Fish:
 	if (isequipped(.@Rod)) && (isequipped(.@Lure)){
