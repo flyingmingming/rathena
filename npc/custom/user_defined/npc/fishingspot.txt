@@ -15,8 +15,9 @@ Fish:
 		specialeffect EF_BUBBLE,"Fishing Hole";
 		soundeffect "fishingrod.wav",0;
 		dispbottom "[Fishing] Casting...";
-        set .@rnd,rand(6,.@fcast);
-		progressbar "ffffff",.@fcast;
+        set .@fcastTime,rand(6,.@fcast);
+
+		progressbar "ffffff",.@fcastTime;
 		if (rand(1,20) == 2){
 		getitem 6096,1; //Fish with Blue Back
 		specialeffect2 EF_TEMP_OK;
