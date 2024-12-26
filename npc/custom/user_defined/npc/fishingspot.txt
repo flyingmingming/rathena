@@ -56,8 +56,8 @@ Fish:
 			set .@CatchRand,.@Catch[rand(getarraysize(.@Catch))];
 			getitem .@CatchRand,1;
 
-            //if (rand(1,1000) == 16)
-            //{
+            if (rand(1,1000) == 16)
+            {
                 if(getequipid(EQI_ACC_L) == .@Rod)
                 {
                     delequip EQI_ACC_L;
@@ -66,23 +66,8 @@ Fish:
                 {
                     delequip EQI_ACC_R;
                 }
-                showscript "[Fishing] Oh no! The rod has broken into pieces!..",playerattached(),SELF ;
+                showscript "Oh no! The rod has broken into pieces!..",playerattached(),SELF ;
                 emotion ET_HUK, playerattached();
-                end;
-            //}
-
-            if (rand(1,1000) == 16)
-            {
-                if(getequipid(EQI_ACC_L) == .@Lure)
-                {
-                    delequip EQI_ACC_L;
-                }
-                else
-                {
-                    delequip EQI_ACC_R;
-                }
-                dispbottom "[Fishing] Oh no! The fishes has eaten the lure away!..";
-                emotion ET_HUK, playerattached();              
                 end;
             }
             
@@ -130,6 +115,22 @@ Fish:
             goto Fish;
 		}
 
+
+        if (rand(1,1000) == 16)
+        {
+            if(getequipid(EQI_ACC_L) == .@Lure)
+            {
+                delequip EQI_ACC_L;
+            }
+            else
+            {
+                delequip EQI_ACC_R;
+            }
+            showscript "Oh no! The fishes has eaten the lure away!..",playerattached(),SELF ;
+            emotion ET_HUK, playerattached();              
+            end;
+        }
+        
         dispbottom "[Fishing] Nothing was caught...";
         goto Fish;
     }
