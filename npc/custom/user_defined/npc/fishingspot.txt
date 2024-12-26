@@ -7,7 +7,7 @@ set .@Auto,1; //Auto-Fish
 set .@AutoFail,1; //Auto-Fish on Fail
 
 set .@minFcast,5; //fish cast time
-set .@maxFcast,20; //fish cast time
+set .@maxFcast,15; //fish cast time
 
 
 Fish:
@@ -16,19 +16,35 @@ Fish:
 		specialeffect EF_BUBBLE,"Fishing Hole";
 		soundeffect "fishingrod.wav",0;
 		dispbottom "[Fishing] Casting...";
-        set .@fcastTime,rand(.@minFcast,.@maxFcast);
+
+        set .@reduceFcast, 0;
+
+        if (#fishingpoints > 0 && #fishingpoints <= 5)
+        {
+            set .@reduceFcast, 2;
+        }
+        else if (#fishingpoints > 10 && #fishingpoints <= 15)
+        {
+            set .@reduceFcast, 4;
+        }
+        else if (#fishingpoints > 15 && #fishingpoints <= 25)
+        {
+            set .@reduceFcast, 6;
+        }
+        else if (#fishingpoints > 25 && #fishingpoints <= 40)
+        {
+            set .@reduceFcast, 8;
+        }
+        else if (#fishingpoints > 40)
+        {
+            set .@reduceFcast, 10;
+        }                
+
+        set .@fcastTime,rand(.@minFcast,.@maxFcast - .@reduceFcast);
+         dispbottom "[Fishing] Reeling in " + .@fcastTime + " seconds..";
 		progressbar "ffffff",.@fcastTime;
 
-		if (rand(1,20) == 2)
-        {
-            getitem 6096,1; //Fish with Blue Back
-            specialeffect2 EF_TEMP_OK;
-            soundeffectall "success.wav",0,strcharinfo(3);
-            mapannounce strcharinfo(3),strcharinfo(0)+" has caught a Blue Fish!",bc_map,"0xff77ff";
-            goto Fish;
-		}
-
-        if (rand(1,6) == 1) ||(rand(1,6) == 3) || (rand(1,6) == 6)
+        if (rand(1,6) == 1) ||(rand(1,6) == 3) || (rand(1,6) == 6) //33% chance
         {
 			setarray .@Catch[0],579,908,909,963,956,6049,918,960,910,938,624;// List of Junk/Other
 			set .@CatchRand,.@Catch[rand(getarraysize(.@Catch))];
@@ -36,7 +52,29 @@ Fish:
             goto Fish;
         }
 
-		if (rand(1,100) == 16)   //rare
+		if (rand(1,20) == 16) //5% chance
+        {
+            getitem 6096,1; //Fish with Blue Back
+            specialeffect2 EF_TEMP_OK;
+            soundeffectall "success.wav",0,strcharinfo(3);
+            mapannounce strcharinfo(3),strcharinfo(0)+" has caught a Blue Fish!",bc_map,"0xff77ff";
+            #fishingpoints += 1;
+            dispbottom "[Fishing] Your experiencing in fishing has increased...";
+            goto Fish;
+		} 
+
+		if (rand(1,50) == 16) //2% chance
+        {
+            getitem 6096,1; //Fish with Blue Back
+            specialeffect2 EF_TEMP_OK;
+            soundeffectall "success.wav",0,strcharinfo(3);
+            mapannounce strcharinfo(3),strcharinfo(0)+" has caught a Blue Fish!",bc_map,"0xff77ff";
+            #fishingpoints += 1;
+            dispbottom "[Fishing] Your experiencing in fishing has increased...";
+            goto Fish;
+		}        
+
+		if (rand(1,100) == 16)   //rare --- 1% chance
         {
             setarray .@Rare[0],644,603,617;
             set .@RareCatch, .@Rare[rand(getarraysize(.@Rare))];
@@ -45,11 +83,13 @@ Fish:
             goto Fish;
 		}
 
-		if (rand(1,100) == rand(1,100)) //ultra rare
+		if (rand(1,100) == rand(1,100)) //ultra rare .001% chance
         {
             setarray .@Rarest,603;
             getitem .@Rarest,1; //Reward
-            mapannounce strcharinfo(3),strcharinfo(0)+" has caught a "+getitemname(.@Rarest)+"!",bc_map,"0x33CC00";
+            mapannounce strcharinfo(3),strcharinfo(0)+" has caught a rare "+getitemname(.@Rarest)+"!",bc_map,"0x33CC00";
+            #fishingpoints += 10;
+            dispbottom "[Fishing] Your experiencing in fishing has vastly increased...";
             goto Fish;
 		}
 
