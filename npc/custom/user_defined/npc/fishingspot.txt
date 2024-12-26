@@ -49,6 +49,8 @@ Fish:
 			setarray .@Catch[0],579,908,909,963,956,6049,918,960,910,938,624;// List of Junk/Other
 			set .@CatchRand,.@Catch[rand(getarraysize(.@Catch))];
 			getitem .@CatchRand,1;
+            delitem .@Rod,1;
+            end;
             goto Fish;
         }
 
