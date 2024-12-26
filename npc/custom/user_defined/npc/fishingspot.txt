@@ -8,14 +8,14 @@ set .@AutoFail,1; //Auto-Fish on Fail
 set .@fcast,20; //fish cast time
 
 set .@fishingTitle$,"non";
-set .@rnd = rand(6,20);
+
 
 Fish:
 	if (isequipped(.@Rod)) && (isequipped(.@Lure)){
 		specialeffect EF_BUBBLE,"Fishing Hole";
 		soundeffect "fishingrod.wav",0;
 		dispbottom "[Fishing] Casting...";
-
+        set .@rnd,rand(6,.@fcast);
 		progressbar "ffffff",.@fcast;
 		if (rand(1,20) == 2){
 		getitem 6096,1; //Fish with Blue Back
