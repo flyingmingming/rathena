@@ -6095,7 +6095,8 @@ ve_in,281,214,3	script	Bookshelf#vol	111,{
 			getitem 12027,5; //Giggling_Box
 		}
 		else {
-			getitem 12103,1; //Bloody_Dead_Branch
+			getitem 661,1; //Sway_Apron
+			//getitem 12103,1; //Bloody_Dead_Branch
 		}
 		getexp (checkre(3))?100000:800000,0;
 		mes "^3355FFWell, you've done all";
