@@ -19,7 +19,6 @@ setarray .@consoPrize[0], 12920,12921;
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
-    <ITEMLINK>Display Name<INFO>Item ID</INFO></ITEMLINK>
 	mes "^ff0000<ITEMLINK>Moving Angel Wing Costume<INFO>" + .@grandPrize + "</INFO></ITEMLINK>^000000";
 	mes "^ff0000VIP Box 1D^000000";
 	mes "Special prize are:";
