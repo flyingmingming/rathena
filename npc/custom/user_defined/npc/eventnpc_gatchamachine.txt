@@ -26,6 +26,15 @@ set .@ticketPrice, 200000; //price per game
 	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[0]) + "<INFO>" + .@consoPrize[0] + "</INFO></ITEM>^000000";
 	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[1]) + "<INFO>" + .@consoPrize[1] + "</INFO></ITEM>^000000";
 	next;
+
+ 
+	if(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Cancel")==2)
+	{
+	mes "[Lottery Machine]";
+	mes "Shhheeeesshhh.. Ain't got any confidence?.......";
+		close;
+	}    
+RestartMe:   
 	if (Zeny < .@ticketPrice)
 	{
 	mes "[Lottery Machine]";
@@ -33,15 +42,9 @@ set .@ticketPrice, 200000; //price per game
 	mes "Not enough zeny it seems....";
 		close;
 	}
-	if(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Cancel")==2)
-	{
-	mes "[Lottery Machine]";
-	mes "Shhheeeesshhh.. Ain't got any confidence?.......";
-		close;
-	}
 	mes "[Lottery Machine]";
 	mes "I wish you good luck. Here you go!";
-    
+
 	set Zeny,Zeny-.@ticketPrice;
 	set .@Total,30;
 	//<%>,<ItemID>,<Amount>
@@ -107,6 +110,14 @@ set .@ticketPrice, 200000; //price per game
 	if(.@k[2]>0 && .@k[2]<=10)
 		announce "Congratulations! "+strcharinfo(0)+" just received "+getitemname(.@k[0])+" x "+.@k[1]+" with "+.@k[2]+"% chance from Lottery Machine!",0;
 	specialeffect2 248;
+
+if(select("Wanna try again?:Cancel")==2)
+{
+mes "[Lottery Machine]";
+mes "Shhheeeesshhh.. Ain't got any confidence?.......";
+    close;
+}  
+goto RestartMe;
 	close;
 
 
