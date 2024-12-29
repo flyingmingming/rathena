@@ -16,7 +16,7 @@ front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
-	mes "^ff0000" + getiteminfo(44400) + "^000000";
+	mes "^ff0000" + getitemname(44400) + "^000000";
 	mes "^ff0000VIP Box 1D^000000";
 	mes "Special prize are:";
 	mes "^ff0000Enriched Elunium Box^000000";
