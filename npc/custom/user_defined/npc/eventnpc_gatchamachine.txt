@@ -28,22 +28,49 @@ set .@ticketPrice, 200000; //price per game
 	next;
 
  
-	if(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Cancel")==2)
+	switch(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Insert " + F_InsertComma(.@ticketPrice*10)  +"z in the machine(x10):Cancel")==3)
 	{
-	mes "[Lottery Machine]";
-	mes "Shhheeeesshhh.. Ain't got any confidence?.......";
-		close;
-	}    
-RestartMe:   
-	if (Zeny < .@ticketPrice)
-	{
-	mes "[Lottery Machine]";
-	mes "Zzzzztttt! Error! You are living in poverty!";
-	mes "Not enough zeny it seems....";
-		close;
-	}
+    case 1:
+        if (Zeny < .@ticketPrice)
+        {
+            mes "[Lottery Machine]";
+            mes "Zzzzztttt! Error! You are living in poverty!";
+            mes "Not enough zeny it seems....";
+            close;
+        }
+        goto Draw1;
+    case 2:
+        if (Zeny < .@ticketPrice*10)
+        {
+            mes "[Lottery Machine]";
+            mes "Lol Don't dream!";
+            mes "Not enough zeny for a multi draw....";
+            close;
+        }
+        goto Draw10;
+    case 3:
+        mes "[Lottery Machine]";
+        mes "Shhheeeesshhh.. Ain't got any confidence?.......";
+        close;
+    }
 
-	set Zeny,Zeny-.@ticketPrice;
+Draw1:
+    set Zeny,Zeny-.@ticketPrice;
+    goto DrawMe;
+end;
+
+Draw10:
+    set Zeny,Zeny-.@ticketPrice*10;
+    set .@i, 1;
+    while(.@i <= 10)
+    {
+        goto DrawMe;
+        
+    }
+    
+end;
+
+DrawMe:
 	set .@Total,30;
 	//<%>,<ItemID>,<Amount>
 	setarray .@P1[0],1,44400,1; //Costume Moving Angel Wings
@@ -108,15 +135,4 @@ RestartMe:
 	if(.@k[2]>0 && .@k[2]<=10)
 		announce "Congratulations! "+strcharinfo(0)+" just received "+getitemname(.@k[0])+" x "+.@k[1]+" with "+.@k[2]+"% chance from Lottery Machine!",0;
 	specialeffect2 248;
-
-if(select("Wanna try again?:Cancel")==2)
-{
-mes "[Lottery Machine]";
-mes "Shhheeeesshhh.. Ain't got any confidence?.......";
-    close;
-}  
-goto RestartMe;
-	close;
-
-
 }
