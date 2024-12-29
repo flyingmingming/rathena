@@ -1,6 +1,6 @@
 front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 
-set .@grandPrize, 44400; // costume moving angel wings
+setarray .@grandPrize[0], 44400, 34004; // costume moving angel wings, vip 3d
 setarray .@consoPrize[0], 12920,12921;
 
 	mes "[Lottery Machine]";
@@ -19,11 +19,11 @@ setarray .@consoPrize[0], 12920,12921;
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
-	mes "^ff0000<ITEM>" + getitemname(.@grandPrize) + "<INFO>" + .@grandPrize + "</INFO></ITEM>^000000";
-	mes "^ff0000VIP Box 1D^000000";
+	mes "^ff0000<ITEM>" + getitemname(.@grandPrize[0]) + "<INFO>" + .@grandPrize[0] + "</INFO></ITEM>^000000";
+	mes "^ff0000<ITEM>" + getitemname(.@grandPrize[1]) + "<INFO>" + .@grandPrize[1] + "</INFO></ITEM>^000000";
 	mes "Special prize are:";
-	mes "^ff0000Enriched Elunium Box^000000";
-	mes "^ff0000Enriched Oridecon Box^000000";
+	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[0]) + "<INFO>" + .@consoPrize[0] + "</INFO></ITEM>^000000";
+	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[1]) + "<INFO>" + .@consoPrize[1] + "</INFO></ITEM>^000000";
 	next;
 	if (Zeny < 200000)
 	{
