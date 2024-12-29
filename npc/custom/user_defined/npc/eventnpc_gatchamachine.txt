@@ -65,7 +65,7 @@ Draw10:
     while(.@i <= 10)
     {
         goto DrawMe;
-        
+        set .@i, .@i+1;
     }
     
 end;
