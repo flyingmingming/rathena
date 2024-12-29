@@ -1,7 +1,8 @@
 front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 
 setarray .@grandPrize[0], 44400, 34004; // costume moving angel wings, vip 3d
-setarray .@consoPrize[0], 12920,12921;
+setarray .@consoPrize[0], 12920,12921; //enriched elu/ori
+set .@ticketPrice, 200000; //price per game
 
 	mes "[Lottery Machine]";
 	mes "Zzzzttt Zzzzttt Zzzzzt!";
@@ -15,7 +16,7 @@ setarray .@consoPrize[0], 12920,12921;
 	mes "[Lottery Machine]";
 	mes "I'll exchange cool";
 	mes "random prizes for every";
-	mes "^ff0000200,000 Zeny!^000000.";
+	mes "^ff0000" + F_InsertComma(.@ticketPrice) + " Zeny!^000000.";
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
@@ -25,14 +26,14 @@ setarray .@consoPrize[0], 12920,12921;
 	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[0]) + "<INFO>" + .@consoPrize[0] + "</INFO></ITEM>^000000";
 	mes "^ff0000<ITEM>" + getitemname(.@consoPrize[1]) + "<INFO>" + .@consoPrize[1] + "</INFO></ITEM>^000000";
 	next;
-	if (Zeny < 200000)
+	if (Zeny < .@ticketPrice)
 	{
 	mes "[Lottery Machine]";
 	mes "Zzzzztttt! Error! You are living in poverty!";
 	mes "Not enough zeny it seems....";
 		close;
 	}
-	if(select("Insert 200,000z in the machine:Cancel")==2)
+	if(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Cancel")==2)
 	{
 	mes "[Lottery Machine]";
 	mes "Shhheeeesshhh.. Ain't got any confidence?.......";
@@ -40,7 +41,8 @@ setarray .@consoPrize[0], 12920,12921;
 	}
 	mes "[Lottery Machine]";
 	mes "I wish you good luck. Here you go!";
-	set Zeny,Zeny-200000;
+    
+	set Zeny,Zeny-.@ticketPrice;
 	set .@Total,30;
 	//<%>,<ItemID>,<Amount>
 	setarray .@P1[0],1,44400,1; //Costume Moving Angel Wings
