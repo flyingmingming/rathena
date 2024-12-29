@@ -63,7 +63,6 @@ end;
 
 Draw10:
     set Zeny,Zeny-.@ticketPrice*10;
-    set .@i, 1;
     for(.@i=0,.@i<10;i++)
     {
         callsub DrawMe;
