@@ -42,8 +42,6 @@ RestartMe:
 	mes "Not enough zeny it seems....";
 		close;
 	}
-	mes "[Lottery Machine]";
-	mes "I wish you good luck. Here you go!";
 
 	set Zeny,Zeny-.@ticketPrice;
 	set .@Total,30;
