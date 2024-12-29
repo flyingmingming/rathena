@@ -19,7 +19,7 @@ setarray .@consoPrize[0], 12920,12921;
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
-	mes "^ff0000<ITEMLINK>Moving Angel Wing Costume<INFO>" + .@grandPrize + "</INFO></ITEMLINK>^000000";
+	mes "^ff0000<ITEM>Moving Angel Wing Costume<INFO>" + .@grandPrize + "</INFO></ITEM>^000000";
 	mes "^ff0000VIP Box 1D^000000";
 	mes "Special prize are:";
 	mes "^ff0000Enriched Elunium Box^000000";
