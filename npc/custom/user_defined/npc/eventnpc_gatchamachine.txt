@@ -1,3 +1,108 @@
 front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 
+	mes "[Lottery Machine]";
+	mes "Zzzzttt Zzzzttt Zzzzzt!";
+	next;
+	mes "BANG!";
+	mes "..........................";
+	mes "............................";
+	mes "Initializing lottery prizes..";
+	mes "...................................";
+	next;
+	mes "[Lottery Machine]";
+	mes "I'll exchange cool";
+	mes "random prizes for every";
+	mes "^ff0000200,000 Zeny!^000000.";
+	next;
+	mes "[Lottery Machine]";
+	mes "Our Grand Prize are:";
+	mes "^ff0000Costume Powerspell^000000";
+	mes "^ff0000VIP Box 1D^000000";
+	mes "Special prize are:";
+	mes "^ff0000Enriched Elunium Box^000000";
+	mes "^ff0000Enriched Oridecon Box^000000";
+	next;
+	if (Zeny < 200000)
+	{
+	mes "[Lottery Machine]";
+	mes "Zzzzztttt! Error! You are living in poverty!";
+	mes "Not enough zeny it seems....";
+		close;
+	}
+	if(select("Insert 200,000z in the machine:Cancel")==2)
+	{
+	mes "[Lottery Machine]";
+	mes "Shhheeeesshhh.. Ain't got any confidence?.......";
+		close;
+	}
+	mes "[Lottery Machine]";
+	mes "I wish you good luck. Here you go!";
+	set Zeny,Zeny-200000;
+	set .@Total,30;
+	//<%>,<ItemID>,<Amount>
+	setarray .@P1[0],1,44400,1; //Costume Moving Angel Wings
+	setarray .@P2[0],3,12920,1; //Enriched Elu Box
+	setarray .@P3[0],3,12921,1; //Enriched Ori Box
+	setarray .@P4[0],20,14003,1; //Elite supply box
+	setarray .@P5[0],10,616,1; //OCA
+	setarray .@P6[0],40,603,1; //OBB
+	setarray .@P7[0],20,617,1; //OPB
+	setarray .@P8[0],20,670,3; //Bag of coins
+	setarray .@P9[0],8,12090,2; //agi+10 20mins clear on death
+	setarray .@P10[0],8,12095,2; //dex+10 20mins clear on death
+	setarray .@P11[0],8,12100,2; //luk+10 20mins clear on death
+	setarray .@P12[0],8,12080,2; //int+10 20mins clear on death
+	setarray .@P13[0],8,12085,2; //vit+10 20mins clear on death
+	setarray .@P14[0],8,12075,2; //str+10 20mins clear on death
+	setarray .@P15[0],1,34003,1; //VIP Box 3d
+	setarray .@P16[0],5,12210,1; //bubble gum
+	setarray .@P17[0],5,12214,1; //convex mirror
+	setarray .@P18[0],80,603,1; //OBB
+	setarray .@P19[0],90,603,1; //OBB
+	setarray .@P20[0],50,603,1; //OBB
+	setarray .@P21[0],30,603,1; //OBB
+	setarray .@P22[0],75,603,1; //OBB
+	setarray .@P23[0],25,603,1; //OBB
+	setarray .@P24[0],30,603,1; //OBB
+	setarray .@P25[0],20,603,1; //OBB
+	setarray .@P26[0],15,617,1; //OPB
+	setarray .@P27[0],23,617,1; //OPB
+	setarray .@P28[0],26,617,1; //OPB
+	setarray .@P29[0],18,617,1; //OPB
+	setarray .@P30[0],30,617,1; //OPB
+
+	setarray .@Default[0],14002,1;
+	set .@i, rand(1,.@Total);     //sets .@i to the index of .@P using random numbers from 1 to .@Total 
+	set .@sysRandom,rand(1,100);
+
+	//first condition - if not on reward array .@P
+	if (.@sysRandom > getd(".@P"+.@i+"[0]"))								//if random number is greater than change in reward array (.@P)
+	{
+		for(set .@j,0; .@j<getarraysize(.@Default); set .@j,.@j+2)			//loops the array size of default reward (if > 1 is set) and gives all the item set
+		{
+			getitem .@Default[.@j], .@Default[.@j+1];						
+			if(!.@k[0]) 													//if getitemname is empty or null, set to array (rewarditemname, rewarditemamount)
+				setarray .@k[0], .@Default[.@j], .@Default[.@j+1];			//sets reward items (if > 1 is set) to an array to announce
+		}
+	}
+
+	//else condition - if randomized number is in scope in reward array .@P
+	else{
+		for(set .@j,1; .@j<getarraysize(getd(".@P"+.@i)); set .@j,.@j+2)
+		{
+			getitem getd(".@P"+.@i+"["+.@j+"]"), getd(".@P"+.@i+"["+(.@j+1)+"]");	//ex. random num = 10 (.@i), getd .@P10[1] which is 1st index of .@P array which is item id 12095, j+1 = 2 which is the amount of reward
+			if (!.@k[0])													//if getitemname is empty or null, set to array (rewarditemname, rewarditemamount)
+			{
+				set .@gz,.@i;											//sets reward index to .@gz
+				setarray .@k[0], getd(".@P"+.@i+"["+.@j+"]"), getd(".@P"+.@i+"["+(.@j+1)+"]"), getd(".@P"+.@i+"[0]"); //sets reward items (if > 1 is set) to an array to announce
+				break;
+			}
+		}
+	}
+	if(.@k[2]>0 && .@k[2]<=10)
+		announce "Congratulations! "+strcharinfo(0)+" just received "+getitemname(.@k[0])+" x "+.@k[1]+" with "+.@k[2]+"% chance from Lottery Machine!",0;
+	specialeffect2 248;
+	close;
+
+
 }
