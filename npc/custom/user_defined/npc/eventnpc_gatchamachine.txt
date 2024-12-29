@@ -1,12 +1,15 @@
 front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 
+set .@grandPrize, 44400; // costume moving angel wings
+setarray .@consoPrize[0], 12920,12921;
+
 	mes "[Lottery Machine]";
 	mes "Zzzzttt Zzzzttt Zzzzzt!";
 	next;
 	mes "BANG!";
 	mes "..........................";
 	mes "............................";
-	mes "Initializing lottery prizes..";
+	mes "In itializing lottery prizes..";
 	mes "...................................";
 	next;
 	mes "[Lottery Machine]";
@@ -16,7 +19,8 @@ front_lines,160,140,4	script	Gatcha Machine	2_slot_machine,{
 	next;
 	mes "[Lottery Machine]";
 	mes "Our Grand Prize are:";
-	mes "^ff0000" + getitemname(44400) + "^000000";
+    <ITEMLINK>Display Name<INFO>Item ID</INFO></ITEMLINK>
+	mes "^ff0000<ITEMLINK>Moving Angel Wing Costume<INFO>" + getitemname(.@grandPrize) + "</INFO></ITEMLINK>^000000";
 	mes "^ff0000VIP Box 1D^000000";
 	mes "Special prize are:";
 	mes "^ff0000Enriched Elunium Box^000000";
