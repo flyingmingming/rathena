@@ -9342,6 +9342,8 @@
 	export_constant_npc(JT_ROZ_MQ_SKULD);
 	//custom npc
 	export_constant_npc(JT_JOB_CHANGER_NPC);
+	export_constant_npc(JT_TOOL_DEALER_NPC);
+	
 	export_constant_npc(JT_NEW_NPC_3RD_END);
 
 
