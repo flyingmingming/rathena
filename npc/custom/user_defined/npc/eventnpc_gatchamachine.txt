@@ -28,7 +28,7 @@ set .@ticketPrice, 200000; //price per game
 	next;
 
  
-	switch(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Insert " + F_InsertComma(.@ticketPrice*10)  +"z in the machine(x10):Cancel")==3)
+	switch(select("Insert " + F_InsertComma(.@ticketPrice) + "z in the machine:Insert " + F_InsertComma(.@ticketPrice*10)  +"z in the machine(x10):Cancel"))
 	{
     case 1:
         if (Zeny < .@ticketPrice)
