@@ -196,7 +196,7 @@ front_lines,172,135,4	script	Igie#yagu	700,{
 				set .@score_record, $050908_minus1_yagu;
 				set .@score_min, .@score_record / 60;
 				set .@score_sec, .@score_record % 60;
-
+				getitem 14003,1;
 				if (.@score_record >= .@total_time || !.@score_record) { //custom (second condition)
 					set $050908_minus1_yagu$, strcharinfo(0);
 					set $050908_minus1_yagu, .@total_time;
@@ -218,7 +218,6 @@ front_lines,172,135,4	script	Igie#yagu	700,{
 					close;
 				}
 				mes "[Igie]";
-				getitem 14003,1;
 				mes "Nice work, you guessed";
 				mes "my number! The answer, of";
 				mes "course, was ^ff0000" + .@yagu + "^000000. You managed";
