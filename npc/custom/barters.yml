@@ -57,11 +57,12 @@ Body:
           - Index: 1
             Item: Red_Potion
             Amount: 10
-          - Index: 1
+          - Index: 2
             Item: Yellow_Potion
             Amount: 10
-          - Index: 1
+          - Index: 3
             Item: Orange_Potion
             Amount: 10
-          - Index: 1
-                                          
+          - Index: 4
+            Item: White_Potion
+            Amount: 10
