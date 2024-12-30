@@ -5,6 +5,7 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     {
         case 1:
             callfunc "F_GetPlatinumSkills";
+            mes "There you go!";
         end;
 
         case 2:
