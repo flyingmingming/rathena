@@ -5,7 +5,8 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     {
         case 1:
             callfunc "F_GetPlatinumSkills";
-            mes "There you go!";
+            next;
+            mes "Here you go!";
         end;
 
         case 2:
@@ -65,7 +66,7 @@ S_Reset:
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
-    mes "Here you go.";
+    mes "Here you go!";
 	close;
 return;
 
