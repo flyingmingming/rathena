@@ -1,7 +1,7 @@
 front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
-    switch(select("^0000FF- Platinum Skills:- Stylist:- Reset Stats/Skill:- Rental:- Plagiarize Skill:Cancel"))
+    switch(select("^0000FF ~ Platinum Skills: ~ Stylist: ~ Reset Stats/Skill: ~ Rental: ~ Plagiarize Skill^000000:Cancel"))
     {
         case 1:
             callfunc "F_GetPlatinumSkills";
@@ -24,6 +24,7 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
 
         case 5:
             callsub S_PlagiarizeSkill;
+            specialeffect2 EF_TEIHIT3;
         end;
 
         case 6:
@@ -56,7 +57,7 @@ S_Reset:
 	mes "Reset Both: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
 	mes "Please select the service you want:";
 	next;
-	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:Cancel"));
+	set .@i,(select("^FF3355 ~ Reset Skills: ~ Reset Stats: ~ Reset Both^000000:Cancel"));
 	if(.@i > 3) close;
 	if (Zeny < .@Reset[.@i-1]) {
 		mes "Sorry, you don't have enough Zeny.";
@@ -111,83 +112,75 @@ S_Stylist:
 return;
 
 S_PlagiarizeSkill:
-	if (.plag_skill && !getskilllv("RG_PLAGIARISM")) {
-		mes "You must have Plagiarism learned..";
+    set .@plagiarizePrice, 100000;
+    set .@plagSkillLevelMax, 10;
+    deletearray .@SkillID, getarraysize(.@SkillID);
+    deletearray .@SkillLV, getarraysize(.@SkillLV);
+    deletearray .@PlagSkillsID, getarraysize(.@PlagSkillsID);
+
+    setarray .@SkillID[0],263,13, 7,14,19,20,21,83,84,85,86,89,90,91,421,534,536,537,540,542;
+    setarray .@SkillLV[0], 10,10,10,10,10,10,10,10,10,10,10,10,10,5,   7, 10,  5, 10, 19,  5;
+    setarray .@PlagSkillsID[0],263,5,7,13,14,19,20,42,47,62,77,79,83,84,85,89,90,229,250,251,253,254,528,535,537,540,421;
+    /*
+            "MO_TRIPLEATTACK",263,10
+            "SM_BASH",5,10
+            "SM_MAGNUM",7,10
+            "MG_SOULSTRIKE",13,10
+            "MG_COLDBOLT",14,10
+            "MG_FIREBOLT",19,10
+            "MG_LIGHTNINGBOLT",20,10
+            "MC_MAMMONITE",42,10
+            "AC_SHOWER",47,10
+            "KN_BOWLINGBASH",62,10
+            "PR_TURNUNDEAD",77,10
+            "PR_MAGNUS",79,10            
+            "WZ_METEOR",83,10
+            "WZ_JUPITEL",84,10
+            "WZ_VERMILION",85,10
+            "WZ_STORMGUST",89,10
+            "WZ_EARTHSPIKE",90,10
+            "AM_DEMONSTRATION",229,10            
+            "CR_SHIELDCHARGE",250,10
+            "CR_SHIELDBOOMERANG",251,10
+            "CR_HOLYCROSS",253,10
+            "CR_GRANDCROSS",254,10
+            "NJ_KASUMIKIRI",528,10
+            "NJ_KAENSIN",535,10
+            "NJ_HYOUSENSOU",537,10
+            "NJ_HUUJIN",540,10
+            "TK_JUMPKICK";421,7
+    */
+	if (!getskilllv("RG_PLAGIARISM")) {
+		mes "You must have Plagiarism skill learned..";
 		close;
 	}
-	mes "Heya ^FFA500"+strcharinfo(0)+"^000000!";
 	mes "Do you want to copy a skill?";
-	if (.zeny)
-		mes "My service costs ^FF0000"+.zeny+" Zeny^000000.";
-	if (select("~ Proceed","Cancel") == 2) close;
-	if (.zeny > 0 && Zeny < .zeny) {
+    mes "My service costs ^FF0000"+.zeny+" Zeny^000000.";
+	if (select(" ~ Proceed","Cancel") == 2) close;
+	if (.@plagiarizePrice > 0 && Zeny < .@plagiarizePrice) {
 		message(strcharinfo(0),"Not enough Zeny.");
 		close;
 	}
 	.@menu$ = "";
-	.@f = getarraysize(.SkillID);
+	.@f = getarraysize(.@PlagSkillsID);
 	for(.@i = 0; .@i < .@f; .@i++)
-		.@menu$ += getskillname(.SkillID[.@i])+(.@i==.@f?"":":");
+		.@menu$ += getskillname(.@PlagSkillsID[.@i])+(.@i==.@f?"":":");
 	.@s = select(.@menu$) - 1;
 	close2;
 	if (.zeny > 0 && Zeny < .zeny)
 		end;
 	if (.zeny > 0)
 		Zeny -= .zeny;
-    plagiarizeskill .SkillID[.@s],.SkillLV[.@s];
-	//npcskill .SkillID[.@s],.SkillLV[.@s],20,200;
-	//sleep2 1500;
-	//unitwarp getnpcid(0),.map$,.x,.y;
-	end;
-
-	OnInit:
-		//Default NPC Data Values
-		setunitdata(getnpcid(0),UNPC_DEX,300);
-		setunitdata(getnpcid(0),UNPC_ATKMIN,100);
-		setunitdata(getnpcid(0),UNPC_ATKMAX,200);
-		getmapxy(.map$,.x,.y,BL_NPC);
-
-		//Configuration
-		//Zeny required? Set 0 to disable it
-		.zeny = 300000;
-		//Must Plagiarism skil be learned? (1. Yes | 0. No)
-		.plag_skill = 1;
-		//Skill ID Array
-		setarray .SkillID[0],263,13, 7,14,19,20,21,83,84,85,86,89,90,91,421,534,536,537,540,542;
-        setarray .Skills[0],
-            "SM_BASH",
-            "SM_MAGNUM",
-            "MG_NAPALMBEAT",
-            "MG_SOULSTRIKE",
-            "MG_COLDBOLT",
-            "MG_FROSTDIVER",
-            "MG_FIREBOLT",
-            "MG_LIGHTNINGBOLT",
-            "MC_MAMMONITE",
-            "AC_SHOWER",
-            "KN_BOWLINGBASH",
-            "WZ_METEOR",
-            "WZ_JUPITEL",
-            "WZ_VERMILION",
-            "WZ_STORMGUST",
-            "WZ_EARTHSPIKE",
-            "PR_TURNUNDEAD",
-            "PR_MAGNUS",
-            "CR_SHIELDCHARGE",
-            "CR_SHIELDBOOMERANG",
-            "CR_HOLYCROSS",
-            "CR_GRANDCROSS",
-            "MO_TRIPLEATTACK",
-            "AM_DEMONSTRATION",
-            "NJ_KASUMIKIRI",
-            "NJ_KAENSIN",
-            "NJ_HYOUSENSOU",
-            "NJ_HUUJIN",
-            "NJ_RAIGEKISAI",
-            "TK_JUMPKICK";
-		//Skill LV Array
-		setarray .SkillLV[0], 10,10,10,10,10,10,10,10,10,10,10,10,10,5,   7, 10,  5, 10, 19,  5;
-		end;
+    if (.@PlagSkillsID[.@s] == 421)
+    {
+        plagiarizeskill .@PlagSkillsID[.@s],7;
+    }
+    else
+    {
+        plagiarizeskill .@PlagSkillsID[.@s],.@plagSkillLevelMax;
+    }
+    
+    mes "Here you go!";
 return;
 
 }
