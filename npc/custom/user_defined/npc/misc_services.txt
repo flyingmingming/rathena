@@ -55,7 +55,6 @@ S_Reset:
 	next;
 	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:Cancel"));
 	if(.@i > 3) close;
-	mes "[Reset Girl]";
 	if (Zeny < .@Reset[.@i-1]) {
 		mes "Sorry, you don't have enough Zeny.";
 		close;
@@ -66,6 +65,7 @@ S_Reset:
 		ResetSkill;
 	}
 	if(.@i&2) ResetStatus;
+    mes "Here you go.";
 	close;
 return;
 
