@@ -50,8 +50,6 @@ Body:
     Required:
     - Id: GD_APPROVAL
       Level: 1
-    - Id: GD_KAFRACONTRACT
-      MaxLevel: 1
 
   - Id: GD_GUARDRESEARCH
     MaxLevel: 1
