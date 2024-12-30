@@ -64,8 +64,4 @@ Body:
             Item: Orange_Potion
             Amount: 10
           - Index: 1
-            Item: White_Potion
-            Amount: 10
-          - Index: 1
-            Item: Blue_Potion
-            Amount: 10                                                
+                                          
