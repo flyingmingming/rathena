@@ -19,7 +19,8 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 			mes "has been saved here";
 			mes "at the Front Lines!";
 			mes "Thank you for using";
-			mes "the Kafra Services.";		
+			mes "the Kafra Services.";	
+			savepoint "front_lines",150,133,1,1;	
 		end;
 
 		case 2:
@@ -59,6 +60,10 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 					mes "[Kafra Employee]";
 					mes "You can't use this service if you're not in a guild!";
 					break;
+				case GSTORAGE_NO_STORAGE:
+					mes "[Kafra Employee]";
+					mes "The guild does not have a guild storage.";
+					break;
 				case GSTORAGE_NO_PERMISSION:
 					mes "[Kafra Employee]";
 					mes "You don't have permission to use the guild storage!";
@@ -71,7 +76,7 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 		case 4:
 		end;
 	}
-	savepoint "front_lines",150,133,1,1;
+	
 	callfunc "F_KafEnd",0,1,"to the Front Lines!";
 	//callfunc "F_Kafra",5,7,0,40,800;
 	//savepoint "front_lines",150,133,1,1;
