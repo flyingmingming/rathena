@@ -1,22 +1,22 @@
 front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
-    switch(select("^0000FF Job Change:Stylist:Reset Stats/Skill:Rental:Plagiarize Skill:Cancel"))
+    switch(select("^0000FFPlatinum Skills:Stylist:Reset Stats/Skill:Rental:Plagiarize Skill:Cancel"))
     {
         case 1:
-            mes "Job Change";
+            callfunc "F_GetPlatinumSkills";
         end;
 
         case 2:
-            mes "Stylist";
+            callsub S_Stylist;
         end;
 
         case 3:
-            mes "Reset Stat/Skill";
+            callsub S_Reset;
         end;
 
         case 4:
-            mes "Rental";
+            callsub S_Rental;
         end;
 
         case 5:
@@ -26,4 +26,83 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
         case 6:
         end;
     }
+
+S_Rental:
+	if (ismounting()) 
+    {
+		message strcharinfo(0),"You must first remove your mount.";
+		end;
+	} 
+    else if (!checkcart() && getskilllv("MC_PUSHCART")) setcart;
+	else if (!checkfalcon() && getskilllv("HT_FALCON")) setfalcon;
+	else if (!checkriding() && getskilllv("KN_RIDING")) setriding;
+	else 
+    {
+		message strcharinfo(0),"You do not meet requirements to rent.";
+		end;
+	}
+	specialeffect2 EF_TEIHIT3;
+return;
+
+S_Reset:
+	//	 		Skills,	Stats,	Both,	Limit
+	setarray .@Reset,	500000,	500000,	1000000,	0;
+	mes "Reset Stats: "+ callfunc("F_InsertComma",.@Reset[1]) +"z";
+	mes "Reset Skills: "+ callfunc("F_InsertComma",.@Reset[0]) +"z";
+	mes "Reset Both: "+ callfunc("F_InsertComma",.@Reset[2]) +"z";
+	mes "Please select the service you want:";
+	next;
+	set .@i,(select("^FF3355Reset Skills:Reset Stats:Reset Both^000000:Cancel"));
+	if(.@i > 3) close;
+	mes "[Reset Girl]";
+	if (Zeny < .@Reset[.@i-1]) {
+		mes "Sorry, you don't have enough Zeny.";
+		close;
+	}
+	set Zeny, Zeny-.@Reset[.@i-1];
+	if(.@i&1){
+		sc_end_class;
+		ResetSkill;
+	}
+	if(.@i&2) ResetStatus;
+	close;
+return;
+
+S_Stylist:
+	setarray .@Styles[1],
+		getbattleflag("max_cloth_color"),
+		getbattleflag("max_hair_style"),
+		getbattleflag("max_hair_color");
+	setarray .@Look[1],
+		LOOK_CLOTHES_COLOR,
+		LOOK_HAIR,
+		LOOK_HAIR_COLOR;
+	set .@s, select(" ~ Cloth color: ~ Hairstyle: ~ Hair color");
+	set .@Revert, getlook(.@Look[.@s]);
+	set .@Style,1;
+	while(1) {
+		setlook .@Look[.@s], .@Style;
+		message strcharinfo(0),"This is style #"+.@Style+".";
+		set .@menu$, " ~ Next (^0055FF"+((.@Style!=.@Styles[.@s])?.@Style+1:1)+"^000000): ~ Previous (^0055FF"+((.@Style!=1)?.@Style-1:.@Styles[.@s])+"^000000): ~ Jump to...: ~ Revert to original (^0055FF"+.@Revert+"^000000)";
+		switch(select(.@menu$)) {
+		case 1:
+			set .@Style, ((.@Style != .@Styles[.@s]) ? .@Style+1 : 1);
+			break;
+		case 2:
+			set .@Style, ((.@Style != 1) ? .@Style-1 : .@Styles[.@s]);
+			break;
+		case 3:
+			message strcharinfo(0),"Choose a style between 1 - "+.@Styles[.@s]+".";
+			input .@Style,0,.@Styles[.@s];
+			if (!.@Style)
+				set .@Style, rand(1,.@Styles[.@s]);
+			break;
+		case 4:
+			set .@Style, .@Revert;
+			setlook .@Look[.@s], .@Revert;
+			break;
+		}
+	}
+return;
+
 }
