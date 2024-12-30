@@ -7,6 +7,7 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
             callfunc "F_GetPlatinumSkills";
             next;
             mes "Here you go!";
+            specialeffect2 EF_TEIHIT3;
         end;
 
         case 2:
@@ -68,6 +69,7 @@ S_Reset:
 	}
 	if(.@i&2) ResetStatus;
     mes "Here you go!";
+    specialeffect2 EF_TEIHIT3;
 	close;
 return;
 
