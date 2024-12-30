@@ -13,7 +13,7 @@
 // Mall in One NPC
 //============================================================
 front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
-        switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000 - Sell Items^000000:Cancel")) 
+        switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000Sell Items^000000:Cancel")) 
         {
         case 1:
                 set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
