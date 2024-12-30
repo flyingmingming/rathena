@@ -155,7 +155,7 @@ S_PlagiarizeSkill:
 		close;
 	}
 	mes "Do you want to copy a skill?";
-    mes "My service costs ^FF0000"+.@plagiarizePrice+" Zeny^000000.";
+    mes "My service costs ^FF0000"+ F_InsertComma(.@plagiarizePrice) +" Zeny^000000.";
 	if (select(" ~ Proceed","Cancel") == 2) close;
 	if (.@plagiarizePrice > 0 && Zeny < .@plagiarizePrice) {
 		message(strcharinfo(0),"Not enough Zeny.");
