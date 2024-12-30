@@ -3,3 +3,5 @@ front_lines,226,187,0	warp	flshop01	2,2,prontera,156,185 // --- shop 1
 front_lines,226,166,0	warp	flshop02	2,2,prontera,156,185 // --- shop 2
 front_lines,224,140,0	warp	flshop03	1,1,prontera,156,185 // --- shop 3
 front_lines,89,171,0	warp	frontlinesmain	2,2,prontera,156,185 // --- main hall
+
+nov_isla,135,129,0	warp	novisletofl	2,2,front_lines,150,133 // --- to frontlines
