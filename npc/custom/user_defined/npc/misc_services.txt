@@ -166,9 +166,7 @@ S_PlagiarizeSkill:
 	for(.@i = 0; .@i < .@f; .@i++)
 		.@menu$ += getskillname(.@PlagSkillsID[.@i])+(.@i==.@f?"":":");
 	.@s = select(.@menu$) - 1;
-	close2;
-	if (.@plagiarizePrice > 0 && Zeny < .@plagiarizePrice)
-		end;
+
 	if (.@plagiarizePrice > 0)
 		Zeny -= .@plagiarizePrice;
     plagiarizeskill .@PlagSkillsID[.@s],.@plagSkillLevelMax;
