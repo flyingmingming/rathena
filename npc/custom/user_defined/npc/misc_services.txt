@@ -134,9 +134,10 @@ S_PlagiarizeSkill:
 		end;
 	if (.zeny > 0)
 		Zeny -= .zeny;
-	npcskill .SkillID[.@s],.SkillLV[.@s],20,200;
-	sleep2 1500;
-	unitwarp getnpcid(0),.map$,.x,.y;
+    plagiarizeskill .SkillID[.@s],.SkillLV[.@s];
+	//npcskill .SkillID[.@s],.SkillLV[.@s],20,200;
+	//sleep2 1500;
+	//unitwarp getnpcid(0),.map$,.x,.y;
 	end;
 
 	OnInit:
