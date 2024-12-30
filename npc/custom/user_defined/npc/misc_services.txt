@@ -1,7 +1,7 @@
 front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
-    switch(select("Job Change:Stylist:Reset Stats/Skill:Rental:Plagiarize Skill:Cancel"))
+    switch(select("^^0000FFJob Change:Stylist:Reset Stats/Skill:Rental:Plagiarize Skill:Cancel"))
     {
         case 1:
             mes "Job Change";
@@ -18,13 +18,12 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
         case 4:
             mes "Rental";
         end;
-        
+
         case 5:
             mes "Plagiarize Skill";
         end;
 
         case 6:
-            mes "Cancel";
         end;
     }
 }
