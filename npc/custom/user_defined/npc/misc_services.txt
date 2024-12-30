@@ -43,6 +43,7 @@ S_Rental:
 		message strcharinfo(0),"You do not meet requirements to rent.";
 		end;
 	}
+    mes "Here you go!";
 	specialeffect2 EF_TEIHIT3;
 return;
 
