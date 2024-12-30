@@ -1,4 +1,4 @@
-front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
+front_lines,126,140,6	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
     switch(select("^0000FF ~ Reset Stats/Skill: ~ Rental: ~ Platinum Skills: ~ Plagiarize Skill: ~ Stylist^000000:Cancel"))
