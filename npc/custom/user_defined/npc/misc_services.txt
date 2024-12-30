@@ -1,30 +1,30 @@
 front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
-    switch(select("^0000FF ~ Platinum Skills: ~ Stylist: ~ Reset Stats/Skill: ~ Rental: ~ Plagiarize Skill^000000:Cancel"))
+    switch(select("^0000FF ~ Reset Stats/Skill: ~ Rental: ~ Platinum Skills: ~ Plagiarize Skill: ~ Stylist^000000:Cancel"))
     {
         case 1:
-            callfunc "F_GetPlatinumSkills";
-            next;
-            mes "Here you go!";
-            specialeffect2 EF_TEIHIT3;
-        end;
-
-        case 2:
-            callsub S_Stylist;
-        end;
-
-        case 3:
             callsub S_Reset;
         end;
 
-        case 4:
+        case 2:
             callsub S_Rental;
         end;
 
-        case 5:
+        case 3:
+            callfunc "F_GetPlatinumSkills";
+            next;
+            mes "Here you go!";
+            specialeffect2 EF_TEIHIT3;            
+        end;
+
+        case 4:
             callsub S_PlagiarizeSkill;
-            specialeffect2 EF_TEIHIT3;
+            specialeffect2 EF_TEIHIT3;            
+        end;
+
+        case 5:
+            callsub S_Stylist;
         end;
 
         case 6:
