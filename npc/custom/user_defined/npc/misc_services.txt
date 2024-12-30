@@ -1,7 +1,7 @@
 front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
     mes "[Jira]";
     mes "What do you wanna do?";
-    switch(select("^0000FFPlatinum Skills:Stylist:Reset Stats/Skill:Rental:Plagiarize Skill:Cancel"))
+    switch(select("^0000FF- Platinum Skills:- Stylist:- Reset Stats/Skill:- Rental:- Plagiarize Skill:Cancel"))
     {
         case 1:
             callfunc "F_GetPlatinumSkills";
@@ -23,7 +23,7 @@ front_lines,126,140,4	script	Misc Services	4_f_jpn2,{
         end;
 
         case 5:
-            mes "Plagiarize Skill";
+            callsub S_PlagiarizeSkill;
         end;
 
         case 6:
@@ -153,6 +153,37 @@ S_PlagiarizeSkill:
 		.plag_skill = 1;
 		//Skill ID Array
 		setarray .SkillID[0],263,13, 7,14,19,20,21,83,84,85,86,89,90,91,421,534,536,537,540,542;
+        setarray .Skills[0],
+            "SM_BASH",
+            "SM_MAGNUM",
+            "MG_NAPALMBEAT",
+            "MG_SOULSTRIKE",
+            "MG_COLDBOLT",
+            "MG_FROSTDIVER",
+            "MG_FIREBOLT",
+            "MG_LIGHTNINGBOLT",
+            "MC_MAMMONITE",
+            "AC_SHOWER",
+            "KN_BOWLINGBASH",
+            "WZ_METEOR",
+            "WZ_JUPITEL",
+            "WZ_VERMILION",
+            "WZ_STORMGUST",
+            "WZ_EARTHSPIKE",
+            "PR_TURNUNDEAD",
+            "PR_MAGNUS",
+            "CR_SHIELDCHARGE",
+            "CR_SHIELDBOOMERANG",
+            "CR_HOLYCROSS",
+            "CR_GRANDCROSS",
+            "MO_TRIPLEATTACK",
+            "AM_DEMONSTRATION",
+            "NJ_KASUMIKIRI",
+            "NJ_KAENSIN",
+            "NJ_HYOUSENSOU",
+            "NJ_HUUJIN",
+            "NJ_RAIGEKISAI",
+            "TK_JUMPKICK";
 		//Skill LV Array
 		setarray .SkillLV[0], 10,10,10,10,10,10,10,10,10,10,10,10,10,5,   7, 10,  5, 10, 19,  5;
 		end;
