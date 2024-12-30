@@ -29,7 +29,7 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
                         case 3: callshop "Shop_TwoHandedSwords",1; end;
                         case 4: callshop "Shop_Spears",1; end;
                         case 5: callshop "Shop_Bows",1; end;
-                        case 6: callshop "Shop_Mace",1; end;
+                        case 6: callshop "Shop_Maces",1; end;
                         case 7: callshop "Shop_Axe",1; end;
                         case 8: callshop "Shop_Staffs",1; end;
                         case 9: callshop "Shop_Katars",1; end;
