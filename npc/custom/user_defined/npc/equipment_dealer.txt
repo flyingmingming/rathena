@@ -17,9 +17,11 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
         {
         case 1:
                 set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
-                                        + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000:^0000FF ~ Bows^000000:^0000FF ~ Mace^000000: "
-                                        + "^0000FF~ Axe^000000:^0000FF ~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000:^0000FF ~ Instruments^000000: "
-                                        + "^0000FF~ Whips^000000:^0000FF ~ Books^000000:^0000FF ~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
+                                        + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000: "
+                                        + "^0000FF~ Bows^000000:^0000FF ~ Mace^000000: ^0000FF~ Axe^000000: "
+                                        + "^0000FF~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000: "
+                                        + "^0000FF~ Instruments^000000:^0000FF ~ Whips^000000:^0000FF ~ Books^000000: "
+                                        + "^0000FF~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
                 switch(select(.@weapSelections$)) 
                 {
                         case 1: callshop "Shop_Daggers",1; end;
@@ -42,7 +44,10 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
                 }
         end;
         case 2:
-                switch(select("^FF0000 ~ Armors: ~ Shields: ~ Footgears: ~ Garments: ~ Accessories^000000:Cancel")) 
+                set .@armSelections$,"^0000FF ~ Armors^000000:^0000FF ~ Shields^000000: "
+                                        + "^0000FF~ Footgears^000000:^0000FF ~ Garments^000000: "
+                                        + "^0000FF~ Accessories^000000:Cancel";
+                switch(select(.@armSelections$)) 
                 {
                         case 1: callshop "Shop_Armors", 1; end;
                         case 2: callshop "Shop_Shields", 1; end;
