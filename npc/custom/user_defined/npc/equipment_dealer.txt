@@ -13,7 +13,7 @@
 // Mall in One NPC
 //============================================================
 front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
-        switch(select("^0000FF ~ Weapons: ~ Armors^000000:Cancel")) 
+        switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000 - Sell Items^000000:Cancel")) 
         {
         case 1:
                 set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
@@ -56,7 +56,8 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
                         case 5: callshop "Shop_Accessories", 1; end;  
                         case 6: end;                      
                 }
-        case 3: end;
+        case 3: callshop "Shop_SellItems",2; end;
+        case 4: end;
         }
 
 }
@@ -81,6 +82,8 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
 -	shop	Shop_Shields	-,2102:10000,2106:60000,2108:60000,2110:85000,2114:30000,2116:30000,2123:50000,2124:50000
 -	shop	Shop_Footgears	-,2404:10000,2406:20000,2409:30000,2412:50000,2417:50000,2418:50000,2424:50000,2425:20000
 -	shop	Shop_Garments	-,2504:10000,2506:40000,2507:82000,2508:56000,2514:50000,2518:60000,2519:60000,2528:85000,2531:10000,2553:10000
+
+-	shop	Shop_SellItems	,501:-1
 //shops
 
 -	shop	Miscellaneouz	,985:50000,984:50000,715:600,717:600,716:600,999:5000,1000:5000,990:5000,991:5000,992:5000,993:5000,994:20000,995:20000,996:20000,997:20000,1025:2000,612:2000,613:3000,614:5000,615:10000,970:10000,929:5000,1059:5000
