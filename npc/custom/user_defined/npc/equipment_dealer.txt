@@ -13,10 +13,14 @@
 // Mall in One NPC
 //============================================================
 front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
-        switch(select("^FF0000 ~ Weapons: ~ Armors^000000:Cancel")) 
+        switch(select("^0000FF ~ Weapons: ~ Armors^000000:Cancel")) 
         {
         case 1:
-                switch(select("^FF0000~ Daggers: ~ One-Handed Swords: ~ Two-Handed Swords: ~ Spears: ~ Bows: ~ Mace: ~ Axe: ~ Staffs: ~ Katars: ~ Knuckles: ~ Instruments: ~ Whips: ~ Books: ~ Fuuma: ~ Guns^000000:Cancel")) 
+                set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
+                                        + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000:^0000FF ~ Bows^000000:^0000FF ~ Mace^000000: "
+                                        + "^0000FF~ Axe^000000: ~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000:^0000FF ~ Instruments^000000: "
+                                        + "^0000FF~ Whips^000000: ~ Books^000000:^0000FF ~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
+                switch(select(.@weapSelections$)) 
                 {
                         case 1: callshop "Shop_Daggers",1; end;
                         case 2: callshop "Shop_OneHandedSwords",1; end;
