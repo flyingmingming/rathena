@@ -12,7 +12,7 @@
 //===== Description: =========================================
 // Mall in One NPC
 //============================================================
-front_lines,189,181,6	script	Equipments Dealer	4_m_thaiongbak,{
+front_lines,198,181,6	script	Mari	4_f_thaigirl,{
         mes "[Troley]";
         mes "Hello there ^FF0000" + strcharinfo(0) + "^000000.";
         mes "Please spend money";
