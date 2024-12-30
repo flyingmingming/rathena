@@ -18,7 +18,7 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
         case 1:
                 set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
                                         + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000: "
-                                        + "^0000FF~ Bows^000000:^0000FF ~ Mace^000000: ^0000FF~ Axe^000000: "
+                                        + "^0000FF~ Bows^000000:^0000FF ~ Maces^000000: ^0000FF~ Axes^000000: "
                                         + "^0000FF~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000: "
                                         + "^0000FF~ Instruments^000000:^0000FF ~ Whips^000000:^0000FF ~ Books^000000: "
                                         + "^0000FF~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
@@ -30,7 +30,7 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
                         case 4: callshop "Shop_Spears",1; end;
                         case 5: callshop "Shop_Bows",1; end;
                         case 6: callshop "Shop_Maces",1; end;
-                        case 7: callshop "Shop_Axe",1; end;
+                        case 7: callshop "Shop_Axes",1; end;
                         case 8: callshop "Shop_Staffs",1; end;
                         case 9: callshop "Shop_Katars",1; end;
                         case 10: callshop "Shop_Knuckles",1; end;
