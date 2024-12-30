@@ -37,7 +37,7 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
                         case 11: callshop "Shop_Instruments",1; end;
                         case 12: callshop "Shop_Whips",1; end;
                         case 13: callshop "Shop_Books",1; end;
-                        case 14: callshop "Shop_Fuuma",1; end;
+                        case 14: callshop "Shop_Fuumas",1; end;
                         case 15: callshop "Shop_Guns",1; end;
                         case 16: end;
 
