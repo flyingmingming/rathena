@@ -10,7 +10,73 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 	mes "always here to support";
 	mes "you. So how can I be";
 	mes "of service today?";
-	callfunc "F_Kafra",5,7,0,40,800;
+
+	switch(select("Save:Use Storage:Use Guild Storage:Cancel"))
+	{
+		case 1:
+			mes "Your Respawn Point";
+			mes "has been saved here";
+			mes "at the Front Lines!";
+			mes "Thank you for using";
+			mes "the Kafra Services.";		
+		end;
+
+		case 2:
+			// Unable to access Normal Storage (Insufficient Basic Skills)
+			if (!callfunc("F_CanOpenStorage")) {
+				mes "[Kafra Employee]";
+				mes "I'm sorry, but you";
+				mes "need the Novice's";
+				mes "Basic Skill Level 6 to";
+				mes "use the Storage Service.";
+				end;
+			}		
+			mes "[Kafra Employee]";
+			mes "Here, let me open";
+			mes "your Storage for you.";
+			mes "Thank you for using";
+			mes "the Kafra Service.";
+			close2;
+			openstorage;
+			cutin "", 255;				
+		end;
+
+		case 3:
+			switch(guildopenstorage())
+			{
+				case GSTORAGE_STORAGE_ALREADY_OPEN:
+					mes "[Guild Warehouse]";
+					mes "You are using your storage.";
+					mes "Please wait a while, then come back.";
+					break;
+				case GSTORAGE_ALREADY_OPEN:
+					mes "[Guild Warehouse]";
+					mes "The guild warehouse is being used right now.";
+					mes "Please wait a while, then come back.";
+					break;
+				case GSTORAGE_NO_GUILD:
+					mes "[Guild Warehouse]";
+					mes "You can't use this service if you're not in a guild!";
+					break;
+				case GSTORAGE_NO_STORAGE:
+					mes "[Guild Warehouse]";
+					mes "The guild does not have a guild storage.";
+					break;
+				case GSTORAGE_NO_PERMISSION:
+					mes "[Guild Warehouse]";
+					mes "You don't have permission to use the guild storage!";
+					break;
+			}
+			cutin "", 255;
+			close;		
+		end;
+
+		case 4:
+		end;
+	}
 	savepoint "front_lines",150,133,1,1;
 	callfunc "F_KafEnd",0,1,"to the Front Lines!";
+	//callfunc "F_Kafra",5,7,0,40,800;
+	//savepoint "front_lines",150,133,1,1;
+	//callfunc "F_KafEnd",0,1,"to the Front Lines!";
 }
