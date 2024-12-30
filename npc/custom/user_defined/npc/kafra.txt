@@ -59,10 +59,6 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 					mes "[Kafra Employee]";
 					mes "You can't use this service if you're not in a guild!";
 					break;
-				case GSTORAGE_NO_STORAGE:
-					mes "[Kafra Employee]";
-					mes "The guild does not have a guild storage.";
-					break;
 				case GSTORAGE_NO_PERMISSION:
 					mes "[Kafra Employee]";
 					mes "You don't have permission to use the guild storage!";
