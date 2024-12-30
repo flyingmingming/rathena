@@ -14,7 +14,7 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 	switch(select("Save:Use Storage:Use Guild Storage:Cancel"))
 	{
 		case 1:
-
+			mes "[Kafra Employee]";
 			mes "Your Respawn Point";
 			mes "has been saved here";
 			mes "at the Front Lines!";
@@ -46,25 +46,25 @@ front_lines,156,140,3	script	Kafra Employee::kaf_frontlines	4_F_KAFRA1,{
 			switch(guildopenstorage())
 			{
 				case GSTORAGE_STORAGE_ALREADY_OPEN:
-					mes "[Guild Warehouse]";
+					mes "[Kafra Employee]";
 					mes "You are using your storage.";
 					mes "Please wait a while, then come back.";
 					break;
 				case GSTORAGE_ALREADY_OPEN:
-					mes "[Guild Warehouse]";
+					mes "[Kafra Employee]";
 					mes "The guild warehouse is being used right now.";
 					mes "Please wait a while, then come back.";
 					break;
 				case GSTORAGE_NO_GUILD:
-					mes "[Guild Warehouse]";
+					mes "[Kafra Employee]";
 					mes "You can't use this service if you're not in a guild!";
 					break;
 				case GSTORAGE_NO_STORAGE:
-					mes "[Guild Warehouse]";
+					mes "[Kafra Employee]";
 					mes "The guild does not have a guild storage.";
 					break;
 				case GSTORAGE_NO_PERMISSION:
-					mes "[Guild Warehouse]";
+					mes "[Kafra Employee]";
 					mes "You don't have permission to use the guild storage!";
 					break;
 			}
