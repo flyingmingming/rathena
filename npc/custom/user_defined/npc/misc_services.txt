@@ -152,8 +152,7 @@ S_PlagiarizeSkill:
 		//Must Plagiarism skil be learned? (1. Yes | 0. No)
 		.plag_skill = 1;
 		//Skill ID Array
-		setarray .SkillID[0],
-            SM_BASH263,13, 7,14,19,20,21,83,84,85,86,89,90,91,421,534,536,537,540,542;
+		setarray .SkillID[0],263,13, 7,14,19,20,21,83,84,85,86,89,90,91,421,534,536,537,540,542;
 		//Skill LV Array
 		setarray .SkillLV[0], 10,10,10,10,10,10,10,10,10,10,10,10,10,5,   7, 10,  5, 10, 19,  5;
 		end;
