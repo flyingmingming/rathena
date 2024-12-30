@@ -171,14 +171,7 @@ S_PlagiarizeSkill:
 		end;
 	if (.zeny > 0)
 		Zeny -= .zeny;
-    if (.@PlagSkillsID[.@s] == 421)
-    {
-        plagiarizeskill .@PlagSkillsID[.@s],7;
-    }
-    else
-    {
-        plagiarizeskill .@PlagSkillsID[.@s],.@plagSkillLevelMax;
-    }
+    plagiarizeskill .@PlagSkillsID[.@s],.@plagSkillLevelMax;
     
     mes "Here you go!";
 return;
