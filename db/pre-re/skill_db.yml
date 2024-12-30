@@ -6381,7 +6381,7 @@ Body:
           Amount: 1
   - Id: 229
     Name: AM_DEMONSTRATION
-    Description: Bomb
+    Description: Acid Bomb
     MaxLevel: 5
     Type: Weapon
     TargetType: Ground
@@ -6764,7 +6764,7 @@ Body:
     Status: AutoGuard
   - Id: 250
     Name: CR_SHIELDCHARGE
-    Description: Smite
+    Description: Shield Charge
     MaxLevel: 5
     Type: Weapon
     TargetType: Attack
