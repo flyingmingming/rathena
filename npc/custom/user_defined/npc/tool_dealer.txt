@@ -1,9 +1,5 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
-
-
-mes getiteminfo("Red_Potion",17);
-end;
-/*
+disable_items;
 function Add;
 
 
@@ -18,10 +14,14 @@ function Add {
 
 OnInit:
 
+Add("Red_Potion",50);
+Add("White_Potion",50);
+
+callshop "Shop_Consume",1;
+
 end;
 
 
-*/
 }
 
 //-	shop	Shop_Consumables	,601:60,602:300,506:40,547:3000,545:300,645:1000,656:1500,657:3000,1065:100,522:8500,505:5000,610:5000,12020:1000,523:500,713:500,12070:15000,14579:15000,12045:15000,12050:15000,12055:15000,12060:15000

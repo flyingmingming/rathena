@@ -13,6 +13,7 @@
 // Mall in One NPC
 //============================================================
 front_lines,198,181,4	script	Mari	4_f_thaigirl,{
+    disable_items;
     set .@MiscMenu$,"^0000FF ~ Ammunitions^000000:^0000FF ~ Crafting^000000:^0000FF ~ Misc^000000:^FF0000Sell Items^000000: Cancel";
         switch(select(.@MiscMenu$)) 
         {
