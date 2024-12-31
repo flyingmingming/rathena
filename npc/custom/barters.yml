@@ -50,6 +50,8 @@ Body:
     Items:
       - Index: 0
         Item: Wing_Of_Angel_Move
+        Stock: 5
+        Zeny: 10000000
         RequiredItems:
           - Index: 0
             Item: Apple
@@ -68,6 +70,8 @@ Body:
             Amount: 10
       - Index: 1
         Item: C_Bloody_Wing
+        Stock: 5
+        Zeny: 10000000        
         RequiredItems:
           - Index: 0
             Item: Banana
