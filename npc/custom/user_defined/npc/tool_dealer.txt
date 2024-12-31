@@ -42,13 +42,13 @@ npcshopdelitem .ShopName$,909;
 //delete list of items
 for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
-    callfunc F_NpcShopDelItemByName,.ShopName$,.@ItemList$[.@i];
+    callfunc F_NpcShopDelItemByName(.ShopName$,.@ItemList$[.@i]);
 }
 
 //add list of items
 for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
-    callfunc F_NpcShopAddItemByName,.ShopName$,.@ItemList$[.@i],atoi(.@ItemList$[.@i+1]);
+    callfunc F_NpcShopAddItemByName(.ShopName$,.@ItemList$[.@i],atoi(.@ItemList$[.@i+1]));
 }
 
 
