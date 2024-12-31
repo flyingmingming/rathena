@@ -22,16 +22,30 @@ return;
 
 OnInit:
 
-deletearray .ItemList[0], getarraysize(.ItemList);
-setarray .ItemList[0],"White_Potion";
+deletearray .ItemList$[0], getarraysize(.ItemList$);
+setarray .ItemList$[0], "Wing_Of_Fly","-1",
+                        "Wing_Of_Butterfly","-1",
+                        "Siege_White_Potion","1000",
+                        "Siege_Blue_Potion","4000",
+                        "Green_Potion","-1",
+                        "Panacea","-1",
+                        "Green_Herb","-1",
+                        "Center_Potion","-1",
+                        "Awakening_Potion","-1",
+                        "Berserk_Potion","-1";
+
 
 npcshopdelitem "Shop_Consume",909;
-RemoveShopItem("Red_Potion");
-RemoveShopItem("White_Potion");
 
-AddShopItem("Red_Potion",-1);
-AddShopItem("White_Potion",-1);
+for (.@i=0 ; .@i < getarraysize(.ItemList$) ; .@i+2)
+{
+    RemoveShopItem(.ItemList$[.@i]);
+}
 
+for (.@i=0 ; .@i < getarraysize(.ItemList$) ; .@i+2)
+{
+    AddShopItem(.ItemList$[.@i],.ItemList$[.@i+1]);
+}
 
 
 end;
