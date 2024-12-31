@@ -72,16 +72,24 @@ OnInit:
     
     for (.@i = 0 ; .@i < getarraysize(.@WeapList$) ; .@i++)
     {
-        deletearray getd(".@WeapList_" + .@WeapList[.@i] + "[0]"), getarraysize(getd(".@WeapList_" + .@WeapList[.@i]));
+        //deletearray getd(".@WeapList_" + .@WeapList[.@i] + "[0]"), getarraysize(getd(".@WeapList_" + .@WeapList[.@i]));
+        npcshopdelitem "Shop_" + .@WeapList[.@i],909;
     }
 
     setarray .@WeapList_Daggers$[0],    "Wing_Of_Fly",                  "-1",
                                         "Wing_Of_Butterfly",            "-1",
                                         "Siege_White_Potion",           "1000";
 
+     //add list of items
+    for (.@i = 0 ; .@i < getarraysize(.@WeapList$) ; .@i++)
+    {
+        for(set .@j,0; .@j<getarraysize(getd(".@WeapList_" + .@WeapList$[.@i] + "$")); set .@j,.@j+2)
+        {
+            callfunc "F_NpcShopAddItemByName","Shop_" + .@WeapList[.@i],getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + .@j + "]"),atoi(getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + .@j+1 + "]"));
+        } 
+    }
 
-
-    npcshopdelitem "Shop_Daggers",909;
+  
 
 end;
 }
