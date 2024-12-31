@@ -1,7 +1,7 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
 function AddShopItem;function RemoveShopItem;
 
-
+callshop "Shop_Consume",1;
 
 function AddShopItem {
 	if (getitemname(getarg(0)) == "null") {
@@ -21,9 +21,6 @@ return;
 
 
 OnInit:
-
-callshop "Shop_Consume",1;
-npcshopattach "Shop_Consume";
 
 deletearray .ItemList[0], getarraysize(.ItemList);
 setarray .ItemList[0],"White_Potion";
