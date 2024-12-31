@@ -131,7 +131,6 @@ OnInit:
                                                         "Two_Handed_Axe_",               "100000",     
                                                         "Orcish_Axe",                    "30000",
                                                         "War_Axe",                       "100000";
-;
 
      setarray .@WeapList_Staffs$[0],                    "Rod_",                          "5000",
                                                         "Staff_",                        "25000",
@@ -189,12 +188,36 @@ OnInit:
                                                         "Destroyer_",                      "400000";                                                            
 
 
-    setarray .@ArmorList_Armors$[0],                    "Wing_Of_Fly",                  "1001",
-                                                        "Wing_Of_Butterfly",            "2001";
-    setarray .@ArmorList_Shields$[0],                   "Wing_Of_Fly",                  "30",
-                                                        "Wing_Of_Butterfly",            "50",
-                                                        "Siege_White_Potion",           "100";
+    setarray .@ArmorList_Armors$[0],                    "G_Strings",                  "5000",
+                                                        "Coat_",                  "50000",
+                                                        "Formal_Suit",            "100000",
+                                                        "Plate_Armor_",            "200000",                                                        
+                                                        "Ninja_Suit_",            "200000",
+                                                        "Tights_",            "200000";
 
+    setarray .@ArmorList_Shields$[0],                   "Guard_",                  "100000",
+                                                        "Buckler_",            "100000",
+                                                        "Mirror_Shield_",            "100000",
+                                                        "Shield_",            "100000";
+
+    setarray .@ArmorList_Garments$[0],                   "Undershirt",                  "5000",
+                                                        "Hood_",            "100000",
+                                                        "Muffler_",            "100000",
+                                                        "Manteau_",            "100000",
+                                                        "Pauldron",            "100000";
+
+    setarray .@ArmorList_Footgears$[0],                   "Sandals_",                  "5000",
+                                                        "Shoes_",            "100000",
+                                                        "Boots_",            "100000",
+                                                        "Grave_",            "100000";
+
+
+    setarray .@ArmorList_Accessories$[0],                   "Belt",                  "-1",
+                                                        "Brooch",            "200000",
+                                                        "Glove",            "200000",
+                                                        "Necklace",            "200000",
+                                                        "Ring",            "200000",
+                                                        "Rosary_",            "200000";
 
      //delete list of items #weaps
     for (set .@i,0 ; .@i < getarraysize(.@WeapList$) ; set .@i, .@i+1)
