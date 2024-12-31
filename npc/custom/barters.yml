@@ -46,10 +46,10 @@ Header:
   Version: 1
 
 Body:
-  - Name: barter_test_xx
+  - Name: barter_costume_garment
     Items:
       - Index: 0
-        Item: Banana
+        Item: Wing_Of_Angel_Move
         RequiredItems:
           - Index: 0
             Item: Apple
