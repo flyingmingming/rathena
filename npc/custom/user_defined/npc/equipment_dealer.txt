@@ -47,13 +47,10 @@ case 3: callshop "Shop_SellItems",2; end;
 case 4: end;
 }
 
-
-
-
-
 OnInit:
 
-    deletearray .@WeapList[0], getarraysize(.@WeapList$);
+    deletearray .@WeapList$[0], getarraysize(.@WeapList$);
+    deletearray .@ArmorList$[0], getarraysize(.@ArmorList$);
     setarray .@WeapList$[0],"Daggers",
                             "OneHandedSwords",
                             "TwoHandedSwords",
@@ -69,12 +66,25 @@ OnInit:
                             "Books",
                             "Fuumas",
                             "Guns";
-    
+    setarray .@ArmorList$[0],"Armors",
+                            "Shields",
+                            "Garments",
+                            "Footgears",
+                            "Accessories";   
+
+    //clear array values to avoid duplicate, remove default item in shop (jellopy) #weapons
     for (.@i = 0 ; .@i < getarraysize(.@WeapList$) ; .@i++)
     {
         deletearray getd(".@WeapList_" + .@WeapList$[.@i] + "[0]"), getarraysize(getd(".@WeapList_" + .@WeapList$[.@i]));
         npcshopdelitem "Shop_" + .@WeapList$[.@i],909;
     }
+    //clear array values to avoid duplicate, remove default item in shop (jellopy) #armors
+    for (.@i = 0 ; .@i < getarraysize(.@ArmorList$) ; .@i++)
+    {
+        deletearray getd(".@ArmorList_" + .@ArmorList$[.@i] + "[0]"), getarraysize(getd(".@ArmorList_" + .@ArmorList$[.@i]));
+        npcshopdelitem "Shop_" + .@ArmorList$[.@i],909;
+    }
+
 
     setarray .@WeapList_Daggers$[0],                    "Wing_Of_Fly",                  "-1",
                                                         "Wing_Of_Butterfly",            "-1",
@@ -82,8 +92,15 @@ OnInit:
     setarray .@WeapList_OneHandedSwords$[0],            "Wing_Of_Fly",                  "100",
                                                         "Wing_Of_Butterfly",            "500",
                                                         "Siege_White_Potion",           "1000";
+                                                        
+    setarray .@ArmorList_Armors$[0],                    "Wing_Of_Fly",                  "1001",
+                                                        "Wing_Of_Butterfly",            "2001",
+    setarray .@ArmorList_Shields$[0],                   "Wing_Of_Fly",                  "30",
+                                                        "Wing_Of_Butterfly",            "50",
+                                                        "Siege_White_Potion",           "100";
 
-     //delete list of items
+
+     //delete list of items #weaps
     for (set .@i,0 ; .@i < getarraysize(.@WeapList$) ; set .@i, .@i+1)
     {
         for(set .@j,0; .@j<getarraysize(getd(".@WeapList_" + .@WeapList$[.@i] + "$")); set .@j,.@j+2)
@@ -92,15 +109,32 @@ OnInit:
         } 
     }
 
-     //add list of items
+     //add list of items #weaps
     for (set .@i,0 ; .@i < getarraysize(.@WeapList$) ; set .@i, .@i+1)
     {
         for(set .@j,0; .@j<getarraysize(getd(".@WeapList_" + .@WeapList$[.@i] + "$")); set .@j,.@j+2)
         {
             callfunc "F_NpcShopAddItemByName","Shop_" + .@WeapList$[.@i],"" + getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + .@j + "]"),atoi("" + getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + (.@j+1) + "]"));
         } 
-    }
+    }    
 
+     //delete list of items #armors
+    for (set .@i,0 ; .@i < getarraysize(.@ArmorList$) ; set .@i, .@i+1)
+    {
+        for(set .@j,0; .@j<getarraysize(getd(".@ArmorList_" + .@ArmorList$[.@i] + "$")); set .@j,.@j+2)
+        {
+            callfunc "F_NpcShopDelItemByName","Shop_" + .@ArmorList$[.@i],"" + getd(".@ArmorList_" + .@ArmorList$[.@i] + "$" + "[" + .@j + "]");
+        } 
+    }    
+
+     //add list of items #armors
+    for (set .@i,0 ; .@i < getarraysize(.@ArmorList$) ; set .@i, .@i+1)
+    {
+        for(set .@j,0; .@j<getarraysize(getd(".@ArmorList_" + .@ArmorList$[.@i] + "$")); set .@j,.@j+2)
+        {
+            callfunc "F_NpcShopAddItemByName","Shop_" + .@ArmorList$[.@i],"" + getd(".@ArmorList_" + .@ArmorList$[.@i] + "$" + "[" + .@j + "]"),atoi("" + getd(".@ArmorList_" + .@ArmorList$[.@i] + "$" + "[" + (.@j+1) + "]"));
+        } 
+    }
   
 
 end;
@@ -121,6 +155,13 @@ end;
 -	shop	Shop_Fuumas	-1,909:-1
 -	shop	Shop_Guns	-1,909:-1
 
+
+-	shop	Shop_Armors	-1,909:-1
+-	shop	Shop_Shields	-1,909:-1
+-	shop	Shop_Garments	-1,909:-1
+-	shop	Shop_Footgears	-1,909:-1
+-	shop	Shop_Accessories	-1,909:-1
+
 /*
 -	shop	Shop_Maces	-,1502:10000,1505:20000,1511:20000,1514:-1,1517:-1,1520:50000,1522:100000,1523:25000,1528:50000,1529:50000,1531:50000
 -	shop	Shop_Knuckles	-,1802:20000,1804:50000,1806:60000,1808:75000,1810:70000,1812:60000,1813:100000,1814:100000,1822:150000
@@ -137,4 +178,11 @@ end;
 -	shop	Shop_Bows	-,1702:20000,1705:50000,1708:20000,1720:50000,1723:75000,1724:75000,1725:75000
 -	shop	Shop_Staffs	-,1602:20000,1605:20000,1608:20000,1611:45000,1618:85000,1620:85000,1622:50000,1624:50000,1625:50000,1626:50000
 -	shop	Shop_Katars	-,1251:50000,1253:100000,1255:75000,1261:125000,1262:20000,1263:20000,1265:100000,1275:100000,1276:100000,1277:100000,1278:100000
+
+-	shop	Shop_Armors	-,2304:10000,2306:20000,2308:20000,2310:50000,2311:50000,2313:50000,2315:75000,2317:100000,2322:20000,2326:60000,2331:75000,2342:100000,2353:75000,2364:150000,2367:100000,2399:50000
+-	shop	Shop_Accessories	-,2621:-1,2622:-1,2624:30000,2618:10000,2625:30000,2626:30000,2674:10000,2648:50000,2649:50000,2627:-1,2701:75000
+-	shop	Shop_Shields	-,2102:10000,2106:60000,2108:60000,2110:85000,2114:30000,2116:30000,2123:50000,2124:50000
+-	shop	Shop_Footgears	-,2404:10000,2406:20000,2409:30000,2412:50000,2417:50000,2418:50000,2424:50000,2425:20000
+-	shop	Shop_Garments	-,2504:10000,2506:40000,2507:82000,2508:56000,2514:50000,2518:60000,2519:60000,2528:85000,2531:10000,2553:10000
+
 */
