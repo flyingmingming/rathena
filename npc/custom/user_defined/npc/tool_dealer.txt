@@ -8,7 +8,7 @@ function Add {
 	if (getitemname(getarg(0)) == "null") {
 		return;
 	}
-	npcshopadditem "Shop_Consume",getarg(0),getarg(1);
+	npcshopadditem "Shop_Consume",getiteminfo(getarg(0),17),getarg(1);
 	return;
 }
 
