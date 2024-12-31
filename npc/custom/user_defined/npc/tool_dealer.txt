@@ -23,11 +23,11 @@ return;
 
 OnInit:
 npcshopdelitem "Shop_Consume",909;
-RemoveShopItem("Red_Potion",50);
-RemoveShopItem("White_Potion",50);
+RemoveShopItem("Red_Potion");
+RemoveShopItem("White_Potion");
 
-AddShopItem("Red_Potion",50);
-AddShopItem("White_Potion",50);
+AddShopItem("Red_Potion",-1);
+AddShopItem("White_Potion",-1);
 
 
 callshop "Shop_Consume",1;
