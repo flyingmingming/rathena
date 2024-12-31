@@ -73,7 +73,7 @@ OnInit:
     for (.@i = 0 ; .@i < getarraysize(.@WeapList$) ; .@i++)
     {
         //deletearray getd(".@WeapList_" + .@WeapList[.@i] + "[0]"), getarraysize(getd(".@WeapList_" + .@WeapList[.@i]));
-        npcshopdelitem getd("Shop_" + .@WeapList[.@i]),909;
+        npcshopdelitem "Shop_" + .@WeapList[.@i],909;
     }
 
     setarray .@WeapList_Daggers$[0],    "Wing_Of_Fly",                  "-1",
