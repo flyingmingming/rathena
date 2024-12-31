@@ -200,7 +200,7 @@ OnInit:
                                                         "Mirror_Shield_",            "100000",
                                                         "Shield_",            "100000";
 
-    setarray .@ArmorList_Garments$[0],                   "Undershirt",                  "5000",
+    setarray .@ArmorList_Garments$[0],                   "Undershirt",                  "-1",
                                                         "Hood_",            "100000",
                                                         "Muffler_",            "100000",
                                                         "Manteau_",            "100000",
