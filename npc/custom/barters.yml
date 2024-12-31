@@ -66,3 +66,15 @@ Body:
           - Index: 4
             Item: White_Potion
             Amount: 10
+      - Index: 1
+        Item: C_Bloody_Wing
+        RequiredItems:
+          - Index: 0
+            Item: Banana
+            Amount: 10
+          - Index: 1
+            Item: Siege_White_Potion
+            Amount: 10
+          - Index: 2
+            Item: Siege_Blue_Potion
+            Amount: 10                 
