@@ -94,7 +94,7 @@ OnInit:
                                                         "Siege_White_Potion",           "1000";
                                                         
     setarray .@ArmorList_Armors$[0],                    "Wing_Of_Fly",                  "1001",
-                                                        "Wing_Of_Butterfly",            "2001",
+                                                        "Wing_Of_Butterfly",            "2001";
     setarray .@ArmorList_Shields$[0],                   "Wing_Of_Fly",                  "30",
                                                         "Wing_Of_Butterfly",            "50",
                                                         "Siege_White_Potion",           "100";
