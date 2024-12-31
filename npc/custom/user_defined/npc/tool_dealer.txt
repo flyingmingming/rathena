@@ -1,8 +1,9 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
-function AddShopItem;function RemoveShopItem;
+//function AddShopItem;function RemoveShopItem;
+disable_items;
+callshop .ShopName$,1;
 
-callshop "Shop_Consume",1;
-
+/*
 function AddShopItem {
 	if (getitemname(getarg(0)) == "null") {
 		return;
@@ -18,33 +19,36 @@ function RemoveShopItem {
 	npcshopdelitem "Shop_Consume",getiteminfo(getarg(0),17);
 return;
 }
-
+*/
 
 OnInit:
+set .ShopName$, "Shop_Consume";
 
 deletearray .@ItemList$[0], getarraysize(.@ItemList$);
-setarray .@ItemList$[0], "Wing_Of_Fly","-1",
-                        "Wing_Of_Butterfly","-1",
-                        "Siege_White_Potion","1000",
-                        "Siege_Blue_Potion","4000",
-                        "Green_Potion","-1",
-                        "Panacea","-1",
-                        "Green_Herb","-1",
-                        "Center_Potion","-1",
-                        "Awakening_Potion","-1",
-                        "Berserk_Potion","-1";
+setarray .@ItemList$[0],"Wing_Of_Fly",                  "-1",
+                        "Wing_Of_Butterfly",            "-1",
+                        "Siege_White_Potion",           "1000",
+                        "Siege_Blue_Potion",            "4000",
+                        "Green_Potion",                 "-1",
+                        "Panacea",                      "800",
+                        "Green_Herb",                   "500",
+                        "Center_Potion",                "1000",
+                        "Awakening_Potion",             "2000",
+                        "Berserk_Potion",               "4000",
+                        "Booby_Trap",                   "200";
 
 
-npcshopdelitem "Shop_Consume",909;
-
+npcshopdelitem .ShopName$,909;
+//delete list of items
 for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
-    RemoveShopItem(.@ItemList$[.@i]);
+    callfunc F_NpcShopDelItemByName,.ShopName$,.@ItemList$[.@i];
 }
 
+//add list of items
 for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
-    AddShopItem(.@ItemList$[.@i],atoi(.@ItemList$[.@i+1]));
+    callfunc F_NpcShopAddItemByName,.ShopName$,.@ItemList$[.@i],atoi(.@ItemList$[.@i+1]);
 }
 
 

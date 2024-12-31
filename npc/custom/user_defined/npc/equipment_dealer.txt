@@ -13,7 +13,8 @@
 // Mall in One NPC
 //============================================================
 front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
-        disable_items;
+function AddShopItem;function RemoveShopItem;
+disable_items;
         switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000Sell Items^000000:Cancel")) 
         {
         case 1:
@@ -60,5 +61,27 @@ front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
         case 3: callshop "Shop_SellItems",2; end;
         case 4: end;
         }
+
+function AddShopItem {
+	if (getitemname(getarg(0)) == "null") {
+		return;
+	}
+	npcshopadditem "Shop_Consume",getiteminfo(getarg(0),17),getarg(1);
+return;
+}
+
+function RemoveShopItem {
+	if (getitemname(getarg(0)) == "null") {
+		return;
+	}
+	npcshopdelitem "Shop_Consume",getiteminfo(getarg(0),17);
+return;
+}
+
+
+
+OnInit:
+
+end;
 
 }

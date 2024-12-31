@@ -1,0 +1,23 @@
+//////////////////////////////////////////////////////////////////////////////////
+// Add Item to Shop by Aegis_Name.
+// -- callfunc "F_NpcShopAddItemByName,<ShopName>,<Aegis_Name>,<String Price>"
+//////////////////////////////////////////////////////////////////////////////////
+function	script	F_NpcShopAddItemByName	{
+	if (getitemname(getarg(1)) == "null") {
+		return;
+	}
+	npcshopadditem getarg(0),getiteminfo(getarg(1),17),getarg(2);
+return;
+}
+
+//////////////////////////////////////////////////////////////////////////////////
+// Remove Item to Shop by Aegis_Name.
+// -- callfunc "F_NpcShopDelItemByName,<ShopName>,<Aegis_Name>,<String Price>"
+//////////////////////////////////////////////////////////////////////////////////
+function	script	F_NpcShopDelItemByName	{
+	if (getitemname(getarg(1)) == "null") {
+		return;
+	}
+	npcshopdelitem getarg(0),getiteminfo(getarg(1),17);
+return;
+}
