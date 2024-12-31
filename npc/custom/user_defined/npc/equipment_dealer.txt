@@ -1,87 +1,120 @@
-//===== Hercules Script =======================================
-//= Shop Street
-//===== By: ==================================================
-//= ThyroDree (Shopstreet) - Renew Mall Script
-//= Virtue(All in 1 Mall NPC)
-//===== Current Version: =====================================
-//= 1.0 [ThyroDree]
-//===== Compatible With: =====================================
-//= rAthena SVN
-//= Hercules SVN
-//= Judas SVN
-//===== Description: =========================================
-// Mall in One NPC
-//============================================================
 front_lines,189,181,4	script	Bari	4_m_thaiongbak,{
-function AddShopItem;function RemoveShopItem;
 disable_items;
-        switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000Sell Items^000000:Cancel")) 
+
+switch(select("^0000FF ~ Weapons^000000:^0000FF ~ Armors^000000:^FF0000Sell Items^000000:Cancel")) 
+{
+case 1:
+        set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
+                                + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000: "
+                                + "^0000FF~ Bows^000000:^0000FF ~ Maces^000000: ^0000FF~ Axes^000000: "
+                                + "^0000FF~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000: "
+                                + "^0000FF~ Instruments^000000:^0000FF ~ Whips^000000:^0000FF ~ Books^000000: "
+                                + "^0000FF~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
+        switch(select(.@weapSelections$)) 
         {
-        case 1:
-                set .@weapSelections$, "^0000FF ~ Daggers^000000:^0000FF ~ One-Handed Swords^000000: "
-                                        + "^0000FF~ Two-Handed Swords^000000:^0000FF ~ Spears^000000: "
-                                        + "^0000FF~ Bows^000000:^0000FF ~ Maces^000000: ^0000FF~ Axes^000000: "
-                                        + "^0000FF~ Staffs^000000:^0000FF ~ Katars^000000:^0000FF ~ Knuckles^000000: "
-                                        + "^0000FF~ Instruments^000000:^0000FF ~ Whips^000000:^0000FF ~ Books^000000: "
-                                        + "^0000FF~ Fuuma^000000:^0000FF ~ Guns^000000:Cancel";
-                switch(select(.@weapSelections$)) 
-                {
-                        case 1: callshop "Shop_Daggers",1; end;
-                        case 2: callshop "Shop_OneHandedSwords",1; end;
-                        case 3: callshop "Shop_TwoHandedSwords",1; end;
-                        case 4: callshop "Shop_Spears",1; end;
-                        case 5: callshop "Shop_Bows",1; end;
-                        case 6: callshop "Shop_Maces",1; end;
-                        case 7: callshop "Shop_Axes",1; end;
-                        case 8: callshop "Shop_Staffs",1; end;
-                        case 9: callshop "Shop_Katars",1; end;
-                        case 10: callshop "Shop_Knuckles",1; end;
-                        case 11: callshop "Shop_Instruments",1; end;
-                        case 12: callshop "Shop_Whips",1; end;
-                        case 13: callshop "Shop_Books",1; end;
-                        case 14: callshop "Shop_Fuumas",1; end;
-                        case 15: callshop "Shop_Guns",1; end;
-                        case 16: end;
-
-                }
-        end;
-        case 2:
-                set .@armSelections$,"^0000FF ~ Armors^000000:^0000FF ~ Shields^000000: "
-                                        + "^0000FF~ Footgears^000000:^0000FF ~ Garments^000000: "
-                                        + "^0000FF~ Accessories^000000:Cancel";
-                switch(select(.@armSelections$)) 
-                {
-                        case 1: callshop "Shop_Armors", 1; end;
-                        case 2: callshop "Shop_Shields", 1; end;
-                        case 3: callshop "Shop_Footgears", 1; end;
-                        case 4: callshop "Shop_Garments", 1; end;
-                        case 5: callshop "Shop_Accessories", 1; end;  
-                        case 6: end;                      
-                }
-        case 3: callshop "Shop_SellItems",2; end;
-        case 4: end;
+                case 1: callshop "Shop_Daggers",1; end;
+                case 2: callshop "Shop_OneHandedSwords",1; end;
+                case 3: callshop "Shop_TwoHandedSwords",1; end;
+                case 4: callshop "Shop_Spears",1; end;
+                case 5: callshop "Shop_Bows",1; end;
+                case 6: callshop "Shop_Maces",1; end;
+                case 7: callshop "Shop_Axes",1; end;
+                case 8: callshop "Shop_Staffs",1; end;
+                case 9: callshop "Shop_Katars",1; end;
+                case 10: callshop "Shop_Knuckles",1; end;
+                case 11: callshop "Shop_Instruments",1; end;
+                case 12: callshop "Shop_Whips",1; end;
+                case 13: callshop "Shop_Books",1; end;
+                case 14: callshop "Shop_Fuumas",1; end;
+                case 15: callshop "Shop_Guns",1; end;
+                case 16: end;
         }
-
-function AddShopItem {
-	if (getitemname(getarg(0)) == "null") {
-		return;
-	}
-	npcshopadditem "Shop_Consume",getiteminfo(getarg(0),17),getarg(1);
-return;
+end;
+case 2:
+        set .@armSelections$,"^0000FF ~ Armors^000000:^0000FF ~ Shields^000000: "
+                                + "^0000FF~ Footgears^000000:^0000FF ~ Garments^000000: "
+                                + "^0000FF~ Accessories^000000:Cancel";
+        switch(select(.@armSelections$)) 
+        {
+                case 1: callshop "Shop_Armors", 1; end;
+                case 2: callshop "Shop_Shields", 1; end;
+                case 3: callshop "Shop_Footgears", 1; end;
+                case 4: callshop "Shop_Garments", 1; end;
+                case 5: callshop "Shop_Accessories", 1; end;  
+                case 6: end;                      
+        }
+case 3: callshop "Shop_SellItems",2; end;
+case 4: end;
 }
 
-function RemoveShopItem {
-	if (getitemname(getarg(0)) == "null") {
-		return;
-	}
-	npcshopdelitem "Shop_Consume",getiteminfo(getarg(0),17);
-return;
-}
+
 
 
 
 OnInit:
 
-end;
+    deletearray .@WeapList[0], getarraysize(.@WeapList$);
+    setarray .@WeapList$[0],"Daggers",
+                            "OneHandedSwords",
+                            "TwoHandedSwords",
+                            "Spears",
+                            "Bows",
+                            "Maces",
+                            "Axes",
+                            "Staffs",
+                            "Katars",
+                            "Knuckles",
+                            "Instruments",
+                            "Whips",
+                            "Books",
+                            "Fuumas",
+                            "Guns";
+    
+    for (.@i = 0 ; .@i < getarraysize(.@WeapList$) ; .@i++)
+    {
+        deletearray getd(".@WeapList_" + .@WeapList[.@i] + "[0]"), getarraysize(getd(".@WeapList_" + .@WeapList[.@i]));
+    }
 
+    setarray .@WeapList_Daggers$[0],    "Wing_Of_Fly",                  "-1",
+                                        "Wing_Of_Butterfly",            "-1",
+                                        "Siege_White_Potion",           "1000";
+
+
+
+    npcshopdelitem "Shop_Daggers",909;
+
+end;
 }
+-	shop	Shop_Daggers	-1,909:-1
+-	shop	Shop_OneHandedSwords	-1,909:-1
+-	shop	Shop_TwoHandedSwords	-1,909:-1
+-	shop	Shop_Spears	-1,909:-1
+-	shop	Shop_Bows	-1,909:-1
+-	shop	Shop_Maces	-1,909:-1
+-	shop	Shop_Axes	-1,909:-1
+-	shop	Shop_Staffs	-1,909:-1
+-	shop	Shop_Katars	-1,909:-1
+-	shop	Shop_Knuckles	-1,909:-1
+-	shop	Shop_Instruments	-1,909:-1
+-	shop	Shop_Books	-1,909:-1
+-	shop	Shop_Whips	-1,909:-1
+-	shop	Shop_Fuumas	-1,909:-1
+-	shop	Shop_Guns	-1,909:-1
+
+/*
+-	shop	Shop_Maces	-,1502:10000,1505:20000,1511:20000,1514:-1,1517:-1,1520:50000,1522:100000,1523:25000,1528:50000,1529:50000,1531:50000
+-	shop	Shop_Knuckles	-,1802:20000,1804:50000,1806:60000,1808:75000,1810:70000,1812:60000,1813:100000,1814:100000,1822:150000
+-	shop	Shop_Whips	-,1951:10000,1953:20000,1955:30000,1962:20000,1963:50000,1972:10000,1974:10000,1976:50000
+-	shop	Shop_Instruments	-,1902:10000,1904:20000,1906:-1,1908:50000,1913:50000,1914:50000,1915:50000,1916:50000,1917:50000
+-	shop	Shop_Books	-,1550:30000,1551:60000,1552:51000,1559:25000,1561:75000,1564:25000,1568:70000,1569:70000,1570:70000,1571:70000,1572:50000
+-	shop	Shop_Guns	-,13103:60000,13105:100000,13106:200000,13101:10000,13150:6000,13152:30000,13153:50000,13155:60000,13156:100000,13154:30000,13159:250000,13157:150000,13161:300000,13162:500000
+-	shop	Shop_Fuumas	-,7522:500,7521:500,7523:500
+-	shop	Shop_OneHandedSwords	-,1108:10000,1117:10000,1120:100000,1124:50000,1130:100000,1131:50000,1133:50000,1138:200000,1139:200000,1145:-1,1149:50000
+-	shop	Shop_TwoHandedSwords	-,1155:50000,1158:90000,1163:120000,1164:50000,1165:50000,1166:75000,1168:50000,1169:500000,1172:200000,1175:75000
+-	shop	Shop_Spears	-,1405:20000,1408:50000,1415:100000,1417:75000,1421:75000,1422:25000
+-	shop	Shop_Daggers	-,1208:20000,1211:20000,1217:20000,1223:50000,1231:75000,1235:75000,1236:75000,1237:75000
+-	shop	Shop_Axes	-,1302:10000,1306:20000,1307:45000,1309:75000,1352:20000,1355:30000,1358:75000,1363:50000,1364:50000,1365:50000,1366:50000,1371:100000
+-	shop	Shop_Bows	-,1702:20000,1705:50000,1708:20000,1720:50000,1723:75000,1724:75000,1725:75000
+-	shop	Shop_Staffs	-,1602:20000,1605:20000,1608:20000,1611:45000,1618:85000,1620:85000,1622:50000,1624:50000,1625:50000,1626:50000
+-	shop	Shop_Katars	-,1251:50000,1253:100000,1255:75000,1261:125000,1262:20000,1263:20000,1265:100000,1275:100000,1276:100000,1277:100000,1278:100000
+*/
