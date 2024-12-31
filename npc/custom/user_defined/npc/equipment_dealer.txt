@@ -86,13 +86,110 @@ OnInit:
     }
 
 
-    setarray .@WeapList_Daggers$[0],                    "Wing_Of_Fly",                  "-1",
-                                                        "Wing_Of_Butterfly",            "-1",
-                                                        "Siege_White_Potion",           "1000";
-    setarray .@WeapList_OneHandedSwords$[0],            "Wing_Of_Fly",                  "100",
-                                                        "Wing_Of_Butterfly",            "500",
-                                                        "Siege_White_Potion",           "1000";
-                                                        
+    setarray .@WeapList_Daggers$[0],                    "Main_Gauche_",                  "-1",
+                                                        "Stiletto_",                     "-1",
+                                                        "Damascus_",                     "-1",
+                                                        "Kindling_Dagger",               "-1",
+                                                        "Obsidian_Dagger",               "-1",
+                                                        "Fisherman's_Dagger",            "-1",
+                                                        "Jujube_Dagger",                 "-1";
+
+    setarray .@WeapList_OneHandedSwords$[0],            "Blade_",                        "-1",
+                                                        "Saber_",                        "-1",
+                                                        "Hae_Dong_Gum_",                 "-1",
+                                                        "Tsurugi_",                      "-1",
+                                                        "Orcish_Sword",                  "-1",
+                                                        "Cutlas",                        "-1";
+
+    setarray .@WeapList_TwoHandedSwords$[0],            "Katana_",                        "-1",
+                                                        "Bastard_Sword_",                 "-1",
+                                                        "Two_Hand_Sword_",                "-1",
+                                                        "Claymore_",                      "-1",
+                                                        "Zweihander_",                    "-1",
+                                                        "Masamune",                       "-1";
+
+     setarray .@WeapList_Spears$[0],                    "Pike",                           "-1",
+                                                        "Battle_Fork",                    "-1",
+                                                        "Partizan_",                      "-1",
+                                                        "Halberd_",                       "-1",
+                                                        "Hell_Fire",                      "-1",
+                                                        "Zephyrus_",                      "-1";
+
+     setarray .@WeapList_Bows$[0],                      "Composite_Bow",                  "-1",
+                                                        "CrossBow_",                      "-1",
+                                                        "Kakkung_",                       "-1",
+                                                        "Arbalest_",                      "-1",
+                                                        "Hunter_Bow_",                    "-1";
+
+     setarray .@WeapList_Maces$[0],                     "Mace_",                          "-1",
+                                                        "Chain_",                         "-1",
+                                                        "Red_Square_Bag",                 "-1",
+                                                        "Spike_",                         "-1",
+                                                        "Stunner_",                       "-1";
+
+     setarray .@WeapList_Axes$[0],                      "Axe_",                          "-1",
+                                                        "Orcish_Axe",                    "-1",
+                                                        "War_Axe",                      "-1",
+                                                        "Battle_Axe_",                       "-1",
+                                                        "Hammer_",                      "-1",
+                                                        "Two_Handed_Axe_",                      "-1";
+
+     setarray .@WeapList_Staffs$[0],                    "Rod_",                          "-1",
+                                                        "Staff_",                    "-1",
+                                                        "Arc_Wand_",                      "-1",
+                                                        "Bone_Wand",                       "-1",
+                                                        "Survival_Rod",                      "-1",
+                                                        "Survival_Rod2",                      "-1";          
+
+     setarray .@WeapList_Katars$[0],                    "Jur_",                          "-1",
+                                                        "Katar_",                    "-1",
+                                                        "Jamadhar_",                      "-1",
+                                                        "Katar_Of_Cold_Icicle",                       "-1",
+                                                        "Katar_Of_Piercing_Wind",                      "-1",
+                                                        "Katar_Of_Thornbush",                      "-1",
+                                                        "Katar_Of_Raging_Blaze",                      "-1";    
+
+     setarray .@WeapList_Knuckles$[0],                  "Waghnakh_",                          "-1",
+                                                        "Hora_",                    "-1",
+                                                        "Claw_",                      "-1",
+                                                        "Finger_",                       "-1",
+                                                        "Combo_Battle_Glove",                      "-1";    
+
+     setarray .@WeapList_Instruments$[0],                    "Violin_",                          "-1",
+                                                        "Lute_",                    "-1",
+                                                        "Guitar_",                      "-1",
+                                                        "Harp_",                       "-1";    
+
+     setarray .@WeapList_Whips$[0],                    "Rope_",                          "-1",
+                                                        "Line_",                    "-1",
+                                                        "Electric_Wire",                      "-1",
+                                                        "Whip_Of_Earth",                       "-1",
+                                                        "Whip_Of_Ice_Piece",                      "-1",
+                                                        "Queen's_Whip_",                      "-1";    
+
+     setarray .@WeapList_Books$[0],                    "Book",                          "-1",
+                                                        "Encyclopedia",                    "-1",
+                                                        "Bible",                      "-1",
+                                                        "Book_Of_Billows_",                       "-1",
+                                                        "Book_Of_Blazing_Sun_",                      "-1",
+                                                        "Book_Of_Gust_Of_Wind_",                      "-1",
+                                                        "Book_Of_Mother_Earth_",                      "-1";    
+
+     setarray .@WeapList_Fuumas$[0],                    "Huuma_Giant_Wheel_",                          "-1",
+                                                        "Huuma_Blaze",                    "-1",
+                                                        "Huuma_Calm_Mind",                      "-1",
+                                                        "Huuma_Bird_Wing",                       "-1";    
+
+     setarray .@WeapList_Guns$[0],                    "Branch",                          "-1",
+                                                        "Long_Barrel_",                    "-1",
+                                                        "Crimson_Bolt_",                      "-1",
+                                                        "The_Garrison_",                       "-1",
+                                                        "Butcher_",                      "-1",
+                                                        "Thunder_P_",                      "-1",
+                                                        "Gate_Keeper",                      "-1",
+                                                        "Destroyer_",                      "-1";                                                            
+
+
     setarray .@ArmorList_Armors$[0],                    "Wing_Of_Fly",                  "1001",
                                                         "Wing_Of_Butterfly",            "2001";
     setarray .@ArmorList_Shields$[0],                   "Wing_Of_Fly",                  "30",
