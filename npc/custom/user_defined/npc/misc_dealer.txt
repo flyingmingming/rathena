@@ -39,7 +39,8 @@ OnInit:
     }
 
     deletearray .@ShopList_Ammunitions$[0], getarraysize(.@ShopList_Ammunitions$);
-    setarray .@ShopList_Ammunitions$[0],                    "Arrow",                  "-1",
+    setarray .@ShopList_Ammunitions$[0],        "Arrow",                  "-1",
+                                                "Silver_Arrow",            "-1",    
                                                 "Arrow_Of_Counter_Evil",                  "50",
                                                 "Arrow_Of_Shadow",                     "10",
                                                 "Arrow_Of_Wind",                     "10",
@@ -47,7 +48,6 @@ OnInit:
                                                 "Fire_Arrow",               "10",
                                                 "Immatrial_Arrow",            "10",
                                                 "Oridecon_Arrow",                 "50",
-                                                "Silver_Arrow",            "-1",
                                                 "Steel_Arrow",            "10",
                                                 "Stone_Arrow",            "10",
 
