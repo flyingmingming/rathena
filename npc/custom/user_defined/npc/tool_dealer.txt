@@ -37,12 +37,12 @@ setarray .@ItemList$[0], "Wing_Of_Fly","-1",
 
 npcshopdelitem "Shop_Consume",909;
 
-for (.@i=0 ; .@i < getarraysize(.@ItemList$) ; .@i+2)
+for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
     RemoveShopItem(.@ItemList$[.@i]);
 }
 
-for (.@i=0 ; .@i < getarraysize(.@ItemList$) ; .@i+2)
+for(set .@i,0; .@i<getarraysize(.@ItemList$); set .@i,.@i+2)
 {
     AddShopItem(.@ItemList$[.@i],atoi(.@ItemList$[.@i+1]));
 }
