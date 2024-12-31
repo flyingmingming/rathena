@@ -1,21 +1,34 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
 disable_items;
-function Add;
+function AddShopItem;
 
 
 
-function Add {
+function AddShopItem {
 	if (getitemname(getarg(0)) == "null") {
 		return;
 	}
 	npcshopadditem "Shop_Consume",getiteminfo(getarg(0),17),getarg(1);
-	return;
+return;
 }
 
-OnInit:
+function RemoveShopItem {
+	if (getitemname(getarg(0)) == "null") {
+		return;
+	}
+	npcshopdelitem "Shop_Consume",getiteminfo(getarg(0),17);
+return;
+}
 
-Add("Red_Potion",50);
-Add("White_Potion",50);
+
+OnInit:
+npcshopdelitem "Shop_Consume",909;
+RemoveShopItem("Red_Potion",50);
+RemoveShopItem("White_Potion",50);
+
+AddShopItem("Red_Potion",50);
+AddShopItem("White_Potion",50);
+
 
 callshop "Shop_Consume",1;
 
