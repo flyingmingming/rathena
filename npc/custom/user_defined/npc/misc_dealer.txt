@@ -74,6 +74,14 @@ OnInit:
                                                 "Kunai_Of_Furious_Wind",            "300",
                                                 "Kunai_Of_Icicle",            "300";
 
+    deletearray .@ShopList_Crafting$[0], getarraysize(.@ShopList_Crafting$);
+    setarray .@ShopList_Crafting$[0],        "Arrow",                  "-1",
+                                                "Silver_Arrow",            "-1",    
+                                                "Arrow_Of_Counter_Evil",                  "50",
+                                                "Arrow_Of_Shadow",                     "10",
+                                                "Arrow_Of_Wind",                     "10",
+                                                "Crystal_Arrow",               "10",
+                                                "Fire_Arrow",               "10";
 
      //delete list of items #shop
     for (set .@i,0 ; .@i < getarraysize(.@ShopList$) ; set .@i, .@i+1)
