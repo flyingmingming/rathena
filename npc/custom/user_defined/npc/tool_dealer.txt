@@ -1,6 +1,5 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
-disable_items;
-function AddShopItem;
+function AddShopItem;function RemoveShopItem;
 
 
 
@@ -22,6 +21,13 @@ return;
 
 
 OnInit:
+disable_items;
+callshop "Shop_Consume",1;
+npcshopattach "Shop_Consume";
+
+deletearray .ItemList[0], getarraysize(.ItemList);
+setarray .ItemList[0],"White_Potion";
+
 npcshopdelitem "Shop_Consume",909;
 RemoveShopItem("Red_Potion");
 RemoveShopItem("White_Potion");
@@ -30,7 +36,6 @@ AddShopItem("Red_Potion",-1);
 AddShopItem("White_Potion",-1);
 
 
-callshop "Shop_Consume",1;
 
 end;
 
