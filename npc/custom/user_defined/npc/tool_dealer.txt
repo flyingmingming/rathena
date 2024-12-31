@@ -1,5 +1,4 @@
 front_lines,179,181,4	script	Fari	4_f_thaishaman,{
-disable_items;
 function AddShopItem;function RemoveShopItem;
 
 
