@@ -83,6 +83,15 @@ OnInit:
                                                 "Crystal_Arrow",               "10",
                                                 "Fire_Arrow",               "10";
 
+    deletearray .@ShopList_Misc$[0], getarraysize(.@ShopList_Misc$);
+    setarray .@ShopList_Misc$[0],        "Arrow",                  "-1",
+                                                "Silver_Arrow",            "-1",    
+                                                "Arrow_Of_Counter_Evil",                  "50",
+                                                "Arrow_Of_Shadow",                     "10",
+                                                "Arrow_Of_Wind",                     "10",
+                                                "Crystal_Arrow",               "10",
+                                                "Fire_Arrow",               "10";
+
      //delete list of items #shop
     for (set .@i,0 ; .@i < getarraysize(.@ShopList$) ; set .@i, .@i+1)
     {
