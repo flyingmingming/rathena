@@ -1,4 +1,4 @@
-front_lines,189,181,4	script	Fari	4_f_thaishaman,{
+front_lines,179,181,4	script	Fari	4_f_thaishaman,{
 
 
 mes getiteminfo("Red_Potion",17);
