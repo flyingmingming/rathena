@@ -85,6 +85,7 @@ OnInit:
     {
         for(set .@j,0; .@j<getarraysize(getd(".@WeapList_" + .@WeapList$[.@i] + "$")); set .@j,.@j+2)
         {
+            dispbottom getd(".@WeapList_" + .@WeapList$[.@i] + "$");
             callfunc "F_NpcShopAddItemByName","Shop_" + .@WeapList[.@i],getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + .@j + "]"),atoi(getd(".@WeapList_" + .@WeapList$[.@i] + "$" + "[" + .@j+1 + "]"));
         } 
     }
