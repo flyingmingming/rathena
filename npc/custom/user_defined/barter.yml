@@ -45,9 +45,24 @@ Header:
   Type: BARTER_DB
   Version: 1
 
-Footer:
-  Imports:
-  - Path: npc/custom/user_defined/barter.yml
-#  - Path: npc/re/merchants/barters.yml
-#    Mode: Renewal
-#  - Path: npc/custom/barters.yml
+Body:
+  - Name: barter_costume_garment
+    Items:
+      - Index: 0
+        Item: Wing_Of_Angel_Move
+        RequiredItems:
+          - Index: 0
+            Item: Apple
+            Amount: 10
+          - Index: 1
+            Item: Red_Potion
+            Amount: 10
+          - Index: 2
+            Item: Yellow_Potion
+            Amount: 10
+          - Index: 3
+            Item: Orange_Potion
+            Amount: 10
+          - Index: 4
+            Item: White_Potion
+            Amount: 10
