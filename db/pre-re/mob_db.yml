@@ -42557,9 +42557,9 @@ Body:
     ClientAttackMotion: 288
     DamageMotion: 864
     Ai: 20
-  - Id: 18998
-    AegisName: BARRICADE
-    Name: Barricade
+  - Id: 3000
+    AegisName: TRAINING_DUMMY
+    Name: Training Dummy
     Level: 98
     Hp: 120000
     Agi: 17
