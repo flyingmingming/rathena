@@ -42557,28 +42557,3 @@ Body:
     ClientAttackMotion: 288
     DamageMotion: 864
     Ai: 20
-####
-  - Id: 18998
-    AegisName: TRAINING_DUMMY
-    Name: Training Dummy
-    Level: 98
-    Hp: 120000
-    Agi: 17
-    Int: 80
-    Dex: 126
-    Luk: 20
-    AttackRange: 1
-    SkillRange: 10
-    ChaseRange: 12
-    Size: Large
-    Race: Formless
-    RaceGroups:
-      Gvg: true
-    Element: Neutral
-    ElementLevel: 1
-    WalkSpeed: 300
-    AttackDelay: 1288
-    AttackMotion: 288
-    ClientAttackMotion: 0
-    DamageMotion: 384
-    Class: Boss
