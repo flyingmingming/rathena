@@ -9343,7 +9343,8 @@
 	//custom npc
 	export_constant_npc(JT_JOB_CHANGER_NPC);
 	export_constant_npc(JT_TOOL_DEALER_NPC);
-	
+	export_constant_npc(JT_TRAINING_DUMMY);
+
 	export_constant_npc(JT_NEW_NPC_3RD_END);
 
 
