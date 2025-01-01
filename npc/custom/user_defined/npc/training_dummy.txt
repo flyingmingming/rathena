@@ -2,7 +2,7 @@
 // by pajodex
 // Video preview : https://www.youtube.com/watch?v=RoLhYx-Iny8
 
-front_lines,60,109,0	script	Training Dummy	844,{
+front_lines,60,109,0	script	Training Dummy	TRAINING_DUMMY,{
 function get_size_name;
 function get_race_name;
 function get_ele_name;
