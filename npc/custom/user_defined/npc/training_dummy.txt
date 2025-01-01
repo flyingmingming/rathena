@@ -2,7 +2,7 @@
 // by pajodex
 // Video preview : https://www.youtube.com/watch?v=RoLhYx-Iny8
 
-front_lines,60,109,0	script	Training Dummy	TRAINING_DUMMY,{
+front_lines,60,109,0	script	Set Parameters#0	844,{
 function get_size_name;
 function get_race_name;
 function get_ele_name;
@@ -157,7 +157,7 @@ OnInit:
 
 OnMyMobDead:
 	getunitdata(getnpcid(0), .@d);
-	monster strnpcinfo(4),.@d[UNPC_X],.@d[UNPC_Y],"Punching Bag",(!checkre(0))?1905:2411,1,strnpcinfo(0)+"::OnMyMobDead";
+	monster strnpcinfo(4),.@d[UNPC_X],.@d[UNPC_Y],"Training Dummy",18998,1,strnpcinfo(0)+"::OnMyMobDead";
 	.@dupid = atoi(strnpcinfo(2));
 	.gid[.@dupid] = $@mobid[0];
 	.mhp[.@dupid] = .UMOB_MAXHP;
