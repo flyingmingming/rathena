@@ -42561,7 +42561,7 @@ Body:
     AegisName: TRAINING_DUMMY
     Name: Training Dummy
     Level: 98
-    Hp: 120000
+    Hp: 20000000
     Agi: 17
     Int: 80
     Dex: 126
