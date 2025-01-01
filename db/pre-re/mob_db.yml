@@ -42557,7 +42557,7 @@ Body:
     ClientAttackMotion: 288
     DamageMotion: 864
     Ai: 20
-  - Id: 30000
+  - Id: 22000
     AegisName: TRAINING_DUMMY
     Name: Training Dummy
     Level: 98
