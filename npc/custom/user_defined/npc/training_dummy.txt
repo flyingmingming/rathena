@@ -27,7 +27,9 @@ function get_ele_name;
 	do {
 		mes "Select which parameter to change.";
 		next;
-		switch(select("> Size [ ^ff0000"+(.@size_select ? get_size_name(.@UMOB_SIZE):get_size_name(.UMOB_SIZE))+"^000000 ]:> Level [ ^ff0000"+(.@UMOB_LEVEL ? .@UMOB_LEVEL:.UMOB_LEVEL)+"^000000 ]:> Race [ ^ff0000"+(.@race_select ? get_race_name(.@UMOB_RACE):get_race_name(.UMOB_RACE))+"^000000 ]:> Element [ ^ff0000"+(.@ele_select ? get_ele_name(.@UMOB_ELETYPE):get_ele_name(.UMOB_ELETYPE))+" Lv "+(.@UMOB_ELELEVEL ? .@UMOB_ELELEVEL:.UMOB_ELELEVEL)+"^000000 ]:> Stats:> Enter Mob ID:^0000ffDone^000000")) {
+		//switch(select("> Size [ ^ff0000"+(.@size_select ? get_size_name(.@UMOB_SIZE):get_size_name(.UMOB_SIZE))+"^000000 ]:> Level [ ^ff0000"+(.@UMOB_LEVEL ? .@UMOB_LEVEL:.UMOB_LEVEL)+"^000000 ]:> Race [ ^ff0000"+(.@race_select ? get_race_name(.@UMOB_RACE):get_race_name(.UMOB_RACE))+"^000000 ]:> Element [ ^ff0000"+(.@ele_select ? get_ele_name(.@UMOB_ELETYPE):get_ele_name(.UMOB_ELETYPE))+" Lv "+(.@UMOB_ELELEVEL ? .@UMOB_ELELEVEL:.UMOB_ELELEVEL)+"^000000 ]:> Stats:> Enter Mob ID:^0000ffDone^000000")) {
+		switch(select("> Size [ ^ff0000"+(.@size_select ? get_size_name(.@UMOB_SIZE):get_size_name(.UMOB_SIZE))+"^000000 ]:> Level [ ^ff0000"+(.@UMOB_LEVEL ? .@UMOB_LEVEL:.UMOB_LEVEL)+"^000000 ]:> Race [ ^ff0000"+(.@race_select ? get_race_name(.@UMOB_RACE):get_race_name(.UMOB_RACE))+"^000000 ]:> Element [ ^ff0000"+(.@ele_select ? get_ele_name(.@UMOB_ELETYPE):get_ele_name(.UMOB_ELETYPE))+" Lv "+(.@UMOB_ELELEVEL ? .@UMOB_ELELEVEL:.UMOB_ELELEVEL)+"^000000 ]:> Stats:^0000ffDone^000000")) 
+		{
 		case 1:
 			.@UMOB_SIZE = select("- Small:- Medium:- Large")-1;
 			.@size_select = true;
@@ -68,6 +70,7 @@ function get_ele_name;
 			input .@val, 1, .max_stat;
 			setd ".@UMOB_"+.@data$, .@val;
 			break;
+			/*
 		case 6:
 			mes "Enter Monster ID to simulate:";
 			next;
@@ -93,7 +96,7 @@ function get_ele_name;
 			mes "Fetching and applying data of monster '"+.@name_english$+"("+.@val+")' on punching bag...";
 			next;
 			break;
-	
+		*/
 		default: // Finalize
 			.@done = true;
 			break;
@@ -154,6 +157,7 @@ OnInit:
 	.UMOB_LUK = 5;
 	.UMOB_DEF = 10;
 	.UMOB_MDEF = 10;
+end;
 
 OnMyMobDead:
 	getunitdata(getnpcid(0), .@d);
