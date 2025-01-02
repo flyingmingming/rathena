@@ -46,3 +46,7 @@ Body:
    Ratio: 50
  - Item: Orleans_Glove
    Ratio: 50
+ - Item: Variant_Shoes
+   Ratio: 100
+ - Item: Bison_Horn
+   Ratio: 100      
