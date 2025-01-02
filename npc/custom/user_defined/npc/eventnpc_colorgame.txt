@@ -193,7 +193,7 @@ set .minBet, 100000;
 set .maxBet, 10000000;
 
 deletearray .Colors$[0], getarraysize(.Colors$);
-setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Light Blue", "Start", "Bronze", "Silver", "Gold";
+setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Light Blue", "Bronze", "Silver", "Gold";
 
 end;
 }
