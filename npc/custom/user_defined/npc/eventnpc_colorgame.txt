@@ -19,7 +19,7 @@ if (select("Yes:No") == 1)
     mes "[Color Game]";
     mes "How much do you wanna bet?";  
     input .@zenyInput;
-    if (Zeny < (.@zenyInput*3) && .@zenyInput > 10000)
+    if (Zeny > (.@zenyInput*3) && .@zenyInput > 10000)
     {  
         Zeny -= .@zenyInput*3;
 
