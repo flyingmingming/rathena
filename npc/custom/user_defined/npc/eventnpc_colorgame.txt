@@ -20,7 +20,7 @@ if (select("Yes:No") == 1)
     mes "How much do you wanna bet?";
     next;
     input .@zenyInput;
-    if (Zeny > (.@zenyInput*3) && .@zenyInput > 10000)
+    if (Zeny >= (.@zenyInput*3))
     {  
         Zeny -= .@zenyInput*3;
 
