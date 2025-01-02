@@ -43,6 +43,8 @@ Body:
  - Item: Oridecon_Stone
    Ratio: 100
 ######################################################
-#armors from mvp
+#armors
  - Item: Piece_Of_Angent_Skin
    Ratio: 50
+ - Item: Orleans_Glove
+   Ratio: 5   

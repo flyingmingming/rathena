@@ -90,6 +90,7 @@ Header:
 
 Body:
 ###########################################################################
+#gtb nerf magic immunity 100->70; remove use sp rate
   - Id: 4128
     AegisName: Golden_Bug_Card
     Name: Golden Thief Bug Card
@@ -102,7 +103,130 @@ Body:
       BuyingStore: true
     Script: |
       bonus bNoMagicDamage,70;
-      bonus bUseSPrate,100;
+#mistress buff remove use sp rate, int+1, dex+1
+  - Id: 4132
+    AegisName: Mistress_Card
+    Name: Mistress Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Low: true
+      Head_Mid: true
+      Head_Top: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bNoGemStone;
+      bonus bInt,1;
+      bonus bDex,1;
+#doppel boost aspdrate 10->12
+  - Id: 4142
+    AegisName: Doppelganger_Card
+    Name: Doppelganger Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bAspdRate,12;
+#drac boost chance of sp drain 100 (10%)->200 (20%), nerfed sp vamp 5->3
+  - Id: 4134
+    AegisName: Dracula_Card
+    Name: Dracula Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus2 bSPDrainRate,200,3;
+#maya boost magic reflect change 50->75      
+  - Id: 4146
+    AegisName: Maya_Card
+    Name: Maya Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Left_Hand: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bMagicDamageReturn,75;
+#pharaoh buff less sp rate 30->50, int+1, dex+1
+  - Id: 4148
+    AegisName: Pharaoh_Card
+    Name: Pharaoh Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Low: true
+      Head_Mid: true
+      Head_Top: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bUseSPrate,-50;
+      bonus bInt,1;
+      bonus bDex,1;
+#lord of death buff change 0.001->0.005      
+  - Id: 4276
+    AegisName: Lord_Of_Death_Card
+    Name: Lord of The Dead Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Right_Hand: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus3 bAddEff,Eff_Stun,500,ATF_SHORT;
+      bonus3 bAddEff,Eff_Curse,500,ATF_SHORT;
+      bonus3 bAddEff,Eff_Silence,500,ATF_SHORT;
+      bonus3 bAddEff,Eff_Poison,500,ATF_SHORT;
+      bonus3 bAddEff,Eff_Bleeding,500,ATF_SHORT;
+      bonus2 bComaClass,Class_Normal,5;      
+#bacsojin boost heal power 30->45; use sp rate nerf from 15->30
+  - Id: 4372
+    AegisName: Bacsojin_Card
+    Name: White Lady Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Head_Low: true
+      Head_Mid: true
+      Head_Top: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bHealPower,45;
+      bonus bUseSPrate,30;
+#fbh boost matkrate 10->15; nerf extra magic dmg to race 50->40
+  - Id: 4441
+    AegisName: Fallen_Bishop_Card
+    Name: Fallen Bishop Hibram Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Shoes: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bMatkRate,15;
+      bonus bMaxSPrate,-50;
+      bonus2 bMagicAddRace,RC_Angel,40;
+      bonus2 bMagicAddRace,RC_DemiHuman,40;
+      bonus2 bMagicAddRace,RC_Player_Human,40;           
 ###########################################################################
   - Id: 34000
     AegisName: Veteran_White_Potion

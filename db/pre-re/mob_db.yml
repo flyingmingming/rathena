@@ -30197,8 +30197,8 @@ Body:
         Rate: 500
       - Item: Morrigane's_Belt
         Rate: 1000
-      - Item: Kiel_Card
-        Rate: 1
+#      - Item: Kiel_Card
+#       Rate: 1
         StealProtected: true
   - Id: 1735
     AegisName: ALICEL
