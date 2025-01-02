@@ -62,3 +62,5 @@ Body:
    Ratio: 10
  - Item: Blue_Potion
    Ratio: 10
+ - Item: Frozen_Rose
+   Ratio: 50
