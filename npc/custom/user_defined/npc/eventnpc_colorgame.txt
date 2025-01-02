@@ -17,7 +17,8 @@ if (select("Yes:No") == 1)
 {
     next;
     mes "[Color Game]";
-    mes "How much do you wanna bet?";  
+    mes "How much do you wanna bet?";
+    next;
     input .@zenyInput;
     if (Zeny > (.@zenyInput*3) && .@zenyInput > 10000)
     {  
@@ -62,13 +63,9 @@ if (select("Yes:No") == 1)
             mes "[Color Game]";
             mes "You won on the first dice!";
             set .wins,.wins+1;
+            next;
         }
-        else
-        {
-            mes "[Color Game]";
-            mes "Better luck on the next dice!";               
-        }
-        next;
+        
 
 //second dice
         if (.Colors$[.@secondCast-1] == .Colors$[.@pickedColor1-1]
@@ -78,13 +75,9 @@ if (select("Yes:No") == 1)
             mes "[Color Game]";
             mes "You won on the second dice!";
             set .wins,.wins+1;
+            next;
         }
-        else
-        {
-            mes "[Color Game]";
-            mes "Better luck on the next dice!";               
-        }
-        next;
+        
 
 //third dice
         if (.Colors$[.@thirdCast-1] == .Colors$[.@pickedColor1-1]
@@ -94,13 +87,8 @@ if (select("Yes:No") == 1)
             mes "[Color Game]";
             mes "You won on the third dice!";
             set .wins,.wins+1;
-        }
-        else
-        {
-            mes "[Color Game]";
-            mes "You lose on the third dice..";               
-        }
-        next;        
+            next;
+        }      
 
         if (.@wins == 0)
         {
