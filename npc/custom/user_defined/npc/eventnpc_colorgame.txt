@@ -1,0 +1,142 @@
+front_lines,164,140,4	script	Color Game	2_slot_machine,{
+set .@wins,0;
+
+mes "[Color Game]";
+mes "This is a fun color game";
+mes "Choose any 3 colors (can be the same)";
+mes "and 3 dices will be casted";
+mes "Per each color that matches the color";
+mes "you chose, you will win.";
+next;
+
+
+mes "[Color Game]";
+mes "Do you wanna play?";
+
+if (select("Yes:No") == 1)
+{
+    next;
+    mes "[Color Game]";
+    mes "How much do you wanna bet?";  
+    input .@zenyInput;
+    if (Zeny < (.@zenyInput*3) && .@zenyInput > 10000)
+    {  
+        Zeny -= .@zenyInput*3;
+
+        mes "[Color Game]";
+        mes "What color do you wanna bet? 1st";
+        set .@pickedColor1, select("Red:Green:Blue:Yellow:White:Pink");
+        next;
+        mes "[Color Game]";
+        mes "What color do you wanna bet? 2nd";
+        set .@pickedColor2, select("Red:Green:Blue:Yellow:White:Pink");
+        next;
+        mes "[Color Game]";
+        mes "What color do you wanna bet? 3rd";
+        set .@pickedColor3, select("Red:Green:Blue:Yellow:White:Pink");
+        next;   
+
+        mes "[Color Game]";
+        mes "You picked: " + .Colors$[.@pickedColor1-1] + " ~ "
+                             + .Colors$[.@pickedColor2-1] + " ~ "
+                             + .Colors$[.@pickedColor3-1] + " ~ ";
+        mes "*Rolling the dices*";
+        sleep2 5000;
+        next;
+
+        set .@firstCast, rand(1,6);
+        set .@secondCast, rand(1,6);
+        set .@thirdCast, rand(1,6);
+
+        mes "[Color Game]";
+        mes "The first dice is " + .Colors$[.@firstCast-1];
+        mes "The second dice is " + .Colors$[.@secondCast-1];
+        mes "The third dice is " + .Colors$[.@thirdCast-1];
+        next;
+
+//first dice
+        if (.Colors$[.@firstCast-1] == .Colors$[.@pickedColor1-1]
+            || .Colors$[.@firstCast-1] == .Colors$[.@pickedColor2-1]
+            || .Colors$[.@firstCast-1] == .Colors$[.@pickedColor3-1])
+        {
+            mes "[Color Game]";
+            mes "You won on the first dice!"";
+            set .@wins, .@wins+1; 
+        }
+        else
+        {
+            mes "[Color Game]";
+            mes "Better luck on the next dice!"";               
+        }
+        next;
+
+//second dice
+        if (.Colors$[.@secondCast-1] == .Colors$[.@pickedColor1-1]
+            || .Colors$[.@secondCast-1] == .Colors$[.@pickedColor2-1]
+            || .Colors$[.@secondCast-1] == .Colors$[.@pickedColor3-1])
+        {
+            mes "[Color Game]";
+            mes "You won on the second dice!"";
+            set .@wins, .@wins+1; 
+        }
+        else
+        {
+            mes "[Color Game]";
+            mes "Better luck on the next dice!"";               
+        }
+        next;
+
+//third dice
+        if (.Colors$[.@thirdCast-1] == .Colors$[.@pickedColor1-1]
+            || .Colors$[.@thirdCast-1] == .Colors$[.@pickedColor2-1]
+            || .Colors$[.@thirdCast-1] == .Colors$[.@pickedColor3-1])
+        {
+            mes "[Color Game]";
+            mes "You won on the third dice!"";
+            set .@wins, .@wins+1; 
+        }
+        else
+        {
+            mes "[Color Game]";
+            mes "You lose on the third dice.."";               
+        }
+        next;        
+
+        if (.@wins == 0)
+        {
+            mes "[Color Game]";
+            mes "There's always a next time.."";
+            end;         
+        }
+        else if (.@wins < 3)
+        {
+            mes "[Color Game]";
+            mes "Don't worry.. atleast your " + F_InsertComma(.@wins * .@zenyInput) + " zeny returned..";
+            end;            
+        }
+            mes "[Color Game]";
+            mes "You won a total of.." + F_InsertComma(.@wins * .@zenyInput) + " zeny! Congrats!";   
+            Zeny += (.@wins * .@zenyInput);
+            end;     
+
+    }
+    mes "[Color Game]";
+    mes "You do not have any zeny.";          
+    end;
+
+
+
+}
+end;
+
+
+
+
+
+OnInit:
+
+deletearray .Colors$[0], getarraysize(.Colors$);
+setarray .Colors$[0],"Red","Green","Blue","Yellow","White","Pink";
+
+end;
+}
