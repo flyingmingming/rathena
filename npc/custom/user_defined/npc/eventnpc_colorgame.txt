@@ -1,21 +1,18 @@
 front_lines,164,140,4	script	Color Game	2_slot_machine,{
 disable_items;
 set .@wins,0;
-set .@diceColor1,0;
-set .@diceColor2,0;
-set .@diceColor3,0;
+set .@totalBet,0;
+set .@totalWinnings,0;
+
+deletearray .@pickColor[0], getarraysize(.@pickColor);
+deletearray .@bet[0], getarraysize(.@bet);
+
 
 mes "[Color Game]";
-mes "This is a fun color game. Choose any 3 colors (can be the same) and 3 dices will be casted.";
+mes "This is a fun color game. Bet on any 3 colors and 3 dices will be casted.";
 next;
 mes "[Color Game]";
-mes "Per each color that matches the color you chose, you will win.";
-next;
-mes "[Color Game]";
-mes "You will need at least 3 times zeny for your bet since you will be choosing 3 colors.";
-next;
-mes "[Color Game]";
-mes "Ex: Your desired bet is 10,000 zeny, you will need 30,000 zeny to play.";
+mes "Per each dice color result that matches the color you chose, you will win.";
 next;
 
 
@@ -26,138 +23,133 @@ next;
 
 if (select("Yes:No") == 1)
 {
-    mes "[Color Game]";
-    mes "How much do you wanna bet?";
-    next;
-    if (input(.@zenyInput,.minBet,.maxBet) != 0) {
+    set .@i, 0;
         mes "[Color Game]";
-        mes "You have cancelled the game.";   
-        end;     
-    }
+        mes "Choose Color " + .@i+1 + ":";        
+        setarray .@pickColor[.@i], select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
+        mes "Choose Color " + .Colors$[.@pickColor[.@i]] + ":"; 
+        next;
+        mes "[Color Game]";
+        mes "Bet:";
+        if (input(.@bet[.@i],.minBet,.maxBet) != 0) 
+        {
+            mes "[Color Game]";
+            mes "You have cancelled the game.";   
+            end;     
+        }
+        if (input(.@bet[.@i] < Zeny)) 
+        {
+            mes "[Color Game]";
+            mes "You don't have enough zeny.";   
+            end;     
+        }        
+        mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
+        .@totalBet += .@totalBet + .@bet[.@i];
+        mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
+        next;
+    set .@i, .@i+1;
 
-    if (Zeny < (.@zenyInput*3))
+    while(1)
     {
         mes "[Color Game]";
-        mes "You do not have enough zeny.";          
-        end;
+        mes "Choose Color " + .@i+1 + ":";        
+        setarray .@pickColor[.@i], select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000:^FF0000~~~~Start^000000");
+        mes "Choose Color " + .Colors$[.@pickColor[.@i]] + ":"; 
+        next;        
+        if (.@pickColor[.@i] == 7)
+        {
+            goto StartGame;
+            end;
+        }
+        next;
+        mes "[Color Game]";
+        mes "Bet:";
+        if (input(.@bet[.@i],.minBet,.maxBet) != 0) 
+        {
+            mes "[Color Game]";
+            mes "You have cancelled the game.";   
+            end;     
+        }
+        if ((.@totalBet + .@bet[.@i]) < Zeny)
+        {
+            mes "[Color Game]";
+            mes "You don't have enough zeny.";   
+            end;  
+        }
+        mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
+        .@totalBet += .@totalBet + .@bet[.@i];
+        mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
+        next;
+    set .@i, .@i+1;
     }
 
-        Zeny -= .@zenyInput*3;
-        mes "[Color Game]";
-        mes "First color: ";
-        set .@pickedColor1, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
-        next;
-        mes "[Color Game]";
-        mes "Second color: ";
-        set .@pickedColor2, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
-        next;
-        mes "[Color Game]";
-        mes "Third color:";
-        set .@pickedColor3, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
-        next;   
 
-        mes "[Color Game]";
-        mes "You picked: " + .Colors$[.@pickedColor1-1] + " ~ "
-                             + .Colors$[.@pickedColor2-1] + " ~ "
-                             + .Colors$[.@pickedColor3-1] + " ~ ";
-        mes "*Rolling the dices*";
-        sleep2 5000;
-        next;
+StartGame:
+    mes "[Color Game]";
+    mes "You bet on: ";
+    mes "";
+    Zeny -= .@totalBet;
+    for (.@i = 0; .@i < getarraysize(.@bet); .@i++ )
+    {
+        mes "" + .Colors$[.@pickColor[.@i]] + " : " + F_InsertComma(.@bet[.@i]) + " zeny.";
+    }
+    mes "*Rolling the dices*";
+    sleep2 3000;
+    next;
 
-        set .@firstCast, rand(1,6);
-        set .@secondCast, rand(1,6);
-        set .@thirdCast, rand(1,6);
+    set .@firstCast, rand(1,6);
+    set .@secondCast, rand(1,6);
+    set .@thirdCast, rand(1,6); 
 
-        mes "[Color Game]";
-        mes "The first dice is " + .Colors$[.@firstCast-1];
-        mes "The second dice is " + .Colors$[.@secondCast-1];
-        mes "The third dice is " + .Colors$[.@thirdCast-1];
-        next;
+    mes "[Color Game]";
+    mes "The first dice is " + .Colors$[.@firstCast-1];
+    mes "The second dice is " + .Colors$[.@secondCast-1];
+    mes "The third dice is " + .Colors$[.@thirdCast-1];
+    next;
 
-//first dice
-
-        if (.Colors$[.@firstCast-1] == .Colors$[.@pickedColor1-1])
+    for (.@i = 0; .@i < getarraysize(.@pickColor); .@i++ )
+    {
+        if (.Colors$[.@firstCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
             set .@diceColor1,.@diceColor1+1;
             set .@wins,.@wins+1;
+            .@totalWinnings += .@bet[.@i]*2;
         }
 
-        if (.Colors$[.@firstCast-1] == .Colors$[.@pickedColor2-1])
-        {
-            set .@diceColor1,.@diceColor1+1;
-            set .@wins,.@wins+1;
-        }
-
-        if (.Colors$[.@firstCast-1] == .Colors$[.@pickedColor3-1])
-        {
-            set .@diceColor1,.@diceColor1+1;
-            set .@wins,.@wins+1;
-        }
-
-//second dice
-        if (.Colors$[.@secondCast-1] == .Colors$[.@pickedColor1-1])
+        if (.Colors$[.@secondCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
             set .@diceColor2,.@diceColor2+1;
             set .@wins,.@wins+1;
+            .@totalWinnings += .@bet[.@i]*2;
         }
 
-        if (.Colors$[.@secondCast-1] == .Colors$[.@pickedColor2-1])
-        {
-            set .@diceColor2,.@diceColor2+1;
-            set .@wins,.@wins+1;
-        }
-
-        if (.Colors$[.@secondCast-1] == .Colors$[.@pickedColor3-1])
-        {
-            set .@diceColor2,.@diceColor2+1;
-            set .@wins,.@wins+1;
-        }
-        
-
-//third dice
-         if (.Colors$[.@thirdCast-1] == .Colors$[.@pickedColor1-1])
+        if (.Colors$[.@thirdCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
             set .@diceColor3,.@diceColor3+1;
             set .@wins,.@wins+1;
-        }
-
-        if (.Colors$[.@thirdCast-1] == .Colors$[.@pickedColor2-1])
-        {
-            set .@diceColor3,.@diceColor3+1;
-            set .@wins,.@wins+1;
-        }
-
-        if (.Colors$[.@thirdCast-1] == .Colors$[.@pickedColor3-1])
-        {
-            set .@diceColor3,.@diceColor3+1;
-            set .@wins,.@wins+1;
-        }   
-
+            .@totalWinnings += .@bet[.@i]*2;
+        }                
+    }
         if (.@wins == 0)
         {
             mes "[Color Game]";
             mes "There's always a next time..";
             end;         
         }
-            mes "[Color Game]";
+        mes "[Color Game]";
 
-            mes "You chose "+ .@diceColor1 +"x on the first dice: " + .Colors$[.@firstCast-1]+ ".";
-            mes "You chose "+ .@diceColor2 +"x on the second dice: " + .Colors$[.@secondCast-1]+ ".";
-            mes "You chose "+ .@diceColor3 +"x on the third dice: " + .Colors$[.@thirdCast-1]+ ".";
+        mes "You chose "+ .@diceColor1 +"x on the first dice: " + .Colors$[.@firstCast-1]+ ".";
+        mes "You chose "+ .@diceColor2 +"x on the second dice: " + .Colors$[.@secondCast-1]+ ".";
+        mes "You chose "+ .@diceColor3 +"x on the third dice: " + .Colors$[.@thirdCast-1]+ ".";
 
-            mes "You won a total of.." + F_InsertComma(.@wins * .@zenyInput) + " zeny! Congrats!";   
-            Zeny += (.@wins * .@zenyInput);
-            end;     
+        mes "You won a total of.." + F_InsertComma(.@totalWinnings) + " zeny! Congrats!";   
+        Zeny += (.@totalWinnings);
+end;    
 
 }
-end;
-
-
-
-
 
 OnInit:
-set .minBet, 10000;
+set .minBet, 100000;
 set .maxBet, 10000000;
 
 deletearray .Colors$[0], getarraysize(.Colors$);
