@@ -3,6 +3,7 @@ disable_items;
 set .@wins,0;
 set .@totalBet,0;
 set .@totalWinnings,0;
+set .@colorWin,0;
 
 deletearray .@pickColor[0], getarraysize(.@pickColor);
 deletearray .@bet[0], getarraysize(.@bet);
@@ -105,7 +106,7 @@ next;
 
     set .@firstCast, rand(1,6);
     set .@secondCast, rand(1,6);
-    set .@thirdCast, rand(1,6); 
+    set .@thirdCast, rand(1,6);
 
     mes "[Color Game]";
     mes "The first dice is " + .Colors$[.@firstCast-1];
@@ -119,22 +120,31 @@ next;
         {
             set .@diceColor1,.@diceColor1+1;
             set .@wins,.@wins+1;
-            .@totalWinnings += .@bet[.@i]*2;
+            .@totalWinnings += .@bet[.@i];
+            set .@colorWin,1;
         }
 
         if (.Colors$[.@secondCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
             set .@diceColor2,.@diceColor2+1;
             set .@wins,.@wins+1;
-            .@totalWinnings += .@bet[.@i]*2;
+            .@totalWinnings += .@bet[.@i];
+            set .@colorWin,1;
         }
 
         if (.Colors$[.@thirdCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
             set .@diceColor3,.@diceColor3+1;
             set .@wins,.@wins+1;
-            .@totalWinnings += .@bet[.@i]*2;
-        }                
+            .@totalWinnings += .@bet[.@i];
+            set .@colorWin,1;
+        }
+
+        if (.@colorWin==1)
+        {
+            .@totalWinnings += .@bet[.@i];
+            set .@colorWin,0;
+        }
     }
         if (.@wins == 0)
         {
