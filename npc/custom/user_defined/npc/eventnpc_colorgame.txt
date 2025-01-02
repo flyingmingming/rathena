@@ -75,13 +75,14 @@ if (select("Yes:No") == 1)
             mes "You don't have enough zeny.";   
             end;     
         }
+        
+        .@totalBet += .@bet[.@i];
         if (.@totalBet > Zeny)
         {
             mes "You don't have enough zeny to make this Bet.";   
             end;             
-        }
-        mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
-        .@totalBet += .@bet[.@i];
+        }      
+        mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";  
         mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
         next;
     set .@i, .@i+1;
