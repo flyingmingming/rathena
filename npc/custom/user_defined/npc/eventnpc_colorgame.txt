@@ -37,7 +37,7 @@ if (select("Yes:No") == 1)
             mes "You have cancelled the game.";   
             end;     
         }
-        if (.@bet[.@i] < Zeny)
+        if (.@bet[.@i] > Zeny)
         {
             mes "[Color Game]";
             mes "You don't have enough zeny.";   
