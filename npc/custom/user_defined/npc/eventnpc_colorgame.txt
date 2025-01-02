@@ -99,6 +99,7 @@ next;
     for (.@i = 0; .@i < getarraysize(.@bet); .@i++ )
     {
         mes "^0000FF ~ " + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + "^000000 zeny.";
+        mes "";
     }
     mes "*Rolling the dices*";
     sleep2 3000;
