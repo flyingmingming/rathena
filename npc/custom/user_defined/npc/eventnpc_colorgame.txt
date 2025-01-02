@@ -67,7 +67,11 @@ if (select("Yes:No") == 1)
             goto StartGame;
             end;
         }
-        setarray .@pickColor[.@i], .@pick;
+        else
+        {
+            setarray .@pickColor[.@i], .@pick;
+        }
+        
         mes "Chosen Color: " + .Colors$[.@pickColor[.@i]-1]; 
         next;           
         mes "[Color Game]";
