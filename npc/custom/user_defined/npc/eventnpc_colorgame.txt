@@ -25,9 +25,9 @@ if (select("Yes:No") == 1)
 {
     set .@i, 0;
         mes "[Color Game]";
-        mes "Choose Color " + .@i+1 + ":";        
+        mes "Choose Color " + (1+.@i) + ":";        
         setarray .@pickColor[.@i], select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
-        mes "Choose Color " + .Colors$[.@pickColor[.@i]] + ":"; 
+        mes "Choose Color " + .Colors$[.@pickColor[.@i+1]] + ":"; 
         next;
         mes "[Color Game]";
         mes "Bet:";
@@ -52,9 +52,9 @@ if (select("Yes:No") == 1)
     while(1)
     {
         mes "[Color Game]";
-        mes "Choose Color " + .@i+1 + ":";        
+        mes "Choose Color " + 1+.@i + ":";        
         setarray .@pickColor[.@i], select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000:^FF0000~~~~Start^000000");
-        mes "Choose Color " + .Colors$[.@pickColor[.@i]] + ":"; 
+        mes "Choose Color " + .Colors$[.@pickColor[.@i+1]] + ":"; 
         next;        
         if (.@pickColor[.@i] == 7)
         {
