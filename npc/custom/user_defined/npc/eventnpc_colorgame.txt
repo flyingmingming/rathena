@@ -8,10 +8,13 @@ set .@diceColor3,0;
 mes "[Color Game]";
 mes "This is a fun color game. Choose any 3 colors (can be the same) and 3 dices will be casted.";
 next;
+mes "[Color Game]";
 mes "Per each color that matches the color you chose, you will win.";
 next;
+mes "[Color Game]";
 mes "You will need at least 3 times zeny for your bet since you will be choosing 3 colors.";
 next;
+mes "[Color Game]";
 mes "Ex: Your desired bet is 10,000 zeny, you will need 30,000 zeny to play.";
 next;
 
@@ -19,12 +22,13 @@ next;
 mes "[Color Game]";
 mes "Minimum bet of " + F_InsertComma(.minBet) + " zeny and maximum of " + F_InsertComma(.maxBet) + ".";
 mes "Do you wanna play?";
+next;
 
 if (select("Yes:No") == 1)
 {
     mes "[Color Game]";
     mes "How much do you wanna bet?";
-
+    next;
     if (input(.@zenyInput,.minBet,.maxBet) != 0) {
         mes "[Color Game]";
         mes "You have cancelled the game.";   
@@ -39,7 +43,6 @@ if (select("Yes:No") == 1)
     }
 
         Zeny -= .@zenyInput*3;
-        next;
         mes "[Color Game]";
         mes "First color: ";
         set .@pickedColor1, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
