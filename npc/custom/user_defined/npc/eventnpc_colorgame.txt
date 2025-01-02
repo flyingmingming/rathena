@@ -43,7 +43,7 @@ if (select("Yes:No") == 1)
             end;     
         }        
         mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
-        .@totalBet += .@totalBet + .@bet[.@i];
+        .@totalBet += .@bet[.@i];
         mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
         next;
     set .@i, .@i+1;
@@ -80,7 +80,7 @@ if (select("Yes:No") == 1)
             end;             
         }
         mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
-        .@totalBet += .@totalBet + .@bet[.@i];
+        .@totalBet += .@bet[.@i];
         mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
         next;
     set .@i, .@i+1;
