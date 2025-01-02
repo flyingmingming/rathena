@@ -42,3 +42,7 @@ Body:
    Ratio: 100
  - Item: Oridecon_Stone
    Ratio: 100
+######################################################
+#armors from mvp
+ - Item: Piece_Of_Angent_Skin
+   Ratio: 50

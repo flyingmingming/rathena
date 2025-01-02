@@ -89,6 +89,21 @@ Header:
   Version: 3
 
 Body:
+###########################################################################
+  - Id: 4128
+    AegisName: Golden_Bug_Card
+    Name: Golden Thief Bug Card
+    Type: Card
+    Buy: 20
+    Weight: 10
+    Locations:
+      Left_Hand: true
+    Flags:
+      BuyingStore: true
+    Script: |
+      bonus bNoMagicDamage,70;
+      bonus bUseSPrate,100;
+###########################################################################
   - Id: 34000
     AegisName: Veteran_White_Potion
     Name: Veteran White Potion
