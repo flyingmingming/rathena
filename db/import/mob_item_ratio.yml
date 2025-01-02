@@ -33,4 +33,10 @@ Header:
   Version: 1
 Body:
  - Item: Elunium
-   Ratio: 10
+   Ratio: 70
+ - Item: Oridecon
+   Ratio: 70
+ - Item: Elunium_Stone
+   Ratio: 100
+ - Item: Oridecon_Stone
+   Ratio: 100
