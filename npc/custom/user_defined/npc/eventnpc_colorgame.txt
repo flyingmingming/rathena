@@ -98,7 +98,7 @@ next;
     Zeny -= .@totalBet;
     for (.@i = 0; .@i < getarraysize(.@bet); .@i++ )
     {
-        mes "" + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + " zeny.";
+        mes "^0000FF ~ " + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + " zeny.^000000";
     }
     mes "*Rolling the dices*";
     sleep2 3000;
@@ -109,9 +109,9 @@ next;
     set .@thirdCast, rand(1,6);
 
     mes "[Color Game]";
-    mes "The first dice is " + .Colors$[.@firstCast-1];
-    mes "The second dice is " + .Colors$[.@secondCast-1];
-    mes "The third dice is " + .Colors$[.@thirdCast-1];
+    mes "The first dice is ^0000FF" + .Colors$[.@firstCast-1] + "^000000";
+    mes "The second dice is ^0000FF" + .Colors$[.@secondCast-1] + "^000000";
+    mes "The third dice is ^0000FF" + .Colors$[.@thirdCast-1] + "^000000";
     next;
 
     for (.@i = 0; .@i < getarraysize(.@pickColor); .@i++ )
@@ -154,11 +154,11 @@ next;
         }
         mes "[Color Game]";
 
-        mes "You chose "+ .@diceColor1 +"x on the first dice: " + .Colors$[.@firstCast-1]+ ".";
-        mes "You chose "+ .@diceColor2 +"x on the second dice: " + .Colors$[.@secondCast-1]+ ".";
-        mes "You chose "+ .@diceColor3 +"x on the third dice: " + .Colors$[.@thirdCast-1]+ ".";
+        mes "You chose "+ .@diceColor1 +"x on the first dice: ^0000FF" + .Colors$[.@firstCast-1]+ "^000000.";
+        mes "You chose "+ .@diceColor2 +"x on the second dice: ^0000FF" + .Colors$[.@secondCast-1]+ "^000000.";
+        mes "You chose "+ .@diceColor3 +"x on the third dice: ^0000FF" + .Colors$[.@thirdCast-1]+ "^000000.";
 
-        mes "You won a total of.." + F_InsertComma(.@totalWinnings) + " zeny! Congrats!";   
+        mes "You won a total of.. ^0000FF" + F_InsertComma(.@totalWinnings) + "^000000 zeny! Congrats!";   
         Zeny += (.@totalWinnings);
 end;    
 
