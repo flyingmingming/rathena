@@ -60,13 +60,13 @@ if (select("Yes:No") == 1)
             || .Colors$[.@firstCast-1] == .Colors$[.@pickedColor3-1])
         {
             mes "[Color Game]";
-            mes "You won on the first dice!"";
-            .@wins += 1; 
+            mes "You won on the first dice!";
+            set .wins,.wins+1;
         }
         else
         {
             mes "[Color Game]";
-            mes "Better luck on the next dice!"";               
+            mes "Better luck on the next dice!";               
         }
         next;
 
@@ -76,13 +76,13 @@ if (select("Yes:No") == 1)
             || .Colors$[.@secondCast-1] == .Colors$[.@pickedColor3-1])
         {
             mes "[Color Game]";
-            mes "You won on the second dice!"";
-            .@wins += 1; 
+            mes "You won on the second dice!";
+            set .wins,.wins+1;
         }
         else
         {
             mes "[Color Game]";
-            mes "Better luck on the next dice!"";               
+            mes "Better luck on the next dice!";               
         }
         next;
 
@@ -92,20 +92,20 @@ if (select("Yes:No") == 1)
             || .Colors$[.@thirdCast-1] == .Colors$[.@pickedColor3-1])
         {
             mes "[Color Game]";
-            mes "You won on the third dice!"";
-            .@wins += 1; 
+            mes "You won on the third dice!";
+            set .wins,.wins+1;
         }
         else
         {
             mes "[Color Game]";
-            mes "You lose on the third dice.."";               
+            mes "You lose on the third dice..";               
         }
         next;        
 
         if (.@wins == 0)
         {
             mes "[Color Game]";
-            mes "There's always a next time.."";
+            mes "There's always a next time..";
             end;         
         }
         else if (.@wins < 3)
