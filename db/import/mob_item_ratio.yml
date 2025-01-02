@@ -52,3 +52,9 @@ Body:
    Ratio: 100
  - Item: Witherless_Rose
    Ratio: 10
+ - Item: Gold_Ring
+   Ratio: 25
+ - Item: Diamond_Ring
+   Ratio: 25
+ - Item: Crystal_Jewel__
+   Ratio: 50
