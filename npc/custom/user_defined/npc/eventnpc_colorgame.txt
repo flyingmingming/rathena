@@ -4,6 +4,9 @@ set .@wins,0;
 set .@totalBet,0;
 set .@totalWinnings,0;
 set .@colorWin,0;
+set .@diceColor1,0;
+set .@diceColor2,0;
+set .@diceColor3,0;
 
 deletearray .@pickColor[0], getarraysize(.@pickColor);
 deletearray .@bet[0], getarraysize(.@bet);
