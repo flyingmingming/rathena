@@ -45,15 +45,15 @@ if (select("Yes:No") == 1)
         Zeny -= .@zenyInput*3;
         mes "[Color Game]";
         mes "First color: ";
-        set .@pickedColor1, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
+        set .@pickedColor1, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
         next;
         mes "[Color Game]";
         mes "Second color: ";
-        set .@pickedColor2, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
+        set .@pickedColor2, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
         next;
         mes "[Color Game]";
         mes "Third color:";
-        set .@pickedColor3, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
+        set .@pickedColor3, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^00FFFF ~ Light Blue^000000");
         next;   
 
         mes "[Color Game]";
@@ -161,8 +161,7 @@ set .minBet, 10000;
 set .maxBet, 10000000;
 
 deletearray .Colors$[0], getarraysize(.Colors$);
-setarray .Colors$[0], "^FF0000 ~ Red^000000", "^228B22 ~ Green^000000", "^0000FF ~ Blue^000000", "^FFFF00 ~ Yellow^000000", " ~ Black", "^FF00FF ~ Pink^000000";
-//setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Pink";
+setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Light Blue";
 
 end;
 }
