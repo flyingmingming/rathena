@@ -98,7 +98,7 @@ next;
     Zeny -= .@totalBet;
     for (.@i = 0; .@i < getarraysize(.@bet); .@i++ )
     {
-        mes "^0000FF ~ " + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + " zeny.^000000";
+        mes "^0000FF ~ " + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + "^000000 zeny.";
     }
     mes "*Rolling the dices*";
     sleep2 3000;
