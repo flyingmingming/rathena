@@ -30,7 +30,8 @@ if (select("Yes:No") == 1)
         mes "Choose Color " + .Colors$[.@pickColor[.@i]-1] + ":"; 
         next;
         mes "[Color Game]";
-        mes "Bet:";
+        mes "How much will you bet?";
+        next;
         if (input(.@bet[.@i],.minBet,.maxBet) != 0) 
         {
             mes "[Color Game]";
@@ -62,7 +63,8 @@ if (select("Yes:No") == 1)
         }
         next;
         mes "[Color Game]";
-        mes "Bet:";
+        mes "How much will you bet?";
+        next;
         if (input(.@bet[.@i],.minBet,.maxBet) != 0) 
         {
             mes "[Color Game]";
