@@ -60,3 +60,5 @@ Body:
    Ratio: 50
  - Item: Fruit_Of_Mastela
    Ratio: 10
+ - Item: Blue_Potion
+   Ratio: 10
