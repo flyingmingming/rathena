@@ -89,6 +89,7 @@ if (select("Yes:No") == 1)
 
 
 StartGame:
+next;
     mes "[Color Game]";
     mes "You bet on: ";
     mes "";
