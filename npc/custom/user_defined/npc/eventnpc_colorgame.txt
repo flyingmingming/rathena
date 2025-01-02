@@ -39,7 +39,6 @@ if (select("Yes:No") == 1)
         }
         if (.@bet[.@i] > Zeny)
         {
-            mes "[Color Game]";
             mes "You don't have enough zeny.";   
             end;     
         }        
@@ -70,12 +69,11 @@ if (select("Yes:No") == 1)
             mes "You have cancelled the game.";   
             end;     
         }
-        if ((.@totalBet + .@bet[.@i]) < Zeny)
+        if (.@bet[.@i] > Zeny)
         {
-            mes "[Color Game]";
             mes "You don't have enough zeny.";   
-            end;  
-        }
+            end;     
+        } 
         mes "Bet: " + F_InsertComma(.@bet[.@i]) + " zeny.";
         .@totalBet += .@totalBet + .@bet[.@i];
         mes "Total Bet:" + F_InsertComma(.@totalBet) + " zeny."; 
