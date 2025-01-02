@@ -9,7 +9,7 @@ deletearray .@bet[0], getarraysize(.@bet);
 
 
 mes "[Color Game]";
-mes "This is a fun color game. Bet on any 3 colors and 3 dices will be casted.";
+mes "This is a fun color game. Bet on any colors and 3 dices will be casted.";
 next;
 mes "[Color Game]";
 mes "Per each dice color result that matches the color you chose, you will win.";
