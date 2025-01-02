@@ -1,46 +1,54 @@
 front_lines,164,140,4	script	Color Game	2_slot_machine,{
+disable_items;
 set .@wins,0;
 set .@diceColor1,0;
 set .@diceColor2,0;
 set .@diceColor3,0;
 
 mes "[Color Game]";
-mes "This is a fun color game. Choose any 3 colors (can be the same)";
-mes "and 3 dices will be casted.";
+mes "This is a fun color game. Choose any 3 colors (can be the same) and 3 dices will be casted.";
 mes "Per each color that matches the color you chose, you will win.";
+mes "You will need at least 3 times zeny for your bet since you will be choosing 3 colors.";
+mes "Ex: Your desired bet is 10,000 zeny, you will need 30,000 zeny to play."
+
 next;
 
 
 mes "[Color Game]";
+mes "Minimum bet of " + F_InsertComma(.minBet) + " zeny and maximum of " + F_InsertComma(.maxBet) + ".";
 mes "Do you wanna play?";
 
 if (select("Yes:No") == 1)
 {
-    next;
     mes "[Color Game]";
     mes "How much do you wanna bet?";
-    next;
-    if (input(.@zenyInput,10000,10000000) != 0) {
+
+    if (input(.@zenyInput,.minBet,.maxBet) != 0) {
         mes "[Color Game]";
         mes "You have cancelled the game.";   
         end;     
     }
-    //input .@zenyInput;
-    if (Zeny >= (.@zenyInput*3))
-    {  
-        Zeny -= .@zenyInput*3;
 
+    if (Zeny < (.@zenyInput*3))
+    {
         mes "[Color Game]";
-        mes "What color do you wanna bet? 1st";
-        set .@pickedColor1, select("Red:Green:Blue:Yellow:White:Pink");
+        mes "You do not have enough zeny.";          
+        end;
+    }
+
+        Zeny -= .@zenyInput*3;
         next;
         mes "[Color Game]";
-        mes "What color do you wanna bet? 2nd";
-        set .@pickedColor2, select("Red:Green:Blue:Yellow:White:Pink");
+        mes "First color: ";
+        set .@pickedColor1, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
         next;
         mes "[Color Game]";
-        mes "What color do you wanna bet? 3rd";
-        set .@pickedColor3, select("Red:Green:Blue:Yellow:White:Pink");
+        mes "Second color: ";
+        set .@pickedColor2, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
+        next;
+        mes "[Color Game]";
+        mes "Third color:";
+        set .@pickedColor3, select("^FF0000 ~ Red^000000:^228B22 ~ Green^000000:^0000FF ~ Blue^000000:^FFFF00 ~ Yellow^000000: ~ Black:^FF00FF ~ Pink^000000");
         next;   
 
         mes "[Color Game]";
@@ -62,6 +70,7 @@ if (select("Yes:No") == 1)
         next;
 
 //first dice
+
         if (.Colors$[.@firstCast-1] == .Colors$[.@pickedColor1-1])
         {
             set .@diceColor1,.@diceColor1+1;
@@ -135,13 +144,6 @@ if (select("Yes:No") == 1)
             Zeny += (.@wins * .@zenyInput);
             end;     
 
-    }
-    mes "[Color Game]";
-    mes "You do not have any zeny.";          
-    end;
-
-
-
 }
 end;
 
@@ -150,9 +152,12 @@ end;
 
 
 OnInit:
+set .minBet, 10000;
+set .maxBet, 10000000;
 
 deletearray .Colors$[0], getarraysize(.Colors$);
-setarray .Colors$[0],"Red","Green","Blue","Yellow","White","Pink";
+setarray .Colors$[0], "^FF0000 ~ Red^000000", "^228B22 ~ Green^000000", "^0000FF ~ Blue^000000", "^FFFF00 ~ Yellow^000000", " ~ Black", "^FF00FF ~ Pink^000000";
+//setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Pink";
 
 end;
 }
