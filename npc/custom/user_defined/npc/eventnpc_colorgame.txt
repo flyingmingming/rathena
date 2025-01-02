@@ -1,5 +1,5 @@
 front_lines,164,140,4	script	Color Game	2_slot_machine,{
-set .wins,0;
+set .@wins,0;
 
 mes "[Color Game]";
 mes "This is a fun color game";
@@ -62,7 +62,7 @@ if (select("Yes:No") == 1)
         {
             mes "[Color Game]";
             mes "You won on the first dice!";
-            set .wins,.wins+1;
+            set .@wins,.@wins+1;
             next;
         }
         
@@ -74,7 +74,7 @@ if (select("Yes:No") == 1)
         {
             mes "[Color Game]";
             mes "You won on the second dice!";
-            set .wins,.wins+1;
+            set .@wins,.@wins+1;
             next;
         }
         
@@ -86,7 +86,7 @@ if (select("Yes:No") == 1)
         {
             mes "[Color Game]";
             mes "You won on the third dice!";
-            set .wins,.wins+1;
+            set .@wins,.@wins+1;
             next;
         }      
 
