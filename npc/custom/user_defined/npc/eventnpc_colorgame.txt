@@ -61,7 +61,6 @@ if (select("Yes:No") == 1)
             goto StartGame;
             end;
         }
-        next;
         mes "[Color Game]";
         mes "How much will you bet?";
         next;
