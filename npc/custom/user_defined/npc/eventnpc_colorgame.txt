@@ -151,7 +151,7 @@ next;
 
         if (.Colors$[.@secondCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
-            mes "2nd cast: " + .Colors$[.@firstCast-1] + " :::: picked color: " + .Colors$[.@pickColor[.@i]-1];
+            mes "2nd cast: " + .Colors$[.@secondCast-1] + " :::: picked color: " + .Colors$[.@pickColor[.@i]-1];
             set .@diceColor2,.@diceColor2+1;
             set .@wins,.@wins+1;
             .@totalWinnings += .@bet[.@i];
@@ -160,7 +160,7 @@ next;
 
         if (.Colors$[.@thirdCast-1] == .Colors$[.@pickColor[.@i]-1])
         {
-            mes "3rd cast: " + .Colors$[.@firstCast-1] + " :::: picked color: " + .Colors$[.@pickColor[.@i]-1];
+            mes "3rd cast: " + .Colors$[.@thirdCast-1] + " :::: picked color: " + .Colors$[.@pickColor[.@i]-1];
             set .@diceColor3,.@diceColor3+1;
             set .@wins,.@wins+1;
             .@totalWinnings += .@bet[.@i];
