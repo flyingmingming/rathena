@@ -20,7 +20,7 @@ mes "Per each dice color result that matches the color you chose, you will win."
 mes "But there's a catch. There will be a 7th, 8th and 9th color!";
 next;
 mes "[Color Game]";
-mes "Once the dice has been casted and 'Bronze', 'Silver' and 'Gold' colors are shown respectively, you will receive 5x your total bet!";
+mes "Once the dice has been casted and resulted on 'Bronze', 'Silver' and 'Gold' colors respectively, you will receive " + .betMultiplier + "x your total bet!";
 next;
 
 
@@ -113,13 +113,22 @@ next;
         mes "^0000FF ~ " + .Colors$[.@pickColor[.@i]-1] + " : " + F_InsertComma(.@bet[.@i]) + "^000000 zeny.";
         mes "";
     }
-    mes "*Rolling the dices*";
-    sleep2 3000;
-    next;
-
     set .@firstCast, rand(1,9);
     set .@secondCast, rand(1,9);
     set .@thirdCast, rand(1,9);
+
+    mes "*Releasing the dices*";
+    sleep2 3000;
+    next;
+
+    if (.Colors$[.@firstCast-1]=="Bronze"
+        && .Colors$[.@secondCast-1]=="Silver"
+        && .Colors$[.@thirdCast-1]=="Gold")
+    {
+        set .@firstCast, rand(1,9);
+        set .@secondCast, rand(1,9);
+        set .@thirdCast, rand(1,9);
+    }
 
     mes "[Color Game]";
     mes "The first dice is ^0000FF" + .Colors$[.@firstCast-1] + "^000000";
@@ -134,7 +143,7 @@ next;
         mes "[Color Game]";
         mes "Congratulations!";
         mapannounce "Someone has won " + F_InsertComma(.@totalBet*5) + " zeny in color game!",bc_map,"0xFFCE00";
-        Zeny += .@totalBet*5;
+        Zeny += (.@totalBet*.betMultiplier);
         end;
     }
 
@@ -164,6 +173,7 @@ next;
             set .@colorWin,1;
         }
 
+        //win per picked color will return the base bet
         if (.@colorWin==1)
         {
             .@totalWinnings += .@bet[.@i];
@@ -192,6 +202,7 @@ end;
 OnInit:
 set .minBet, 100000;
 set .maxBet, 10000000;
+set .betMultiplier, 3;
 
 deletearray .Colors$[0], getarraysize(.Colors$);
 setarray .Colors$[0],"Red","Green","Blue","Yellow","Black","Light Blue", "Bronze", "Silver", "Gold";

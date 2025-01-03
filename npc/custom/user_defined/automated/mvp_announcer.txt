@@ -1,0 +1,111 @@
+-	script	MVP_Announce	-1,{
+OnNPCKillEvent:
+set .@dropChance, 1;
+set .@dropChanceMax, 100; //divide to value
+set .@rareDropItemId, 31401; //poring coin MVP
+
+set .@announcementMsg$, "Attention citizens of Midgard! The Brave Adventurer "+ strcharinfo(0) + " has killed the MVP monster "+ getmonsterinfo(killedrid,MOB_NAME) + " at " + strcharinfo(3);
+	if (getmonsterinfo(killedrid,MOB_MVPEXP) != 0)
+	{
+		if (getcharid(1))
+		{
+			announce .@announcementMsg$  +" from party "+ strcharinfo(1) + ".",bc_blue|bc_all;	
+		}
+		else
+		{
+			/*if (rand(1,50) == rand(30,50)) //0.1% chance 
+			{
+				getitem .@rareDropItemId,1,getcharid(3);
+				announce .@announcementMsg$ + " and has acquired a " + getitemname(.@rareDropItemId) + "!",bc_yellow|bc_all;				
+			}
+			else
+			{
+            */
+            announce .@announcementMsg$ + ".",bc_blue|bc_all;
+        }			
+			
+		
+		}
+		//set MVPHunted, MVPHunted + 1;
+
+	//}
+end;
+}
+
+/*
+prontera,176,173,4	script	Ranking Board	857,{
+
+if (getgmlevel() > 90)
+{
+	switch(select("- Check Records:- Reset Records"))
+	{
+		case 1:
+			callsub GetRecords;
+			end;
+		break;
+
+		case 2:
+			mes "Are you sure you want to delete all records?";
+			next;
+			if (select("No:Yes")==2)
+			{
+				dispbottom "All records are deleted";
+				addrid(0);
+				set MVPHunted,0;
+				set PVPKilled,0;
+				set PlayerHunted,0;
+				query_sql("UPDATE `char_reg_num` SET `value` = 0 WHERE `key` = 'MVPHunted'");
+				query_sql("UPDATE `char_reg_num` SET `value` = 0 WHERE `key` = 'PVPKilled'");
+				query_sql("UPDATE `char_reg_num` SET `value` = 0 WHERE `key` = 'PlayerHunted'");
+			}
+			end;
+		break;
+	}
+}
+callsub GetRecords;
+end;
+
+GetRecords:
+	switch(select("- Veteran Hunters:- Quest Masters:- Duel Kings:- Criminal Records"))
+	{
+		case 1:
+			mes "[^FF0000Veteran Hunters ^00FF00Top^FF0000 5 ^000000]";
+				query_sql("SELECT char_id AS id, (SELECT `name` FROM `char` WHERE char_id = id),`value` FROM `char_reg_num` WHERE `key` = 'MVPHunted' AND `value` > 0 ORDER BY CAST(`value` AS SIGNED) DESC LIMIT 5", .@id, .@name$, .@val);
+				for (.@i = 0; .@i < 5; .@i++)
+					mes "  [Rank " + (.@i+1) + "]  " + ((.@name$[.@i] == "") ? "^777777none" : "^0055FF" + .@name$[.@i]+"^000000 : ^FF0000" + .@val[.@i] + " pt.") + "^000000";
+			close; 
+		break;
+
+        Case 2:
+			mes "[^FF0000Quest Masters ^00FF00Top^FF0000 5 ^000000]";
+            query_sql("SELECT char_id AS id, (SELECT `name` FROM `char` WHERE char_id = id),`value` FROM `char_reg_num` WHERE `key` = 'Quest_Total' ORDER BY CAST(`value` AS SIGNED) DESC LIMIT 5", .@id, .@name$, .@val);
+            for (.@i = 0; .@i < 5; .@i++)
+                mes "  [Rank " + (.@i+1) + "]  " + ((.@name$[.@i] == "") ? "^777777none" : "^0055FF" + .@name$[.@i]+"^000000 : ^FF0000" + .@val[.@i] + " pt.") + "^000000";
+        close; 
+
+		case 3:
+			mes "[^FF0000Duel Kings ^00FF00Top^FF0000 5 ^000000]";
+				query_sql("SELECT char_id AS id, (SELECT `name` FROM `char` WHERE char_id = id),`value` FROM `char_reg_num` WHERE `key` = 'PVPKilled' AND `value` > 0 ORDER BY CAST(`value` AS SIGNED) DESC LIMIT 5", .@id, .@name$, .@val);
+				for (.@i = 0; .@i < 5; .@i++)
+					mes "  [Rank " + (.@i+1) + "]  " + ((.@name$[.@i] == "") ? "^777777none" : "^0055FF" + .@name$[.@i]+"^000000 : ^FF0000" + .@val[.@i] + " pt.") + "^000000";
+			close; 	
+		break;
+
+		case 4:
+			mes "[^FF0000Criminal Records ^00FF00Most Wanted^FF0000 5 ^000000]";
+				query_sql("SELECT char_id AS id, (SELECT `name` FROM `char` WHERE char_id = id),`value` FROM `char_reg_num` WHERE `key` = 'PlayerHunted' AND `value` > 0 ORDER BY CAST(`value` AS SIGNED) DESC LIMIT 5", .@id, .@name$, .@val);
+				for (.@i = 0; .@i < 5; .@i++)
+					mes "  [Rank " + (.@i+1) + "]  " + ((.@name$[.@i] == "") ? "^777777none" : "^0055FF" + .@name$[.@i]+"^000000 : ^FF0000" + .@val[.@i] + " pt.") + "^000000";
+			close; 	
+		break;
+	}
+end;
+
+
+
+OnInit:
+	waitingroom "Ranking Board",0;
+	end;
+
+}
+*/
