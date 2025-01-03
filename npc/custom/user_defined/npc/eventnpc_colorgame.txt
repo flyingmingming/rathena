@@ -172,6 +172,8 @@ next;
             .@totalWinnings += .@bet[.@i];
             set .@colorWin,0;
         }
+
+        next;
     }
         if (.@wins == 0)
         {
