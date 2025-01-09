@@ -6,7 +6,7 @@ function GiveFreebie;
 switch(BaseClass)
 {
     case 0:
-        getitem 34007,1
+        getitem 34007,1;
     break;
 
     case 1: //sword
