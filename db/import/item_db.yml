@@ -402,7 +402,6 @@ Body:
     EquipLevelMin: 1
     Refineable: true
     Script: |
-#+2 int, matkrate +10
       bonus bInt,5;
       bonus bMatkRate,25;
   - Id: 36002
