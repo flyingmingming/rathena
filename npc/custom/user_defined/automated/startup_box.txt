@@ -3,10 +3,6 @@ function GiveFreebie;
 
 @giveFreebieItem = 0;
 
-rentitem2 36400,604800,1,8; //mantle
-rentitem2 36500,604800,1,8; //muffler
-rentitem2 36600,604800,1,8; //shoes
-
 switch(BaseClass)
 {
     case 0:
