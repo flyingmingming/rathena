@@ -238,11 +238,6 @@ static const char* atcommand_help_string( const char* command ){
 	return info->help.c_str();
 }
 
-/*
-==================================== TEST ================================
-
-
-*/
 
 /*==========================================
  * Commands
@@ -296,7 +291,6 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
 				target_id = 0;
-				skill_greed();
 			}
 			break;
 		}
