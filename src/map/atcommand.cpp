@@ -289,7 +289,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 	map_session_data *sd = nullptr;
 	struct flooritem_data *fitem = nullptr;
 
-	nullpo_ret(bl);
+	nullpo_ret(sd->bl);
 	nullpo_ret(src = va_arg(ap, struct block_list *));
 
 	
