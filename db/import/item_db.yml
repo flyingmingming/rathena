@@ -275,6 +275,21 @@ Body:
       getitem 34000,100;
       getitem 34001,50;
   - Id: 34003
+    AegisName: VIPmembershipcard1d
+    Name: VIP Membership Card 1D
+    Type: Cash
+    Weight: 10
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |   
+      callfunc "vip_system",1,1;
+  - Id: 34004
     AegisName: VIPmembershipcard3d
     Name: VIP Membership Card 3D
     Type: Cash
@@ -289,7 +304,7 @@ Body:
       NoAuction: true
     Script: |   
       callfunc "vip_system",3,1;
-  - Id: 34004
+  - Id: 34005
     AegisName: VIPmembershipcard7d
     Name: VIP Membership Card 7D
     Type: Cash
@@ -304,7 +319,7 @@ Body:
       NoAuction: true
     Script: |   
       callfunc "vip_system",7,1;
-  - Id: 34005
+  - Id: 34006
     AegisName: VIPmembershipcard30d
     Name: VIP Membership Card 30D
     Type: Cash
@@ -318,7 +333,254 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |   
-      callfunc "vip_system",30,1;            
+      callfunc "vip_system",30,1;
+  - Id: 34007
+    AegisName: StartupBox
+    Name: Startup Box
+    Type: Usable
+    Weight: 50
+    EquipLevelMin: 20
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |
+      callfunc "GiveStartupBox";
+#################################### CUSTOM EQUIPS 
+  - Id: 36000
+    AegisName: Newbie_Tsurugi
+    Name: Newbie Tsurugi
+    Type: Weapon
+    SubType: 1hSword
+    Buy: 20
+    Weight: 1200
+    Attack: 170 #atk +40
+    Range: 1
+    Jobs:
+      Alchemist: true
+      Assassin: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      Merchant: true
+      Rogue: true
+      Swordman: true
+      Thief: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36001
+    AegisName: Newbie_Arc_Wand
+    Name: Newbie Arc Wand
+    Type: Weapon
+    SubType: Staff
+    Buy: 20
+    Weight: 400
+    Attack: 60
+    Range: 1
+    Jobs:
+      Acolyte: true
+      Mage: true
+      Monk: true
+      Priest: true
+      Sage: true
+      SoulLinker: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+    Script: |
+#+2 int, matkrate +10
+      bonus bInt,5;
+      bonus bMatkRate,25;
+  - Id: 36002
+    AegisName: Newbie_Kakkung
+    Name: Newbie Gakkung Bow
+    Type: Weapon
+    SubType: Bow
+    Buy: 20
+    Weight: 1100
+    Attack: 140 #atk +40
+    Range: 5
+    Jobs:
+      Archer: true
+      BardDancer: true
+      Hunter: true
+      Rogue: true
+      Thief: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36003
+    AegisName: Newbie_Sword_Mace
+    Name: Newbie Sword Mace
+    Type: Weapon
+    SubType: Mace
+    Buy: 20
+    Weight: 1200
+    Attack: 170 #+40
+    Range: 1
+    Jobs:
+      Acolyte: true
+      Alchemist: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      Merchant: true
+      Monk: true
+      Priest: true
+      Swordman: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36004
+    AegisName: Newbie_Two_Handed_Axe
+    Name: Newbie Two-Handed Axe
+    Type: Weapon
+    SubType: 2hAxe
+    Buy: 20
+    Weight: 2500
+    Attack: 225 #+40
+    Range: 1
+    Jobs:
+      Alchemist: true
+      Blacksmith: true
+      Crusader: true
+      Knight: true
+      Merchant: true
+      Swordman: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36005
+    AegisName: Newbie_Damascus
+    Name: Newbie Damascus
+    Type: Weapon
+    SubType: Dagger
+    Buy: 20
+    Weight: 800
+    Attack: 158 #+40
+    Range: 1
+    Jobs:
+      Alchemist: true
+      Archer: true
+      Assassin: true
+      BardDancer: true
+      Blacksmith: true
+      Crusader: true
+      Hunter: true
+      Knight: true
+      Mage: true
+      Merchant: true
+      Ninja: true
+      Rogue: true
+      Sage: true
+      SoulLinker: true
+      Swordman: true
+      Thief: true
+      Wizard: true
+    Locations:
+      Right_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36006
+    AegisName: Newbie_Long_Barrel
+    Name: Newbie Long Barrel
+    Type: Weapon
+    SubType: Rifle
+    Buy: 20
+    Weight: 1000
+    Attack: 190 #+40
+    Range: 9
+    Jobs:
+      Gunslinger: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  - Id: 36007
+    AegisName: Newbie_Huuma_Calm_Mind
+    Name: Newbie Huuma Calm Mind
+    Type: Weapon
+    SubType: Huuma
+    Buy: 20
+    Weight: 1550
+    Attack: 152 #+40
+    Range: 1
+    Jobs:
+      Ninja: true
+    Locations:
+      Both_Hand: true
+    WeaponLevel: 3
+    EquipLevelMin: 1
+    Refineable: true
+  #- Id: 36100
+  - Id: 36400
+    AegisName: Newbie_Mantle
+    Name: Newbie Mantle
+    Type: Armor
+    Buy: 20
+    Weight: 600
+    Defense: 8 #+4
+    Jobs:
+      All: true
+    Locations:
+      Armor: true
+    ArmorLevel: 1
+    Refineable: true
+    Script: |
+      bonus bMaxHP,500;
+  - Id: 36500
+    AegisName: Newbie_Muffler
+    Name: Newbie Muffler
+    Type: Armor
+    Buy: 20
+    Weight: 400
+    Defense: 6 #+4
+    Jobs:
+      All: true
+      Novice: false
+      SuperNovice: false
+    Locations:
+      Garment: true
+    ArmorLevel: 1
+    Refineable: true
+    Script: |
+      bonus bMaxHP,300;
+  - Id: 36600
+    AegisName: Newbie_Shoes
+    Name: Newbie Shoes
+    Type: Armor
+    Buy: 20
+    Weight: 400
+    Defense: 6 #+4
+    Jobs:
+      All: true
+      Novice: false
+      SuperNovice: false
+    Locations:
+      Shoes: true
+    ArmorLevel: 1
+    Refineable: true
+    Script: |
+      bonus bMaxHP,200;
 # THQ Quest Items
 #=============================================================
 #  - Id: 1998

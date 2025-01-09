@@ -1,0 +1,118 @@
+function	script	GiveStartupBox	{
+function GiveFreebie;
+
+@giveFreebieItem = 0;
+
+rentitem2 36400,604800,1,8; //mantle
+rentitem2 36500,604800,1,8; //muffler
+rentitem2 36600,604800,1,8; //shoes
+
+switch(BaseClass)
+{
+    case 0:
+        getitem 34007,1
+    break;
+
+    case 1: //sword
+        getitem 14002,5; //adv esb
+        getitem 14533,3; //base manual
+        getitem 14592,3; //job manual        
+        rentitem2 36000,604800,1,8; //weap
+        rentitem 2766,604800; //figurine
+    break;
+
+    case 2: //mage
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem2 36001,604800,1,8;
+        rentitem 2768,604800;
+    break;
+
+    case 3: //archer
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem2 36002,604800,1,8;
+        rentitem 2769,604800;
+    break;
+
+    case 4: //acolyte
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem2 36003,604800,1,8;
+        rentitem 2767,604800;
+    break;
+
+    case 5: //merchant
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem2 36004,604800,1,8;
+        rentitem 2771,604800;
+    break;
+
+    case 6: //thief
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem2 36005,604800,1,8;
+        rentitem 2770,604800;
+    break;
+
+    case 23: //super novice
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+    break;
+
+    case 24: //gunslinger
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+
+        rentitem2 36006,604800,1,8;
+        deletearray .@bulletAmmo[0],getarraysize(.@bulletAmmo);
+        setarray .@bulletAmmo[0],13200,13201,13202;
+        set .@randBullet,rand(0,2);
+        getitem .@bulletAmmo[.@randBullet],rand(200,500);
+    break;
+
+    case 25: //ninja
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+        rentitem 36007,604800,1,8;
+    break;
+
+
+    default:
+        getitem 14002,5;
+        getitem 14533,3;
+        getitem 14592,3;
+    break;
+
+/* element and vvs
+.@charid = getcharid(0,strcharinfo(0));
+.@card1 = 255;
+.@card3 = .@charid & 65535;
+.@card4 = .@charid >> 16;
+
+.@starCrumbCount = 0;
+.@elementType = rand(1,4); // 1 - Ice, 2 - Earth 3 - Fire 4 - Wind.
+.@card2 = .@elementType+((.@starCrumbCount*5)<<8);  
+*/
+
+}
+
+function    GiveFreebie {
+    if (BaseLevel < getarg(0))
+    {
+        return 0;
+    } else
+        return 1;
+}
+
+end;
+}
