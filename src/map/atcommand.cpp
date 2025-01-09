@@ -284,6 +284,14 @@ TIMER_FUNC(autoattack_timer);
 void autoattack_motion(map_session_data* sd, int mob_id){
 	int i, target_id;
 	struct mob_data* md2;
+
+	struct flooritem_data *fitem;
+	int map_object_id;
+
+	map_object_id = RFIFOL(fd,packet_db[RFIFOW(fd,0)].pos[0]);
+
+	fitem = (struct flooritem_data*)map_id2bl(map_object_id);
+
 	
 	for (i = 0;i <= 9;i++) {
 		target_id = 0;
@@ -296,7 +304,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
 				target_id = 0;
-				skill_greed();
+				pc_takeitem(sd, fitem);
 			}
 			break;
 		}
