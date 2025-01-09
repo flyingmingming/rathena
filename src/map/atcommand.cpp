@@ -286,7 +286,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 	struct mob_data* md2;
 
 	struct block_list *src;
-	map_session_data *sd = nullptr;
+	//map_session_data *sd = nullptr;
 	struct flooritem_data *fitem = nullptr;
 
 	nullpo_ret(sd->bl);
