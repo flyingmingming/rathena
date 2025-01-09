@@ -2,7 +2,7 @@ function	script	GiveStartupBox	{
 function GiveFreebie;
 
 @giveFreebieItem = 0;
-
+*rentitem2 <item id>,<time>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<account_id>};
 switch(BaseClass)
 {
     case 0:
@@ -13,7 +13,7 @@ switch(BaseClass)
         getitem 14002,5; //adv esb
         getitem 14533,3; //base manual
         getitem 14592,3; //job manual        
-        rentitem2 36000,604800,1,8; //weap
+        rentitem2 36000,604800,1,8,0,0,0,0,0; //weap
         rentitem 2766,604800; //figurine
     break;
 
