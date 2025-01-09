@@ -350,9 +350,9 @@ Body:
       NoMail: true
       NoAuction: true
     Script: |
-      rentitem2 36400,604800,1,8; 
-      rentitem2 36500,604800,1,8;
-      rentitem2 36600,604800,1,8;
+      rentitem2 36400,604800,1,8,0,0,0,0,0;
+      rentitem2 36500,604800,1,8,0,0,0,0,0;
+      rentitem2 36600,604800,1,8,0,0,0,0,0;
       callfunc "GiveStartupBox";
 #################################### CUSTOM EQUIPS 
   - Id: 36000
