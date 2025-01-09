@@ -2,7 +2,7 @@ function	script	GiveStartupBox	{
 function GiveFreebie;
 
 @giveFreebieItem = 0;
-*rentitem2 <item id>,<time>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<account_id>};
+//*rentitem2 <item id>,<time>,<identify>,<refine>,<attribute>,<card1>,<card2>,<card3>,<card4>{,<account_id>};
 switch(BaseClass)
 {
     case 0:
