@@ -304,8 +304,7 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
 				target_id = 0;
-				if(src->type == BL_PC && (sd = (map_session_data *)src) && bl->type == BL_ITEM && (fitem = (struct flooritem_data *)bl))
-						pc_takeitem(sd, fitem);
+				pc_takeitem(sd, fitem);
 			}
 			break;
 		}
