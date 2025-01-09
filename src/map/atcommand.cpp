@@ -285,14 +285,6 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 	int i, target_id;
 	struct mob_data* md2;
 
-	struct block_list *src;
-	//map_session_data *sd = nullptr;
-	struct flooritem_data *fitem = nullptr;
-
-	nullpo_ret(sd->bl);
-	nullpo_ret(src = va_arg(ap, struct block_list *));
-
-	
 	for (i = 0;i <= 9;i++) {
 		target_id = 0;
 		map_foreachinarea(buildin_autoattack_sub, sd->bl.m, sd->bl.x - i, sd->bl.y - i, sd->bl.x + i, sd->bl.y + i, BL_MOB, &target_id, &md2);
@@ -304,7 +296,6 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
 				target_id = 0;
-				pc_takeitem(sd, fitem);
 			}
 			break;
 		}
