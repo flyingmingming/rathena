@@ -285,12 +285,12 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 	int i, target_id;
 	struct mob_data* md2;
 
-	struct flooritem_data *fitem;
-	int map_object_id;
+	struct block_list *src;
+	map_session_data *sd = nullptr;
+	struct flooritem_data *fitem = nullptr;
 
-	map_object_id = RFIFOL(fd,packet_db[RFIFOW(fd,0)].pos[0]);
-
-	fitem = (struct flooritem_data*)map_id2bl(map_object_id);
+	nullpo_ret(bl);
+	nullpo_ret(src = va_arg(ap, struct block_list *));
 
 	
 	for (i = 0;i <= 9;i++) {
@@ -304,7 +304,8 @@ void autoattack_motion(map_session_data* sd, int mob_id){
 				unit_attack(&sd->bl, target_id, 1);
 			} else {
 				target_id = 0;
-				pc_takeitem(sd, fitem);
+				if(src->type == BL_PC && (sd = (map_session_data *)src) && bl->type == BL_ITEM && (fitem = (struct flooritem_data *)bl))
+						pc_takeitem(sd, fitem);
 			}
 			break;
 		}
