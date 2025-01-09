@@ -238,11 +238,6 @@ static const char* atcommand_help_string( const char* command ){
 	return info->help.c_str();
 }
 
-/*
-==================================== TEST ================================
-
-
-*/
 
 /*==========================================
  * Commands
@@ -284,7 +279,7 @@ TIMER_FUNC(autoattack_timer);
 void autoattack_motion(map_session_data* sd, int mob_id){
 	int i, target_id;
 	struct mob_data* md2;
-
+	
 	for (i = 0;i <= 9;i++) {
 		target_id = 0;
 		map_foreachinarea(buildin_autoattack_sub, sd->bl.m, sd->bl.x - i, sd->bl.y - i, sd->bl.x + i, sd->bl.y + i, BL_MOB, &target_id, &md2);
