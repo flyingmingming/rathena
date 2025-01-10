@@ -79,7 +79,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem 36007,604800,1,8,0,0,0,0,0;
+        rentitem2 36007,604800,1,8,0,0,0,0,0;
     break;
 
 
