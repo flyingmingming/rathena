@@ -67,7 +67,7 @@ OnEmpDead:
 }
 
 // KoE Entrance
-prontera,150,188,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
+front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	mes "[The King]";
 	if ( !getcharid(2) ) {
 		mes "You must have a guild to participate in the ^FF0000King of Emperium Hill Tournament^000000.";
