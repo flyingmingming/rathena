@@ -29,20 +29,6 @@ OnCommand:
 	}
 	end;
 
-OnKoeEnd:
-	warp "Save",0,0;
-	if ( getcharid(2) == $koegid )
-        //set .@rewardsQuestPoints, rand(100,300);
-        set .@rewardsZeny,rand(500000,2000000);
-
-        //#QuestPoints += .@rewardsQuestPoints;
-        Zeny += .@rewardsZeny;
-
-        dispbottom "Congratulations for winning King of Emperium! You have been rewarded with " + callfunc("F_InsertComma",.@rewardsZeny) + " Zeny.";
-		//getitem 7539, 1; // configure prize here - Poring Coin
-	//test
-end;
-
 L_start:
 OnClock1230: // everyday 8pm starts
 	if ( .start ) end;
@@ -66,8 +52,14 @@ OnClock1300: // everyday 8:30pm ends
 	//enablenpc "Exit#KoE";
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
-	donpcevent "::OnKoeEnd";
+	//test
+	warp "Save",0,0;
+	if ( getcharid(2) == $koegid )
+        set .@rewardsZeny,rand(500000,2000000);
+        Zeny += .@rewardsZeny;
 
+        dispbottom "Congratulations for winning King of Emperium! You have been rewarded with " + callfunc("F_InsertComma",.@rewardsZeny) + " Zeny.";
+	//end test
 	//maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
 	end;
 OnEmpDead:
