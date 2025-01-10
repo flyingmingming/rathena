@@ -4,8 +4,8 @@ setarray .@rewardID[0],14002,14533,14592; //advance supply box, field manual,job
 setarray .@rewardAmount[0],3,3,3;
 
 //additional items for VIP members
-setarray .@vipRewardID[0],34002,34008,12913,12210,12914,12214,7621; //expertsb,snackbox,agiscrollbox,blessscrollbox,bbg,convex,token
-setarray .@vipRewardAmount[0],1,1,1,1,1,3,3;
+setarray .@vipRewardID[0],14003,34008,12913,12914,12210,12214,7621; //esb,snackbox,agiscrollbox,blessscrollbox,bbg,convex,token
+setarray .@vipRewardAmount[0],5,2,2,2,2,2,2;
 
 set .@timeAccumulated, gettimetick(2) - #dailyRewardNpcClickTime;
 
