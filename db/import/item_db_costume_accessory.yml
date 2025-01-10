@@ -94,7 +94,7 @@ Body:
     Name: Costume Utility Ring
     Type: Armor
     Locations:
-      Shadow_Acc_L: true
+      Shadow_Left_Accessory: true
     ArmorLevel: 1
     View: 61
     Script: |
@@ -104,7 +104,7 @@ Body:
     Name: Costume Majestic Ring
     Type: Armor
     Locations:
-      Shadow_Acc_R: true
+      Shadow_Right_Accessory: true
     ArmorLevel: 1
     View: 61
     Script: |
