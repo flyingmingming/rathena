@@ -462,9 +462,9 @@ OnInit:
 	.ThirdClass = false;					// Enable third classes?
 	.RebirthClass = true;				// Enable rebirth classes?
 	.SecondExpanded = true;				// Enable new expanded second classes: Ex. Super Novice, Kagerou/Oboro, Rebellion?
-	.BabyNovice = true;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
-	.BabyClass = true;					// Enable Baby classes?
-	.BabyThird = true;					// Enable Baby third classes?
+	.BabyNovice = false;					// Enable Baby novice classes? Disable it if you like player must have parent to get job baby.
+	.BabyClass = false;					// Enable Baby classes?
+	.BabyThird = false;					// Enable Baby third classes?
 	.BabyExpanded = false;				// Enable Baby Expanded classes: Ex. Baby Ninja, Baby Taekwon, etc.
 	.BabySummoner = false;				// Enable Baby Summoner?
 	.LastJob = true;					// Enforce linear class changes?
@@ -480,17 +480,8 @@ OnInit:
 	setarray .Req_Exp_NJ_GS[0],99,70; 	// Minimum base level, job level to turn into Expanded Ninja and Gunslinger
 	setarray .Req_Exp_SNOVI[0],99,99; 	// Minimum base level, job level to turn into Expanded Super Novice
 	setarray .Req_SHandler[0],200,60;	// Minimum base level, job level to turn into Spirit Handler
-	.SNovice = 45;						// Minimum base level to turn into Super Novice
+	.SNovice = 99;						// Minimum base level to turn into Super Novice
 	
-	// Setting adjustments by PACKETVER
-	if( PACKETVER < 20161207 ) {
-		if( .BabyExpanded )
-			debugmes "jobmaster: BabyExpanded is disabled due to outdated PACKETVER.";
-		if( .BabySummoner )
-			debugmes "jobmaster: BabySummoner is disabled due to outdated PACKETVER.";
-		.BabyExpanded = false;
-		.BabySummoner = false;
-	}
 	end;
 }
 
