@@ -1,7 +1,7 @@
 front_lines,156,135,4	script	Daily Rewards	2_POSTBOX,{
 
 setarray .@rewardID[0],14002,14533,14592; //advance supply box, field manual,job manual
-setarray .@rewardAmount[0],1,1,1;
+setarray .@rewardAmount[0],3,3,3;
 
 //additional items for VIP members
 setarray .@vipRewardID[0],34002,34008,12913,12210,12914,12214,7621; //expertsb,snackbox,agiscrollbox,blessscrollbox,bbg,convex,token

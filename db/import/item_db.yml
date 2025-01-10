@@ -237,7 +237,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -252,7 +252,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -267,7 +267,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -283,7 +283,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -298,7 +298,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -313,7 +313,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -328,7 +328,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -345,7 +345,7 @@ Body:
       NoDrop: true
       NoTrade: true
       NoSell: true
-      NoCart: true
+      #NoCart: true
       NoGuildStorage: true
       NoMail: true
       NoAuction: true
@@ -366,7 +366,7 @@ Body:
       NoSell: true
       #NoCart: true
       NoGuildStorage: true
-      #NoMail: true
+      NoMail: true
       NoAuction: true
     Script: |
       getitem 12202,1;
@@ -387,7 +387,7 @@ Body:
       NoSell: true
       #NoCart: true
       NoGuildStorage: true
-      #NoMail: true
+      NoMail: true
       NoAuction: true
     Script: |
       getitem 12903,1;
@@ -408,7 +408,7 @@ Body:
       NoSell: true
       #NoCart: true
       NoGuildStorage: true
-      #NoMail: true
+      NoMail: true
       NoAuction: true
     Script: |
       getitem 12903,5;
@@ -429,7 +429,7 @@ Body:
       NoSell: true
       #NoCart: true
       NoGuildStorage: true
-      #NoMail: true
+      NoMail: true
       NoAuction: true
     Script: |
       getitem 12903,10;
@@ -463,6 +463,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36001
     AegisName: Newbie_Arc_Wand
     Name: Newbie Arc Wand
@@ -485,6 +494,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Script: |
       bonus bInt,5;
       bonus bMatkRate,25;
@@ -508,6 +526,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36003
     AegisName: Newbie_Sword_Mace
     Name: Newbie Sword Mace
@@ -532,6 +559,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36004
     AegisName: Newbie_Two_Handed_Axe
     Name: Newbie Two-Handed Axe
@@ -553,6 +589,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36005
     AegisName: Newbie_Damascus
     Name: Newbie Damascus
@@ -585,6 +630,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36006
     AegisName: Newbie_Long_Barrel
     Name: Newbie Long Barrel
@@ -601,6 +655,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   - Id: 36007
     AegisName: Newbie_Huuma_Calm_Mind
     Name: Newbie Huuma Calm Mind
@@ -617,6 +680,15 @@ Body:
     WeaponLevel: 3
     EquipLevelMin: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
   #- Id: 36100
   - Id: 36400
     AegisName: Newbie_Mantle
@@ -631,6 +703,15 @@ Body:
       Armor: true
     ArmorLevel: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Script: |
       bonus bMaxHP,500;
   - Id: 36500
@@ -648,6 +729,15 @@ Body:
       Garment: true
     ArmorLevel: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Script: |
       bonus bMaxHP,300;
   - Id: 36600
@@ -665,6 +755,15 @@ Body:
       Shoes: true
     ArmorLevel: 1
     Refineable: true
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
     Script: |
       bonus bMaxHP,200;
 # THQ Quest Items
