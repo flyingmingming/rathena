@@ -91,7 +91,12 @@ front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	}
 	mes "Greetings Adventurer! Would you like to participate in the ^FF0000King of Emperium Hill Tournament^000000?";
 	if ( select ( "Yes", "No" ) == 2 ) close;
-	if ( !getvariableofnpc( .start, "KoE" ) ) close;
+	if ( !getvariableofnpc( .start, "KoE" ) )
+	{
+		mes "[The King]";
+		mes "King of Emperium Hill has already been concluded.";
+		close;
+	}
 	switch( rand(1,4) ){
 	case 1:	warp "guild_vs1", 50, 88; end;
 	case 2:	warp "guild_vs1", 88, 50; end;
