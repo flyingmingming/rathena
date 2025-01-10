@@ -265,3 +265,8 @@ Body:
     Npc: Manager#arug_cas05
     Type: Second_Edition
     ClientId: 25
+  - Id: 100
+    Map: guild_vs1
+    Name: King of Emperium Hill
+    Npc: koe
+    Type: Second_Edition

@@ -11,6 +11,7 @@
 #include <config/core.hpp>
 
 #include "map.hpp" //ELE_MAX
+#include "mapreg.hpp"
 #include "skill.hpp"
 
 //fwd declaration
