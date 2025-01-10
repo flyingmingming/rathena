@@ -456,7 +456,7 @@ Body:
   - Id: 34013
     AegisName: MidgardAscendanceToken
     Name: Midgard Ascendance Token
-    Type: Cash
+    Type: Etc
     Weight: 10
     Trade:
       NoDrop: true
