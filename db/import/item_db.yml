@@ -354,6 +354,90 @@ Body:
       rentitem2 36500,604800,1,8,0,0,0,0,0;
       rentitem2 36600,604800,1,8,0,0,0,0,0;
       callfunc "GiveStartupBox";
+  - Id: 34008
+    AegisName: SnackBox
+    Name: Snack Box
+    Type: Usable
+    Weight: 50
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      #NoMail: true
+      NoAuction: true
+    Script: |
+      getitem 12202,1;
+      getitem 12203,1;
+      getitem 12204,1;
+      getitem 12205,1;
+      getitem 12206,1;
+      getitem 12207,1;
+  - Id: 34009
+    AegisName: LunchBox
+    Name: Lunch Box
+    Type: Usable
+    Weight: 50
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      #NoMail: true
+      NoAuction: true
+    Script: |
+      getitem 12903,1;
+      getitem 12904,1;
+      getitem 12905,1;
+      getitem 12906,1;
+      getitem 12907,1;
+      getitem 12908,1;
+  - Id: 34010
+    AegisName: FamilyLunchBox
+    Name: Family Lunch Box
+    Type: Usable
+    Weight: 50
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      #NoMail: true
+      NoAuction: true
+    Script: |
+      getitem 12903,5;
+      getitem 12904,5;
+      getitem 12905,5;
+      getitem 12906,5;
+      getitem 12907,5;
+      getitem 12908,5;
+  - Id: 34011
+    AegisName: BuffetBox
+    Name: Buffet Box
+    Type: Usable
+    Weight: 50
+    Trade:
+      Override: 100
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      #NoMail: true
+      NoAuction: true
+    Script: |
+      getitem 12903,10;
+      getitem 12904,10;
+      getitem 12905,10;
+      getitem 12906,10;
+      getitem 12907,10;
+      getitem 12908,10;
 #################################### CUSTOM EQUIPS 
   - Id: 36000
     AegisName: Newbie_Tsurugi

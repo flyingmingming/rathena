@@ -1,0 +1,57 @@
+front_lines,156,135,4	script	Daily Rewards	2_POSTBOX,{
+
+setarray .@rewardID[0],14002,14533,14592; //advance supply box, field manual,job manual
+setarray .@rewardAmount[0],1,1,1;
+
+//additional items for VIP members
+setarray .@vipRewardID[0],34002,34008,12913,12210,12914,12214,7621; //expertsb,snackbox,agiscrollbox,blessscrollbox,bbg,convex,token
+setarray .@vipRewardAmount[0],1,1,1,1,1,3,3;
+
+set .@timeAccumulated, gettimetick(2) - #dailyRewardNpcClickTime;
+
+    if(.@timeAccumulated < 86400)
+    {
+        //calculate time before next free supply
+        set .@getRewardUntil, #dailyRewardNpcClickTime+86400;
+        set .@currentWaitInSec,.@getRewardUntil-gettimetick(2);
+        set .@timeIn_h,.@currentWaitInSec/3600;
+        set .@timeIn_m,(.@currentWaitInSec - (.@timeIn_h * 3600)) / 60;
+        set .@timeIn_s,.@currentWaitInSec - ((.@timeIn_h * 3600) + (.@timeIn_m * 60));
+        set .@currentRewardsWait$, .@timeIn_h + " hours, " + .@timeIn_m + " minutes and " + .@timeIn_s + " seconds.";
+
+        mes "....Hmm... empty..";
+        mes "(Looks like I need to check for another ^0000ff" + .@currentRewardsWait$ + ")^000000.";
+        close;
+        end;
+    }
+        mes "....Hmm... I see a package for me..";
+        next;
+
+        if(select("- Open it now..:- Maybe later..")==2)
+        {
+            close;
+            end;
+        }
+
+        for(.@i=0;.@i<getarraysize(.@rewardID);.@i++)
+        {
+            getitem .@rewardID[.@i],.@rewardAmount[.@i];
+        }
+        if (vip_status(VIP_STATUS_ACTIVE,strcharinfo(0))==1)
+        {
+            dispbottom "Your VIP subscription gives you additional items: ";
+            for(.@j=0;.@j<getarraysize(.@vipRewardID);.@j++)
+            {
+                getitem .@vipRewardID[.@j],.@vipRewardAmount[.@j];
+            }
+        }
+
+
+        set #dailyRewardNpcClickTime,gettimetick(2);
+        close;
+        end; 
+
+OnInit:
+waitingroom "Daily Rewards",0;
+end;
+}
