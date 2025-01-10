@@ -95,8 +95,9 @@ Body:
     Type: Armor
     Locations:
       Shadow_Left_Accessory: true
+      Shadow_Right_Accessory: true
     ArmorLevel: 1
-    View: 61
+    View: 4800
     Script: |
       bonus bAddMaxWeight,3000;
   - Id: 44801
@@ -104,9 +105,10 @@ Body:
     Name: Costume Majestic Ring
     Type: Armor
     Locations:
+      Shadow_Left_Accessory: true
       Shadow_Right_Accessory: true
     ArmorLevel: 1
-    View: 61
+    View: 4801
     Script: |
       bonus bAddMaxWeight,3000;
 #Body:
