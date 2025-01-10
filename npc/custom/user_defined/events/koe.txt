@@ -51,7 +51,7 @@ OnClock1300: // everyday 8:30pm ends
 	enablenpc "Exit#KoE";
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
-	callsub KoeEnd;
+	donpcevent "::KoeEnd";
 
 	//maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
 	end;
@@ -81,6 +81,7 @@ KoeEnd:
 		//getitem 7539, 1; // configure prize here - Poring Coin
 	//test
 end;
+
 
 // KoE Entrance
 front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
