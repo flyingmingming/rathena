@@ -4,11 +4,11 @@ OnPCLoginEvent:
     {
         announce "Welcome to Midgard Ascendance "+strcharinfo(0)+"! Enjoy the events and adventures ahead!",bc_all|0xc6e2ff;
         set BaseExp,1;
-        //if (!#FreebieBox)
-        //{
+        if (!#FreebieBox)
+        {
             getitem 34007,1;
-        //    set #FreebieBox,1;
-        //}        
+            set #FreebieBox,1;
+        }        
     }
     end;
 }

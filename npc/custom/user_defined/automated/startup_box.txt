@@ -30,6 +30,7 @@ switch(BaseClass)
         getitem 14533,3;
         getitem 14592,3;
         rentitem2 36002,604800,1,8,0,0,0,0,0;
+        getitem 1751,rand(500,1500);
         rentitem 2769,604800;
     break;
 
@@ -72,7 +73,7 @@ switch(BaseClass)
         deletearray .@bulletAmmo[0],getarraysize(.@bulletAmmo);
         setarray .@bulletAmmo[0],13200,13201,13202;
         set .@randBullet,rand(0,2);
-        getitem .@bulletAmmo[.@randBullet],rand(200,500);
+        getitem .@bulletAmmo[.@randBullet],rand(500,1500);
     break;
 
     case 25: //ninja
