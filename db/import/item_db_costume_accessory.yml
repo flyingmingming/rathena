@@ -95,7 +95,7 @@ Body:
     Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
-    ArmorLevel: 1
+    EquipLevelMin: 1
     View: 4800
     Script: |
       bonus bAddMaxWeight,3000;
@@ -105,7 +105,7 @@ Body:
     Type: Shadowgear
     Locations:
       Shadow_Right_Accessory: true
-    ArmorLevel: 1
+    EquipLevelMin: 1
     View: 4801
     Script: |
       bonus bAddMaxWeight,3000;
