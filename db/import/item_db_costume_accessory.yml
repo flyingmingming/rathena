@@ -95,7 +95,6 @@ Body:
     Type: Armor
     Locations:
       Shadow_Left_Accessory: true
-      Shadow_Right_Accessory: true
     ArmorLevel: 1
     View: 4800
     Script: |
