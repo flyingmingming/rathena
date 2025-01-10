@@ -21,7 +21,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem2 36001,604800,1,8;
+        rentitem2 36001,604800,1,8,0,0,0,0,0;
         rentitem 2768,604800;
     break;
 
@@ -29,7 +29,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem2 36002,604800,1,8;
+        rentitem2 36002,604800,1,8,0,0,0,0,0;
         rentitem 2769,604800;
     break;
 
@@ -37,7 +37,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem2 36003,604800,1,8;
+        rentitem2 36003,604800,1,8,0,0,0,0,0;
         rentitem 2767,604800;
     break;
 
@@ -45,7 +45,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem2 36004,604800,1,8;
+        rentitem2 36004,604800,1,8,0,0,0,0,0;
         rentitem 2771,604800;
     break;
 
@@ -53,7 +53,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem2 36005,604800,1,8;
+        rentitem2 36005,604800,1,8,0,0,0,0,0;
         rentitem 2770,604800;
     break;
 
@@ -68,7 +68,7 @@ switch(BaseClass)
         getitem 14533,3;
         getitem 14592,3;
 
-        rentitem2 36006,604800,1,8;
+        rentitem2 36006,604800,1,8,0,0,0,0,0;
         deletearray .@bulletAmmo[0],getarraysize(.@bulletAmmo);
         setarray .@bulletAmmo[0],13200,13201,13202;
         set .@randBullet,rand(0,2);
@@ -79,7 +79,7 @@ switch(BaseClass)
         getitem 14002,5;
         getitem 14533,3;
         getitem 14592,3;
-        rentitem 36007,604800,1,8;
+        rentitem 36007,604800,1,8,0,0,0,0,0;
     break;
 
 
