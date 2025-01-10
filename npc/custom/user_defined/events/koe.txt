@@ -16,7 +16,7 @@
 
 -	script	KoE	FAKE_NPC,{
 OnInit:
-	disablenpc "King of Emperium#KoE";
+	//disablenpc "King of Emperium#KoE";
 	//disablenpc "Exit#KoE";
 	bindatcmd "koe", strnpcinfo(0)+"::OnCommand", 99,100;
 	end;
