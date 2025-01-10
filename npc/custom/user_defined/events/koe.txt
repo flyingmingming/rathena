@@ -50,9 +50,9 @@ OnClock1300: // everyday 8:30pm ends
 	announce "The King of Emperium Hill is over!", bc_all;
 	.start = 0;
 	//enablenpc "Exit#KoE";
-	sleep 2000;
+	sleep2 2000;
 	announce "Rewards will be given to ["+ strcharinfo(2) +"] guild within 10 seconds..", bc_all;
-	sleep 10000;
+	sleep2 10000;
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
 	
