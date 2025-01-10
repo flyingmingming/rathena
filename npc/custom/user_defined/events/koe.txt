@@ -90,7 +90,7 @@ front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	}
 	mes "Greetings Adventurer! Would you like to participate in the ^FF0000King of Emperium Hill Tournament^000000?";
 	if ( select ( "Yes", "No" ) == 2 ) close;
-	if ( getvariableofnpc( .start, "KoE" ) || ( !getvariableofnpc( .start, "KoE" ) && getcharid(2) == $koegid))
+	if ( getvariableofnpc( .start, "KoE" ) )
 	{
 		switch( rand(1,4) )
 		{
@@ -100,11 +100,18 @@ front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 			case 4:	warp "guild_vs1", 11, 50; end;
 		}
 	}
-	else
+	else if ( !getvariableofnpc( .start, "KoE" ) && getcharid(2) == $koegid)
 	{
-		mes "King of Emperium Hill has already been concluded.";
-		close;
+		switch( rand(1,4) )
+		{
+			case 1:	warp "guild_vs1", 50, 88; end;
+			case 2:	warp "guild_vs1", 88, 50; end;
+			case 3:	warp "guild_vs1", 50, 11; end;
+			case 4:	warp "guild_vs1", 11, 50; end;
+		}		
 	}
+		mes "King of Emperium Hill has already been concluded.";
+		close;	
 
 
 }
