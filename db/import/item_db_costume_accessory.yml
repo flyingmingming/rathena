@@ -105,7 +105,7 @@ Body:
     Name: Costume Majestic Ring
     Type: Shadowgear
     Locations:
-      Shadow_Right_Accessory: true
+      Shadow_Left_Accessory: true
     EquipLevelMin: 1
     View: 4801
     Script: |
