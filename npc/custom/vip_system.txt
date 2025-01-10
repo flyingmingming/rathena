@@ -5,7 +5,7 @@ function	script	vip_system	{
 	set .@type, getarg(1);
 
 	atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
-
+	return;
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
 	//	if (.@type == 3) {
 	//		bonus_script_clear 1;

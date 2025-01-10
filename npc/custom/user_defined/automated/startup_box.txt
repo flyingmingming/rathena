@@ -110,5 +110,5 @@ function    GiveFreebie {
         return 1;
 }
 
-end;
+return;
 }
