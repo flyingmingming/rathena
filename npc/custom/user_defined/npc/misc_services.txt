@@ -17,6 +17,7 @@ function Job_Menu;
         end;
 
         case 2:
+			next;
             callsub S_JobChange;
         end;
 
