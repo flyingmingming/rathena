@@ -17,7 +17,7 @@
 -	script	KoE	FAKE_NPC,{
 OnInit:
 	disablenpc "King of Emperium#KoE";
-	//disablenpc "Exit#KoE";
+	disablenpc "Exit#KoE";
 	bindatcmd "koe", strnpcinfo(0)+"::OnCommand", 99,100;
 	end;
 OnCommand:
@@ -28,7 +28,6 @@ OnCommand:
 		dispbottom "type - '@koe off' to end the event";
 	}
 	end;
-
 L_start:
 OnClock1230: // everyday 8pm starts
 	if ( .start ) end;
@@ -36,7 +35,7 @@ OnClock1230: // everyday 8pm starts
 	announce "The King of Emperium Hill has begun!", bc_all;
 	.start = true;
 	enablenpc "King of Emperium#KoE";
-	//disablenpc "Exit#KoE";
+	disablenpc "Exit#KoE";
 	$koegid = 0;
 	donpcevent "::OnRevKoE";
 	maprespawnguildid "guild_vs1", $koegid, 3;
@@ -49,21 +48,10 @@ OnClock1300: // everyday 8:30pm ends
 	gvgoff "guild_vs1";
 	announce "The King of Emperium Hill is over!", bc_all;
 	.start = 0;
-	//enablenpc "Exit#KoE";
-	sleep2 2000;
-	announce "Rewards will be given to ["+ strcharinfo(2) +"] guild within 10 seconds..", bc_all;
-	sleep2 10000;
+	enablenpc "Exit#KoE";
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
-	
-	//test
-	if ( getcharid(2) == $koegid && strcharinfo(3) == "guild_vs1")
-        set .@rewardsZeny,rand(500000,2000000);
-        Zeny += .@rewardsZeny;
-        dispbottom "Congratulations for winning King of Emperium! You have been rewarded with " + callfunc("F_InsertComma",.@rewardsZeny) + " Zeny.";
-		warp "Save",0,0;
-	//end test
-	//maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
+	maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
 	end;
 OnEmpDead:
 	$koegid = getcharid(2);
@@ -78,9 +66,6 @@ OnEmpDead:
 	end;
 }
 
-
-
-
 // KoE Entrance
 front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	mes "[The King]";
@@ -90,51 +75,27 @@ front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	}
 	mes "Greetings Adventurer! Would you like to participate in the ^FF0000King of Emperium Hill Tournament^000000?";
 	if ( select ( "Yes", "No" ) == 2 ) close;
-	if ( getvariableofnpc( .start, "KoE" ) )
-	{
-		switch( rand(1,4) )
-		{
-			case 1:	warp "guild_vs1", 50, 88; end;
-			case 2:	warp "guild_vs1", 88, 50; end;
-			case 3:	warp "guild_vs1", 50, 11; end;
-			case 4:	warp "guild_vs1", 11, 50; end;
-		}
+	if ( !getvariableofnpc( .start, "KoE" ) ) close;
+	switch( rand(1,4) ){
+	case 1:	warp "guild_vs1", 50, 88; end;
+	case 2:	warp "guild_vs1", 88, 50; end;
+	case 3:	warp "guild_vs1", 50, 11; end;
+	case 4:	warp "guild_vs1", 11, 50; end;
 	}
-	else if ( !getvariableofnpc( .start, "KoE" ) && getcharid(2) == $koegid)
-	{
-		switch( rand(1,4) )
-		{
-			case 1:	warp "guild_vs1", 50, 88; end;
-			case 2:	warp "guild_vs1", 88, 50; end;
-			case 3:	warp "guild_vs1", 50, 11; end;
-			case 4:	warp "guild_vs1", 11, 50; end;
-		}		
-	}
-		mes "King of Emperium Hill has already been concluded.";
-		close;	
-
-
 }
 
 // KoE Exit
-/*
 guild_vs1,49,56,5	script	Exit#KoE	1_M_BARD,{
 	mes "[Exit]";
 	mes "See ya.";
 	close2;
 	warp "Save",0,0;
 	if ( getcharid(2) == $koegid )
-        //set .@rewardsQuestPoints, rand(100,300);
         set .@rewardsZeny,rand(500000,2000000);
-
-        //#QuestPoints += .@rewardsQuestPoints;
         Zeny += .@rewardsZeny;
-
         dispbottom "Congratulations for winning King of Emperium! You have been rewarded with " + callfunc("F_InsertComma",.@rewardsZeny) + " Zeny.";
-		//getitem 7539, 1; // configure prize here - Poring Coin
 	end;
 }
-*/
 
 // Flags
 guild_vs1,49,38,4	script	King of Emperium Hill#1::koe_flag	GUILD_FLAG,{
