@@ -4,6 +4,31 @@ function	script	vip_system	{
 	set .@renew_time, .@time + .@current_time;
 	set .@type, getarg(1);
 
+	switch(.@time)
+	{
+		case 7:
+			getitem 14003,30; //esb
+			getitem 34002,10; //vet sb
+			getitem 34008,5; //snackbox
+			getitem 12218,5; //assump scroll
+			getitem 12217,5; //asper scroll
+			getitem 12412,3; //he bbg
+		break;
+
+		case 30:
+			getitem 14003,100; //esb
+			getitem 34002,40; //vet sb
+			getitem 34009,2; //lunchbox
+			getitem 12218,20; //assump scroll
+			getitem 12217,20; //asper scroll
+			getitem 12103,1; //bloody branch
+			getitem 12412,5; //he bbg
+		break;
+
+		default:
+		break;
+	}
+
 	atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
 	return;
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
