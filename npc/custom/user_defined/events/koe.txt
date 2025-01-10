@@ -29,7 +29,7 @@ OnCommand:
 	}
 	end;
 
-KoeEnd:
+OnKoeEnd:
 	warp "Save",0,0;
 	if ( getcharid(2) == $koegid )
         //set .@rewardsQuestPoints, rand(100,300);
@@ -66,7 +66,7 @@ OnClock1300: // everyday 8:30pm ends
 	//enablenpc "Exit#KoE";
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
-	donpcevent "::KoeEnd";
+	donpcevent "::OnKoeEnd";
 
 	//maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
 	end;
