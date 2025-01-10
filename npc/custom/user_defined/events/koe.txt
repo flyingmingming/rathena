@@ -51,7 +51,8 @@ OnClock1300: // everyday 8:30pm ends
 	enablenpc "Exit#KoE";
 	disablenpc "King of Emperium#KoE";
 	killmonster "guild_vs1", "KoE::OnEmpDead";
-	maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
+	goto OnKoeEnd;
+	//maprespawnguildid "guild_vs1", $koegid, 2; // uncomment this line to kick non-owner off the map when event ends
 	end;
 OnEmpDead:
 	$koegid = getcharid(2);
@@ -65,6 +66,18 @@ OnEmpDead:
 		monster "guild_vs1",49,49, "Emperium", 1288, 1, "KoE::OnEmpDead";
 	end;
 }
+OnKoeEnd:
+	warp "Save",0,0;
+	if ( getcharid(2) == $koegid )
+        //set .@rewardsQuestPoints, rand(100,300);
+        set .@rewardsZeny,rand(500000,2000000);
+
+        //#QuestPoints += .@rewardsQuestPoints;
+        Zeny += .@rewardsZeny;
+
+        dispbottom "Congratulations for winning King of Emperium! You have been rewarded with " + callfunc("F_InsertComma",.@rewardsZeny) + " Zeny.";
+		//getitem 7539, 1; // configure prize here - Poring Coin
+end;
 
 // KoE Entrance
 front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
