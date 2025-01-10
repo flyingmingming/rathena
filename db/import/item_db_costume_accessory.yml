@@ -98,7 +98,8 @@ Body:
     EquipLevelMin: 1
     View: 4800
     Script: |
-      bonus bAddMaxWeight,3000;
+      skill "BS_GREED",1;
+      skill "AL_TELEPORT",1;
   - Id: 44801
     AegisName: C_RingOfMajesty
     Name: Costume Majestic Ring
@@ -108,7 +109,8 @@ Body:
     EquipLevelMin: 1
     View: 4801
     Script: |
-      bonus bAddMaxWeight,3000;
+      skill "AC_CONCENTRATION",2;
+      skill "MG_SIGHT",1;
 #Body:
 # THQ Quest Items
 #=============================================================
