@@ -246,10 +246,7 @@ function	Job_Change	{
 	specialeffect2 EF_ANGEL2;
 	specialeffect2 EF_ELECTRIC;
 	if (.@previous_class != Class) {
-		if (.Platinum)
-			callfunc "F_GetPlatinumSkills";
-		if (.GetJobEquip)
-			Get_Job_Equip();
+		callfunc "F_GetPlatinumSkills";
 	}
 	close; // Always closes after the change
 }
