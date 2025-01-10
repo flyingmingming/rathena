@@ -4,7 +4,7 @@
 OnInit:
     .maxPoints = 10000; //set max points to be given to player
 
-	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",0,99;
+	bindatcmd "givepoints",strnpcinfo(0)+"::OnAtcommand",99,99;
     end;
 
 OnAtcommand:

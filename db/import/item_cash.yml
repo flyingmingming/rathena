@@ -34,19 +34,9 @@ Header:
 Body:
   - Tab: New
     Items:
-      - Item: Blessing_10_Scroll_Box
-        Price: 20
-      - Item: Inc_Agi_10_Scroll_Box
-        Price: 20
-      - Item: Aspersio_5_Scroll_Box
-        Price: 20
-      - Item: Assumptio_5_Scroll_Box
-        Price: 20
       - Item: LunchBox
         Price: 150
-      - Item: Megaphone_Box
-        Price: 10
-      - Item: VIPmembershipcard7d
-        Price: 300
       - Item: VIPmembershipcard30d
-        Price: 600
+        Price: 1000
+      - Item: VIPmembershipcard180d
+        Price: 5000
