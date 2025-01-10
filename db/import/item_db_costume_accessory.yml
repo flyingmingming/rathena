@@ -109,7 +109,7 @@ Body:
     EquipLevelMin: 1
     View: 4801
     Script: |
-      skill "AC_CONCENTRATION",2;
+      skill "AC_CONCENTRATION",1;
       skill "MG_SIGHT",1;
 #Body:
 # THQ Quest Items
