@@ -1,4 +1,7 @@
 front_lines,126,140,6	script	Misc Services	4_f_jpn2,{
+function Job_Menu;
+
+
 OnInit:
 	// Initialisation, do not edit these
 	.NPCName$ = "[Job Master]";
@@ -397,7 +400,7 @@ S_JobChange:
 	
 	// Displaying the Job Menu defined by .@job_opt.
 	// .@job_opt should not be changed below this line.
-	function Job_Menu;
+	
 	Job_Menu(.@job_opt);
 	close;
 end;
