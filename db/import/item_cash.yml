@@ -31,11 +31,22 @@
 Header:
   Type: ITEM_CASH_DB
   Version: 1
-
 Body:
   - Tab: New
     Items:
-      - Item: Apple
-        Price: 100
-      - Item: Max_Weight_Up_Box
-        Price: 100
+      - Item: Blessing_10_Scroll_Box
+        Price: 20
+      - Item: Inc_Agi_10_Scroll_Box
+        Price: 20
+      - Item: Aspersio_5_Scroll_Box
+        Price: 20
+      - Item: Assumptio_5_Scroll_Box
+        Price: 20
+      - Item: LunchBox
+        Price: 150
+      - Item: Megaphone_Box
+        Price: 10
+      - Item: VIPmembershipcard7d
+        Price: 300
+      - Item: VIPmembershipcard30d
+        Price: 600
