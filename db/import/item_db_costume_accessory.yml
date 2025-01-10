@@ -92,7 +92,7 @@ Body:
   - Id: 44800
     AegisName: C_RingOfUtility
     Name: Costume Utility Ring
-    Type: Shadow Gear
+    Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
       Shadow_Right_Accessory: true
@@ -103,7 +103,7 @@ Body:
   - Id: 44801
     AegisName: C_RingOfMajesty
     Name: Costume Majestic Ring
-    Type: Shadow Gear
+    Type: Shadowgear
     Locations:
       Shadow_Left_Accessory: true
       Shadow_Right_Accessory: true
