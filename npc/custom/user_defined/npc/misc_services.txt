@@ -1,6 +1,5 @@
 front_lines,126,140,6	script	Misc Services	4_f_jpn2,{
-function Job_Menu;
-
+function Job_Menu; function Get_Job_Equip;
 
 
 
@@ -223,6 +222,7 @@ function	Job_Change	{
 	specialeffect2 EF_ELECTRIC;
 	if (.@previous_class != Class) {
 		callfunc "F_GetPlatinumSkills";
+		Get_Job_Equip();
 	}
 	close; // Always closes after the change
 }
@@ -246,6 +246,51 @@ function	Confirm_Change	{
 	}
 	if (!.@back)
 		close; // "Cancel" pressed
+	return;
+}
+
+// Function which gives a job related item to the player
+// the items are the rewards from the original job change quests
+function	Get_Job_Equip	{
+	switch(BaseClass) 
+	{
+		// First Class
+		case Job_Swordman:
+			rentitem2 36000,604800,1,8,0,0,0,0,0; //weap
+        	rentitem 2766,604800; //figurine
+			break;
+		case Job_Mage:
+			rentitem2 36001,604800,1,8,0,0,0,0,0;
+        	rentitem 2768,604800;
+			break;
+		case Job_Archer:
+			rentitem2 36002,604800,1,8,0,0,0,0,0;
+			getitem 1751,rand(500,1500);
+			rentitem 2769,604800;
+			break;
+		case Job_Acolyte:
+			rentitem2 36003,604800,1,8,0,0,0,0,0;
+			rentitem 2767,604800;
+			break;
+		case Job_Merchant:
+			rentitem2 36004,604800,1,8,0,0,0,0,0;
+        	rentitem 2771,604800;
+			break;
+		case Job_Thief:
+			rentitem2 36005,604800,1,8,0,0,0,0,0;
+			rentitem 2770,604800;
+			break;
+		case Job_Gunslinger:
+			rentitem2 36006,604800,1,8,0,0,0,0,0;
+			deletearray .@bulletAmmo[0],getarraysize(.@bulletAmmo);
+			setarray .@bulletAmmo[0],13200,13201,13202;
+			set .@randBullet,rand(0,2);
+			getitem .@bulletAmmo[.@randBullet],rand(500,1500);
+			break;
+		case Job_Ninja:
+			rentitem2 36007,604800,1,8,0,0,0,0,0;
+			break;
+	}
 	return;
 }
 

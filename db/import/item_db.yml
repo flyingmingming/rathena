@@ -339,7 +339,7 @@ Body:
     Name: Startup Box
     Type: Usable
     Weight: 50
-    EquipLevelMin: 20
+    EquipLevelMin: 1
     Trade:
       Override: 100
       NoDrop: true
