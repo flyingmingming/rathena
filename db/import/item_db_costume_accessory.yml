@@ -89,7 +89,26 @@ Header:
   Version: 3
 
 Body:
-
+  - Id: 44800
+    AegisName: C_RingOfUtility
+    Name: Costume Utility Ring
+    Type: Armor
+    Locations:
+      Shadow_Acc_L: true
+    ArmorLevel: 1
+    View: 61
+    Script: |
+      bonus bAddMaxWeight,3000;
+  - Id: 44801
+    AegisName: C_RingOfMajesty
+    Name: Costume Majestic Ring
+    Type: Armor
+    Locations:
+      Shadow_Acc_R: true
+    ArmorLevel: 1
+    View: 61
+    Script: |
+      bonus bAddMaxWeight,3000;
 #Body:
 # THQ Quest Items
 #=============================================================
