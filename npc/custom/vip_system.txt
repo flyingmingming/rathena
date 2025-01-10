@@ -13,6 +13,7 @@ function	script	vip_system	{
 			getitem 12218,5; //assump scroll
 			getitem 12217,5; //asper scroll
 			getitem 12412,3; //he bbg
+			atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
 		break;
 
 		case 30:
@@ -23,13 +24,20 @@ function	script	vip_system	{
 			getitem 12217,20; //asper scroll
 			getitem 12103,1; //bloody branch
 			getitem 12412,5; //he bbg
+			getitem 13710,1; //gym pass box
+			atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
+		break;
+
+		case 180:
+			getitem 34013,1; //MidgardAscendanceToken
+			getitem 34006,6; //vip 30d
 		break;
 
 		default:
 		break;
 	}
 
-	atcommand "@vip +" + .@time + "d " + strcharinfo(0) + "";	
+	
 	return;
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
 	//	if (.@type == 3) {

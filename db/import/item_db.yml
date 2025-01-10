@@ -438,6 +438,34 @@ Body:
       getitem 12906,10;
       getitem 12907,10;
       getitem 12908,10;
+  - Id: 34012
+    AegisName: VIPmembershipcard180d
+    Name: VIP Membership Card 180D
+    Type: Cash
+    Weight: 10
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
+    Script: |   
+      callfunc "vip_system",180,1;
+  - Id: 34013
+    AegisName: MidgardAscendanceToken
+    Name: Midgard Ascendance Token
+    Type: Cash
+    Weight: 10
+    Trade:
+      NoDrop: true
+      NoTrade: true
+      NoSell: true
+      #NoCart: true
+      NoGuildStorage: true
+      NoMail: true
+      NoAuction: true
 #################################### CUSTOM EQUIPS 
   - Id: 36000
     AegisName: Newbie_Tsurugi
