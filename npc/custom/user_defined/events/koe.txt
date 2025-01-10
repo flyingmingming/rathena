@@ -93,6 +93,7 @@ front_lines,123,127,6	script	King of Emperium#KoE	4_M_UNCLEKNIGHT,{
 	if ( select ( "Yes", "No" ) == 2 ) close;
 	if ( !getvariableofnpc( .start, "KoE" ) )
 	{
+		next;
 		mes "[The King]";
 		mes "King of Emperium Hill has already been concluded.";
 		close;
