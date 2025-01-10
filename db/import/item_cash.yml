@@ -35,17 +35,7 @@ Header:
 Body:
   - Tab: New
     Items:
-     - Item: Apple
-       Price: 100
-     - Item: Max_Weight_Up_Box
-       Price: 1000
-     - Item: Grape
-       Price: 100
-  - Tab: Consumables
-    Items:
-     - Item: Apple
-       Price: 100
-     - Item: Banana
-       Price: 100
-     - Item: Grape
-       Price: 100
+      - Item: Apple
+        Price: 100
+      - Item: Max_Weight_Up_Box
+        Price: 100
