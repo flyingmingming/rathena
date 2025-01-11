@@ -124,4 +124,4 @@ guild_vs1	mapflag	gvg_noparty
 guild_vs1	mapflag	nowarp
 guild_vs1	mapflag	nowarpto
 guild_vs1	mapflag	guildlock
-//guild_vs1	mapflag	noicewall
+guild_vs1	mapflag	noicewall
