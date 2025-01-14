@@ -330,7 +330,7 @@ function	script	refinecustom	{
 			close;
 		} 
 		//mes "Clang, clang!!!";
-		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(50)) {
+		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(1)) {
 			failedrefitem .@part;
 			emotion ET_HUK;
 			mes "["+ .@npc_name$ +"]";
