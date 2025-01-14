@@ -20,6 +20,10 @@ function	script	refinecustom	{
 	.@features = getarg(1);
 	mes "["+ .@npc_name$ +"]";
 	mes "I'm the Armsmith.";
+	mes "I am an expert and I upgrade";
+	mes "with 1/10 higher percentage";
+	mes "than your petty blacksmiths";
+	mes "but I require specific ores.";
 	mes "I can refine all kinds of weapons, armor and equipment, so let me";
 	mes "know what you want me to refine.";
 	next;
@@ -330,7 +334,7 @@ function	script	refinecustom	{
 			close;
 		} 
 		//mes "Clang, clang!!!";
-		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(2)) {
+		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(90)) {
 			failedrefitem .@part;
 			emotion ET_HUK;
 			mes "["+ .@npc_name$ +"]";
