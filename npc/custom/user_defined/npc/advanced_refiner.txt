@@ -14,8 +14,7 @@ front_lines,123,110,0	script	Hollgrehenn	4_M_03,{
 //= If you enable this function, be sure to edit the value of
 //= .@safe to the max safe refine in refine.yml as well.
 //============================================================
-function	script	refinecustom	
-{
+function	script	refinecustom	{
 	disable_items;
 	.@npc_name$ = getarg(0);
 	.@features = getarg(1);
