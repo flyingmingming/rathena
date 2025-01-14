@@ -19,11 +19,13 @@ function	script	refinecustom	{
 	.@npc_name$ = getarg(0);
 	.@features = getarg(1);
 	mes "["+ .@npc_name$ +"]";
-	mes "I'm the Armsmith.";
 	mes "I am an expert and I upgrade";
 	mes "with 1/10 higher percentage";
 	mes "than your petty blacksmiths";
 	mes "but I require specific ores.";
+	next;
+	
+	mes "["+ .@npc_name$ +"]";
 	mes "I can refine all kinds of weapons, armor and equipment, so let me";
 	mes "know what you want me to refine.";
 	next;
