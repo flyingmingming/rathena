@@ -35,13 +35,13 @@ Body:
 ###########################################################################
 #etc items
  - Item: Elunium
-   Ratio: 110
+   Ratio: 150
  - Item: Oridecon
-   Ratio: 110
+   Ratio: 150
  - Item: Elunium_Stone
-   Ratio: 130
+   Ratio: 180
  - Item: Oridecon_Stone
-   Ratio: 130
+   Ratio: 180
  - Item: Piece_Of_Angent_Skin
    Ratio: 50
  - Item: Orleans_Glove
