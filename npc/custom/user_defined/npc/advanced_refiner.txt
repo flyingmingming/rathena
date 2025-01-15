@@ -365,7 +365,7 @@ function	script	refinecustom	{
 		.@refinecnt = .@refinecnt - 1;
 		.@refinerycnt = getequiprefinerycnt(.@part);
 		
-		if (.@refinerycnt > 7)
+		if (.@refinerycnt > 8)
 		{
 			announce "Congratulations! " + strcharinfo(0) + " has upgraded " + getitemname(.@refineitemid) + " to +" + .@refinerycnt  +  " !",bc_yellow|bc_all;
 		}
