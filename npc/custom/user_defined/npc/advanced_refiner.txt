@@ -358,8 +358,9 @@ function	script	refinecustom	{
 		emotion ET_BEST;
 		.@refinecnt = .@refinecnt - 1;
 		.@refinerycnt = getequiprefinerycnt(.@part);
-
-		announce "" + .@refinerycnt + " - " + strcharinfo(0);
+		
+		dispbottom " " + .@refinecheck;
+		//announce "" + .@refinerycnt + " - " + strcharinfo(0);
 		//next;
 	}
 	mes "["+ .@npc_name$ +"]";
