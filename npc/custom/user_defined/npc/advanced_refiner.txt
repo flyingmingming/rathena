@@ -18,12 +18,14 @@ function	script	refinecustom	{
 	disable_items;
 	.@npc_name$ = getarg(0);
 	.@features = getarg(1);
+
+	.@pointPrice = 2;
 	mes "["+ .@npc_name$ +"]";
 	mes "I am an expert and I upgrade";
 	mes "with 15% higher percentage";
 	mes "than your petty blacksmiths";
-	mes "but I require 2 Ascendance";
-	mes "points per each equipment";
+	mes "but I require ^0000FF" + .@pointPrice +" Ascendance";
+	mes "points^000000 per each equipment";
 	mes "upgrade.";
 	next;
 
@@ -78,7 +80,7 @@ function	script	refinecustom	{
 	.@price = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_ZENY_COST);
 	.@material = getequiprefinecost(.@part, REFINE_COST_NORMAL, REFINE_MATERIAL_ID);
 	.@itemtype = getiteminfo( .@refineitemid, ITEMINFO_TYPE );
-	.@pointPrice = 2;
+	
 
 	if( .@itemtype == IT_ARMOR ){
 		.@equip_lv = getequiparmorlv( .@part );
@@ -309,23 +311,26 @@ function	script	refinecustom	{
 	}
 	.@fullprice = .@price * .@refinecnt;
 	mes "["+ .@npc_name$ +"]";
-	mes "That will cost you " + .@refinecnt + " " + getitemname(.@material) + " and " + .@fullprice + " Zeny and " + .@pointPrice + " Ascendance points. Is that ok?";
+	mes "That will cost you " + .@pointPrice + " Ascendance points. Is that ok?";
+	//mes "That will cost you " + .@refinecnt + " " + getitemname(.@material) + " and " + .@fullprice + " Zeny and " + .@pointPrice + " Ascendance points. Is that ok?";
 	next;
 	if(select("Yes","No...") == 2){
 		mes "["+ .@npc_name$ +"]";
 		mes "You said so... So be it.";
 		close;
 	}
-	if(countitem(.@material) < .@refinecnt || Zeny < .@fullprice || #ascendance_points < .@pointPrice) {
+	if(#ascendance_points < .@pointPrice) {
+	//if(countitem(.@material) < .@refinecnt || Zeny < .@fullprice || #ascendance_points < .@pointPrice) {
 		mes "["+ .@npc_name$ +"]";
 		mes "Is that all you got? Unfortunately I can't work for you at a lower price. Try putting yourself in my shoes.";
 		close;
 	}
-	Zeny = Zeny - .@fullprice;
+	//Zeny = Zeny - .@fullprice;
 	#ascendance_points = #ascendance_points - .@pointPrice;
 	dispbottom "" + .@pointPrice + " Ascendance points has been removed.";
+	dispbottom "You currently have " + #ascendance_points + " Ascendance points.";
 
-	delitem .@material,.@refinecnt;
+	//delitem .@material,.@refinecnt;
 	while(.@refinecnt){
 		if (getequipisequiped(.@part) == 0) {
 			mes "["+ .@npc_name$ +"]";
@@ -349,10 +354,10 @@ function	script	refinecustom	{
 			mes "WAHHHH!!! I'm so sorry... I warned you this could happen...";
 			.@refinecnt = .@refinecnt - 1;
 			if(.@refinecnt == 0) close;
-			mes "Here's the unused Zeny and materials back...";
-			getitem .@material,.@refinecnt;
-			.@fullprice = .@refinecnt * .@price;
-			Zeny = Zeny + .@fullprice;
+			//mes "Here's the unused Zeny and materials back...";
+			//getitem .@material,.@refinecnt;
+			//.@fullprice = .@refinecnt * .@price;
+			//Zeny = Zeny + .@fullprice;
 			close;
 		}
 		successrefitem .@part;
