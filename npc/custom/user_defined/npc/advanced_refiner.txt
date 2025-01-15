@@ -360,9 +360,10 @@ function	script	refinecustom	{
 		.@refinecnt = .@refinecnt - 1;
 		.@refinerycnt = getequiprefinerycnt(.@part);
 		
-		dispbottom " " + .@refinerycnt;
-		//announce "" + .@refinerycnt + " - " + strcharinfo(0);
-		//next;
+		if (.@refinerycnt > 7)
+		{
+			announce "Congratulations! " + strcharinfo(0) + " has upgraded " + getitemname(.@refineitemid) + " to +" + .@refinerycnt  +  " !",bc_all,bc_yellow;
+		}
 	}
 	mes "["+ .@npc_name$ +"]";
 	mes "All finished... Come again soon.";
