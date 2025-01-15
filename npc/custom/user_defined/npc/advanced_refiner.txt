@@ -361,8 +361,9 @@ function	script	refinecustom	{
 		} 
 		//mes "Clang, clang!!!";
 		.@tempequipercentrefine = getequippercentrefinery(.@part);
-		.@temprandom = rand(85);
-		dispbottom "current chance - " + .@tempequipercentrefine + " === randomized digit" + .@temprandom + "";
+
+		.@temprandom = (.@pointPrice == 4) ? 90 : 70;
+		dispbottom "current chance - " + .@tempequipercentrefine + " === randomized digit - " + rand(.@temprandom) + " === rand max " + .@temprandom;
 		if(.@menu2 == 2 && .@tempequipercentrefine <= .@temprandom) {
 		//if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(85)) {
 			failedrefitem .@part;
