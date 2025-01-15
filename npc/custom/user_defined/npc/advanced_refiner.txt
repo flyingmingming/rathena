@@ -362,7 +362,7 @@ function	script	refinecustom	{
 		
 		if (.@refinerycnt > 7)
 		{
-			announce "Congratulations! " + strcharinfo(0) + " has upgraded " + getitemname(.@refineitemid) + " to +" + .@refinerycnt  +  " !",bc_all,bc_yellow;
+			announce "Congratulations! " + strcharinfo(0) + " has upgraded " + getitemname(.@refineitemid) + " to +" + .@refinerycnt  +  " !",bc_yellow|bc_all;
 		}
 	}
 	mes "["+ .@npc_name$ +"]";
