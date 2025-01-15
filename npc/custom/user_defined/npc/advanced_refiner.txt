@@ -323,6 +323,7 @@ function	script	refinecustom	{
 	}
 	Zeny = Zeny - .@fullprice;
 	#ascendance_points = #ascendance_points - .@pointPrice;
+	dispbottom "" + .@pointPrice + " Ascendance points has been removed.";
 
 	delitem .@material,.@refinecnt;
 	while(.@refinecnt){
@@ -359,7 +360,7 @@ function	script	refinecustom	{
 		.@refinecnt = .@refinecnt - 1;
 		.@refinerycnt = getequiprefinerycnt(.@part);
 		
-		dispbottom " " + .@refinecheck;
+		dispbottom " " + .@refinerycnt;
 		//announce "" + .@refinerycnt + " - " + strcharinfo(0);
 		//next;
 	}
