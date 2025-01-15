@@ -19,17 +19,12 @@ function	script	refinecustom	{
 	.@npc_name$ = getarg(0);
 	.@features = getarg(1);
 
-	.@pointPrice = 2;
 	mes "["+ .@npc_name$ +"]";
 	mes "I am an expert and I upgrade";
-	mes "with 15% higher percentage";
-	mes "than your petty blacksmiths";
-	mes "but I require ^0000FF" + .@pointPrice +" Ascendance";
-	mes "points^000000 per each equipment";
-	mes "upgrade.";
-	next;
-
-	mes "["+ .@npc_name$ +"]";
+	mes "with 10-30% higher success";
+	mes "percentage than your petty";
+	mes "blacksmiths but I require";
+	mes "^0000FFAscendance points^000000 per each equipment upgrade.";
 	mes "I can refine all kinds of weapons, armor and equipment, so let me";
 	mes "know what you want me to refine.";
 	next;
@@ -310,6 +305,24 @@ function	script	refinecustom	{
 		close;
 	}
 	.@fullprice = .@price * .@refinecnt;
+	switch(select("Normal (10%):Premium (30%):I've changed my mind..."))
+	{
+		case 1:
+			.@pointPrice = 4;
+			next;
+		break;
+
+		case 2:
+			.@pointPrice = 10;
+			next;
+		break;
+
+		case 3:
+			next;
+			mes "["+ .@npc_name$ +"]";
+			mes "You said so... So be it.";
+			close;
+	}
 	mes "["+ .@npc_name$ +"]";
 	mes "That will cost you " + .@pointPrice + " Ascendance points. Is that ok?";
 	//mes "That will cost you " + .@refinecnt + " " + getitemname(.@material) + " and " + .@fullprice + " Zeny and " + .@pointPrice + " Ascendance points. Is that ok?";
