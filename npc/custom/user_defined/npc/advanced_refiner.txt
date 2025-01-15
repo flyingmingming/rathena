@@ -347,7 +347,11 @@ function	script	refinecustom	{
 			close;
 		} 
 		//mes "Clang, clang!!!";
-		if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(85)) {
+		.@tempequipercentrefine = getequippercentrefinery(.@part);
+		.@temprandom = rand(85);
+		dispbottom "current chance - " + .@tempequipercentrefine + " === randomized digit" + .@temprandom + "";
+		if(.@menu2 == 2 && .@tempequipercentrefine <= .@temprandom) {
+		//if(.@menu2 == 2 && getequippercentrefinery(.@part) <= rand(85)) {
 			failedrefitem .@part;
 			emotion ET_HUK;
 			mes "["+ .@npc_name$ +"]";
