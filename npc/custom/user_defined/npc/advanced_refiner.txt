@@ -265,7 +265,7 @@ function	script	refinecustom	{
 // New Refining Functions ========================
 	if (.@refinerycnt < .@safe) {
 		mes "["+ .@npc_name$ +"]";
-		mes "I can refine this to the safe limit or a desired number of times. It's your choice.";
+		mes "I can refine this to desired number of times. It's your choice.";
 		next;
 		.@menu2 = select("I'll decide how many times.","I've changed my mind...");
 	} else
