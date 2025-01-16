@@ -16,7 +16,7 @@ OnBuyItem:
     }
 	else if (!checkweight2(@bought_nameid,@bought_quantity)) 
 	{
-		dispbottom "You cannot carry more items because you are overweight!",0xFF0000;
+		dispbottom "You cannot carry more items because you are overweight.",0xFF0000;
         deletearray @bought_nameid[0], .@size;
         deletearray @bought_quantity[0], .@size;         
         end;		
