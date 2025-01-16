@@ -24,6 +24,7 @@ OnBuyItem:
 	deletearray @bought_nameid[0], .@size;
 	deletearray @bought_quantity[0], .@size; 
 
+	dispbottom "" + F_InsertComma(.@cost) + " Ascendance points has been removed.";
     dispbottom "You now have " + F_InsertComma(#ascendance_points) + " Ascendance Points remaining.";
 end;
 
