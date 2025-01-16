@@ -958,6 +958,12 @@ function	script	refinemain	{
 		emotion ET_BEST;
 		.@refinecnt = .@refinecnt - 1;
 		.@refinerycnt = getequiprefinerycnt(.@part);
+
+		if (.@refinerycnt > 8)
+		{
+			announce "Congratulations! " + strcharinfo(0) + " has upgraded " + getitemname(.@refineitemid) + " to +" + .@refinerycnt  +  " in "+ .@npc_name$,bc_yellow|bc_all;
+		}
+
 		next;
 	}
 	mes "["+ .@npc_name$ +"]";
