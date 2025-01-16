@@ -352,7 +352,7 @@ function	script	refinecustom	{
 		}
 		// anti-hack
 		if (callfunc("F_IsEquipIDHack", .@part, .@refineitemid) || callfunc("F_IsEquipCardHack", .@part, .@card[0], .@card[1], .@card[2], .@card[3]) ||
-				callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt) || (.@menu2 == 1 && getequippercentrefinery(.@part) < 100)) {
+				callfunc("F_IsEquipRefineHack", .@part, .@refinerycnt)){// || (.@menu2 == 1 && getequippercentrefinery(.@part) < 100)) {
 			mes "["+ .@npc_name$ +"]";
 			mes "Clang... No, but did you imagine I could be so stupid?!";
 			mes "You changed it...";
