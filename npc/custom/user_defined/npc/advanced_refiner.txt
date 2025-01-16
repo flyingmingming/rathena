@@ -267,14 +267,11 @@ function	script	refinecustom	{
 		mes "["+ .@npc_name$ +"]";
 		mes "I can refine this to the safe limit or a desired number of times. It's your choice.";
 		next;
-		.@menu2 = select("To the safe limit, please.","I'll decide how many times.","I've changed my mind...");
+		.@menu2 = select("I'll decide how many times.","I've changed my mind...");
 	} else
-		.@menu2 = 2;
+		.@menu2 = 1;
 	switch(.@menu2){
-	case 1: 
-		.@refinecnt = .@safe - .@refinerycnt;
-		break;
-	case 2:
+	case 1:
 		next;
 		mes "["+ .@npc_name$ +"]";
 		mes "How many times would you like me to refine your item?";
@@ -298,7 +295,7 @@ function	script	refinecustom	{
 			}
 		}
 		break;
-	case 3:
+	case 2:
 		next;
 		mes "["+ .@npc_name$ +"]";
 		mes "You said so... So be it.";
