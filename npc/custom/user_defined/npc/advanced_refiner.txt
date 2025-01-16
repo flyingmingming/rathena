@@ -21,12 +21,12 @@ function	script	refinecustom	{
 
 	mes "["+ .@npc_name$ +"]";
 	mes "I am an expert and I upgrade";
-	mes "with 10-30% higher success";
-	mes "percentage than your petty";
-	mes "blacksmiths but I require";
+	mes "with 10-20% higher success";
+	mes "chance than your petty";
+	mes "blacksmiths since I use";
+	mes "unlimited enriched ores!";
+	mes "But you should know I require";
 	mes "^0000FFAscendance points^000000 per each equipment upgrade.";
-	mes "I can refine all kinds of weapons, armor and equipment, so let me";
-	mes "know what you want me to refine.";
 	next;
 
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES;
@@ -305,7 +305,7 @@ function	script	refinecustom	{
 		close;
 	}
 	.@fullprice = .@price * .@refinecnt;
-	switch(select("Normal (10%):Premium (30%):I've changed my mind..."))
+	switch(select("Normal (10%):Premium (20%):I've changed my mind..."))
 	{
 		case 1:
 			.@pointPrice = 4;
@@ -362,7 +362,7 @@ function	script	refinecustom	{
 		//mes "Clang, clang!!!";
 		.@tempequipercentrefine = getequippercentrefinery(.@part,true);
 
-		.@tempmax = (.@pointPrice == 4) ? 90 : 70;
+		.@tempmax = (.@pointPrice == 4) ? 90 : 80;
 		.@temprandom = rand(.@tempmax);
 		dispbottom "current chance - " + .@tempequipercentrefine + " === randomized digit - " + .@temprandom + " === rand max " + .@tempmax;
 		if(.@tempequipercentrefine <= .@temprandom) {
