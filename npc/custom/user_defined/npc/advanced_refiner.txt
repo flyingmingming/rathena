@@ -28,8 +28,9 @@ function	script	refinecustom	{
 	mes "blacksmiths since I use";
 	mes "unlimited enriched ores!";
 	mes "But you should know I require";
-	mes "^0000FFAscendance points^000000 and ^0000FF " + F_InsertComma(.@zenyCost) + "^000000 zeny";
-	mes "per each weapon or equipment upgrade.";
+	mes "^0000FFAscendance points^000000 and ^0000FF " + F_InsertComma(.@zenyCost) + "^000000";
+	mes "zeny per each weapon or";
+	mes "equipment upgrade.";
 	next;
 
 	setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES;
