@@ -360,7 +360,7 @@ function	script	refinecustom	{
 			close;
 		} 
 		//mes "Clang, clang!!!";
-		.@tempequipercentrefine = getequippercentrefinery(.@part);
+		.@tempequipercentrefine = getequippercentrefinery(.@part,true);
 
 		.@tempmax = (.@pointPrice == 4) ? 90 : 70;
 		.@temprandom = rand(.@tempmax);
