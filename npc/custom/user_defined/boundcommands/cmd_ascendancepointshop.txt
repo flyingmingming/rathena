@@ -14,8 +14,16 @@ OnBuyItem:
         deletearray @bought_quantity[0], .@size;         
         end;
     }
+	else if (!checkweight2(@bought_nameid,@bought_quantity)) 
+	{
+		//mes "You cannot carry more items because you are overweight!";
+        deletearray @bought_nameid[0], .@size;
+        deletearray @bought_quantity[0], .@size;         
+        end;		
+	}
 	else 
     {
+		
 		for (.@i = 0; .@i < .@size; .@i++) {
 			getitem @bought_nameid[.@i], @bought_quantity[.@i];
 		}
