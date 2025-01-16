@@ -41,7 +41,14 @@ OnInit:
 
 	deletearray .Shop[0],getarraysize(.Shop);
 	setarray .Shop[0],      // Reward items: <ID>,<point cost> (about 10~20 points per hunt).
-		512,1,513,1,514,1,538,5,539,5,558,10,561,10;
+		14001,1, //recruit siege box
+		513,1,
+		514,1,
+		538,5,
+		539,5,
+		558,10,
+		561,10;
+
 
     npcshopdelitem "points_shop",512;
 	for (.@i = 0; .@i < getarraysize(.Shop); .@i += 2)
