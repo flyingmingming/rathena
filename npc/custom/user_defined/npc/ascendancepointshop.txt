@@ -21,14 +21,14 @@ OnBuyItem:
 			getitem @bought_nameid[.@i], @bought_quantity[.@i];
 		}
 		#ascendance_points -= .@cost;
-		mes "Thank you for the business!";
-		emotion ET_MONEY;
+		dispbottom "" + .@cost + " Ascendance points has been removed.";
+		dispbottom "You now have " + #ascendance_points + " Ascendance Points remaining.";
 	}
 	deletearray @bought_nameid[0], .@size;
 	deletearray @bought_quantity[0], .@size; 
 
-	dispbottom "" + .@cost + " Ascendance points has been removed.";
-    dispbottom "You now have " + #ascendance_points + " Ascendance Points remaining.";
+	
+    
 end;
 
 OnInit:
