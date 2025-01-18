@@ -47,7 +47,7 @@ OnInit:
 		538,5,
 		539,5,
 		558,10,
-		34003,100; //vip 1day
+		34003,150; //vip 1day
 
 
     npcshopdelitem "points_shop",512;
