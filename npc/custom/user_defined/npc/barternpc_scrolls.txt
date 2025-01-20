@@ -1,4 +1,4 @@
-front_lines,173,174,6	script	Posh	4_GEFFEN_09,{
+front_lines,173,168,6	script	Posh	4_GEFFEN_09,{
     callshop "barter_item_scrolls";
 }
 
