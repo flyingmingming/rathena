@@ -211,13 +211,35 @@ Body:
       bonus2 bExpAddRace,RC_All,10;
       bonus2 bDropAddRace,RC_All,5;
   - Id: 44011
-    AegisName: godaura_navyblue
-    Name: Costume God Aura Navy Blue
+    AegisName: godaura_blue
+    Name: Costume God Aura Blue
     Type: Armor
     Locations:
       Costume_Head_Low: true
     ArmorLevel: 1
     View: 4011
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 44012
+    AegisName: godaura_gold
+    Name: Costume God Aura Gold
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 4012
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 44013
+    AegisName: c_musical_notes
+    Name: Costume Musical Notes
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 4013
     Script: |
       bonus2 bExpAddRace,RC_All,10;
       bonus2 bDropAddRace,RC_All,5;
