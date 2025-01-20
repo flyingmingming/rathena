@@ -82,3 +82,39 @@ Body:
           - Index: 2
             Item: Siege_Blue_Potion
             Amount: 10
+  - Name: barter_item_scrolls
+    Items:
+      - Index: 0
+        Item: Wing_Of_Angel_Move
+        Stock: 5
+        Zeny: 10000000
+        RequiredItems:
+          - Index: 0
+            Item: Apple
+            Amount: 10
+          - Index: 1
+            Item: Red_Potion
+            Amount: 10
+          - Index: 2
+            Item: Yellow_Potion
+            Amount: 10
+          - Index: 3
+            Item: Orange_Potion
+            Amount: 10
+          - Index: 4
+            Item: White_Potion
+            Amount: 10
+      - Index: 1
+        Item: C_Bloody_Wing
+        Stock: 5
+        Zeny: 10000000        
+        RequiredItems:
+          - Index: 0
+            Item: Banana
+            Amount: 10
+          - Index: 1
+            Item: Siege_White_Potion
+            Amount: 10
+          - Index: 2
+            Item: Siege_Blue_Potion
+            Amount: 10
