@@ -91,7 +91,10 @@ Body:
         RequiredItems:
           - Index: 0
             Item: Scorpion's_Tail
-            Amount: 3
+            Amount: 3     
+          - Index: 1
+            Item: Scroll
+            Amount: 1   
       - Index: 1
         Item: Elemental_Water
         Stock: 0
@@ -100,6 +103,9 @@ Body:
           - Index: 0
             Item: Snail's_Shell
             Amount: 3
+          - Index: 1
+            Item: Scroll
+            Amount: 1
       - Index: 2
         Item: Elemental_Wind
         Stock: 0
@@ -108,6 +114,9 @@ Body:
           - Index: 0
             Item: Horn
             Amount: 3
+          - Index: 1
+            Item: Scroll
+            Amount: 1
       - Index: 3
         Item: Elemental_Earth
         Stock: 0
@@ -116,3 +125,50 @@ Body:
           - Index: 0
             Item: Colorful_Shell
             Amount: 3
+          - Index: 1
+            Item: Scroll
+            Amount: 1
+      - Index: 4
+        Item: Resist_Fire
+        Stock: 0
+        Zeny: 1000        
+        RequiredItems:
+          - Index: 0
+            Item: Boody_Red
+            Amount: 1
+          - Index: 1
+            Item: Lizard_Scruff
+            Amount: 2
+      - Index: 5
+        Item: Resist_Water
+        Stock: 0
+        Zeny: 1000        
+        RequiredItems:
+          - Index: 0
+            Item: Crystal_Blue
+            Amount: 1
+          - Index: 1
+            Item: Heart_Of_Mermaid
+            Amount: 2
+      - Index: 6
+        Item: Resist_Wind
+        Stock: 0
+        Zeny: 1000        
+        RequiredItems:
+          - Index: 0
+            Item: Yellow_Live
+            Amount: 1
+          - Index: 1
+            Item: Moth_Dust
+            Amount: 2
+      - Index: 7
+        Item: Resist_Earth
+        Stock: 0
+        Zeny: 1000        
+        RequiredItems:
+          - Index: 0
+            Item: Yellow_Live
+            Amount: 1
+          - Index: 1
+            Item: Large_Jellopy
+            Amount: 2

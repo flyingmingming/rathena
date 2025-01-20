@@ -110,7 +110,7 @@ OnInit:
     setarray .@ShopList_Misc$[0],               "Blue_Gemstone",            "800",    
                                                 "Red_Gemstone",                  "800",
                                                 "Yellow_Gemstone",                     "800",
-                                                "Scroll",                  "10000";
+                                                "Scroll",                  "5000";
 
      //delete list of items #shop
     for (set .@i,0 ; .@i < getarraysize(.@ShopList$) ; set .@i, .@i+1)
