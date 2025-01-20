@@ -71,7 +71,7 @@ Body:
       - Index: 1
         Item: C_Bloody_Wing
         Stock: 5
-        Zeny: 10000000        
+        Zeny: 10000000
         RequiredItems:
           - Index: 0
             Item: Feather
@@ -91,7 +91,7 @@ Body:
       - Index: 2
         Item: Wing_Of_Happiness
         Stock: 5
-        Zeny: 10000000        
+        Zeny: 10000000
         RequiredItems:
           - Index: 0
             Item: Feather
