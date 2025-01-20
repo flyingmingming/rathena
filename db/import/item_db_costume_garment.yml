@@ -170,6 +170,14 @@ Body:
       hateffect(HAT_EF_C_Swirling_Flame,true);
     UnEquipScript: |
       hateffect(HAT_EF_C_Swirling_Flame,false);
+  - Id: 44422
+    AegisName: C_Blessed_Veil
+    Name: Costume: Blessed Veil
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 86
 #Body:
 # THQ Quest Items
 #=============================================================
