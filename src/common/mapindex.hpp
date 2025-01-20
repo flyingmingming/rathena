@@ -9,7 +9,6 @@
 #define MAX_MAPINDEX 2000
 
 //Some definitions for the major city maps.
-#define MAP_FRONTLINES "front_lines"
 #define MAP_PRONTERA "prontera"
 #define MAP_GEFFEN "geffen"
 #define MAP_MORROC "morocc"
