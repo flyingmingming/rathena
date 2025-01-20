@@ -128,7 +128,17 @@ Body:
     ArmorLevel: 1
     View: 240
     Script: |
-      bonus bAddMaxWeight,3000;          
+      bonus bAddMaxWeight,3000;
+  - Id: 44404
+    AegisName: c_blueangeling_wing
+    Name: Costume Blue Angel Wing
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 34
+    Script: |
+      bonus bAddMaxWeight,3000;   
 #Body:
 # THQ Quest Items
 #=============================================================
