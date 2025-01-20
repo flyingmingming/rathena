@@ -168,23 +168,23 @@ Body:
     Help: |
       Params: <city name|number>
       Warps you to a city.
-      -3: (Memo point 2)  14: louyang         31: mora
-      -2: (Memo point 1)  15: start point     32: dewata
-      -1: (Memo point 0)  16: prison/jail     33: malangdo island
-       0: prontera              17: jawaii             34: malaya port
-       1: morocc                18: ayothaya       35: eclage
-       2: geffen                  19: einbroch       36: lasagna
-       3: payon                  20: lighthalzen
-       4: alberta                 21: einbech
-       5: izlude                   22: hugel
-       6: aldebaran           23: rachel
-       7: xmas (lutie)        24: veins
-       8: comodo               25: moscovia
-       9: yuno                     26: midgard camp
-      10: amatsu               27: manuk
-      11: gonryun              28: splendide
-      12: umbala               29: brasilis
-      13: niflheim              30: el dicastes
+      -3: (Memo point 2)  14: niflheim
+      -2: (Memo point 1)  15: louyang 
+      -1: (Memo point 0)  16: jawaii
+       0: front lines     17: ayothaya
+       1: prontera        18: einbroch
+       2: morocc          19: lighthalzen 
+       3: geffen          20: hugel
+       4: payon           21: rachel
+       5: alberta         22: veins
+       6: izlude          23: moscovia
+       7: aldebaran       24: midgard camp
+       8: xmas (lutie)    25: manuk
+       9: comodo          26: splendide
+      10: yuno                     
+      11: amatsu               
+      12: gonryun              
+      13: umbala               
   - Command: jumpto
     Aliases:
       - goto
