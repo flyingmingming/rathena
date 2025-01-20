@@ -126,7 +126,7 @@ Body:
     Locations:
       Costume_Garment: true
     Flags:
-      DropEffect: CLIENT
+      DropEffect: GREEN_PILLAR
     ArmorLevel: 1
     View: 240
     Script: |
