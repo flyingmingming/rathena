@@ -54,34 +54,40 @@ Body:
         Zeny: 10000000
         RequiredItems:
           - Index: 0
-            Item: Apple
-            Amount: 10
+            Item: Feather
+            Amount: 999
           - Index: 1
-            Item: Red_Potion
-            Amount: 10
+            Item: Holy_Water
+            Amount: 99
           - Index: 2
-            Item: Yellow_Potion
-            Amount: 10
+            Item: White_Dyestuffs
+            Amount: 9
           - Index: 3
-            Item: Orange_Potion
-            Amount: 10
+            Item: Four_Leaf_Clover
+            Amount: 9
           - Index: 4
-            Item: White_Potion
-            Amount: 10
+            Item: Agate
+            Amount: 9
       - Index: 1
         Item: C_Bloody_Wing
         Stock: 5
         Zeny: 10000000        
         RequiredItems:
           - Index: 0
-            Item: Banana
-            Amount: 10
+            Item: Feather
+            Amount: 999
           - Index: 1
-            Item: Siege_White_Potion
-            Amount: 10
+            Item: Poison_Bottle
+            Amount: 99
           - Index: 2
-            Item: Siege_Blue_Potion
-            Amount: 10
+            Item: Scarlet_Dyestuffs
+            Amount: 9
+          - Index: 3
+            Item: Four_Leaf_Clover
+            Amount: 9
+          - Index: 4
+            Item: Blade_Lost_In_Darkness
+            Amount: 9
   - Name: barter_item_scrolls
     Items:
       - Index: 0
