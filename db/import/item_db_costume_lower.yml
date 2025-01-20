@@ -187,7 +187,40 @@ Body:
     View: 4008
     Script: |
       bonus2 bExpAddRace,RC_All,10;
-      bonus2 bDropAddRace,RC_All,5;      
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 44009
+    AegisName: godaura_black
+    Name: Costume God Aura Black
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 4009
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 44010
+    AegisName: godaura_red
+    Name: Costume God Aura Red
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 4010
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
+  - Id: 44011
+    AegisName: godaura_navyblue
+    Name: Costume God Aura Navy Blue
+    Type: Armor
+    Locations:
+      Costume_Head_Low: true
+    ArmorLevel: 1
+    View: 4011
+    Script: |
+      bonus2 bExpAddRace,RC_All,10;
+      bonus2 bDropAddRace,RC_All,5;
 #Body:
 # THQ Quest Items
 #=============================================================
