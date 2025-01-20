@@ -88,6 +88,26 @@ Body:
           - Index: 4
             Item: Blade_Lost_In_Darkness
             Amount: 9
+      - Index: 2
+        Item: Wing_Of_Happiness
+        Stock: 5
+        Zeny: 10000000        
+        RequiredItems:
+          - Index: 0
+            Item: Feather
+            Amount: 999
+          - Index: 1
+            Item: Speed_Potion
+            Amount: 99
+          - Index: 2
+            Item: Darkgreen_Dyestuffs
+            Amount: 9
+          - Index: 3
+            Item: Four_Leaf_Clover
+            Amount: 9
+          - Index: 4
+            Item: Gold
+            Amount: 9
   - Name: barter_item_scrolls
     Items:
       - Index: 0
