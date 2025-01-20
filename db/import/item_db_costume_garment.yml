@@ -140,6 +140,16 @@ Body:
     ArmorLevel: 1
     View: 34
     Script: |
+      bonus bAddMaxWeight,3000;
+  - Id: 44405
+    AegisName: c_guardian_angelwing
+    Name: Costume Guardian Angel Wing
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 138
+    Script: |
       bonus bAddMaxWeight,3000;   
 #Body:
 # THQ Quest Items
