@@ -159,6 +159,17 @@ Body:
       Costume_Garment: true
     ArmorLevel: 1
     View: 99
+  - Id: 44421
+    AegisName: C_Swirling_Flame
+    Name: Costume Swirling Flame
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    Script: |
+      hateffect(HAT_EF_C_Swirling_Flame,true);
+    UnEquipScript: |
+      hateffect(HAT_EF_C_Swirling_Flame,false);
 #Body:
 # THQ Quest Items
 #=============================================================
