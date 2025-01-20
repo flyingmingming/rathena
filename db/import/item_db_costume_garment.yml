@@ -151,6 +151,14 @@ Body:
     View: 138
     Script: |
       bonus bAddMaxWeight,3000;   
+  - Id: 44420
+    AegisName: C_Put_On_Coat
+    Name: Costume Haori Coat
+    Type: Armor
+    Locations:
+      Costume_Garment: true
+    ArmorLevel: 1
+    View: 99
 #Body:
 # THQ Quest Items
 #=============================================================
