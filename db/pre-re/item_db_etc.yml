@@ -657,7 +657,6 @@ Body:
     Weight: 10
     Flags:
       BuyingStore: true
-      DropEffect: PURPLE_PILLAR
   - Id: 910
     AegisName: Garlet
     Name: Garlet
