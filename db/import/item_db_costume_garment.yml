@@ -125,6 +125,9 @@ Body:
     Type: Armor
     Locations:
       Costume_Garment: true
+    Flags:
+      BuyingStore: true
+      DropEffect: CLIENT
     ArmorLevel: 1
     View: 240
     Script: |
