@@ -39,9 +39,9 @@ function	script	vip_system	{
 
 	dispbottom "Test";
 	bonus_script_clear 1;
-	bonus_script "{}",10,0,0,EFST_MAGICPOWER;
+	bonus_script "{}",10,0,0,EFST_VIPSTATE;
 	
-	//sc_start SC_VIPSTATE,60000,30;
+	sc_start SC_VIPSTATE,60000,30;
 
 	return;
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
