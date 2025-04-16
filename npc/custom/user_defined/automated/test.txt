@@ -1,4 +1,4 @@
--	script	viptest	-1,{
+function	script	viptest	{
 
 	dispbottom "Test";
 	bonus_script_clear 1;
