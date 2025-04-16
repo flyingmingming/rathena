@@ -91,6 +91,17 @@ Body:
       DisplayPc: true
       NoSaveInfinite: true
       SendVal1: true
+  - Status: VIPSTATE
+    Icon: EFST_VIPSTATE
+    Flags:
+      NoRemoveOnDead: true
+      NoClearbuff: true
+      NoDispell: true
+      NoBanishingBuster: true
+      NoClearance: true
+      DisplayPc: true
+      NoSaveInfinite: true
+      SendVal1: true
 ######################################
   - Status: Stone
     DurationLookup: NPC_PETRIFYATTACK

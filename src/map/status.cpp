@@ -11747,8 +11747,9 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 		case SC_EXPBOOST:
 		case SC_JEXPBOOST:
 		case SC_EXPBOOST_VIPRED:
-		case SC_JEXPBOOST_VIPRED:		
-		case SC_VIPSTATE_BLUE:	
+		case SC_JEXPBOOST_VIPRED:
+		case SC_VIPSTATE:
+		case SC_VIPSTATE_BLUE:
 		case SC_VIPSTATE_RED:
 		case SC_JP_EVENT04:
 		case SC_PERIOD_RECEIVEITEM_2ND:
