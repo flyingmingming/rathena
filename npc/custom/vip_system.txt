@@ -37,6 +37,8 @@ function	script	vip_system	{
 		break;
 	}
 
+	dispbottom "Test";
+	bonus_script_clear 1;
 	sc_start SC_VIPSTATE,60000,30;
 
 	return;
