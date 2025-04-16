@@ -37,7 +37,8 @@ function	script	vip_system	{
 		break;
 	}
 
-	
+	sc_start SC_VIPSTATE,60000,30;
+
 	return;
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
 	//	if (.@type == 3) {
