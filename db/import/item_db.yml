@@ -243,6 +243,7 @@ Body:
       NoAuction: true
     Script: |
       itemheal rand(560,700),0;
+      viptest;
   - Id: 34001
     AegisName: Veteran_Blue_Potion
     Name: Veteran Blue Potion

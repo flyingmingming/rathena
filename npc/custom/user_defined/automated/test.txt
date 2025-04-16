@@ -1,0 +1,10 @@
+-	script	viptest	-1,{
+
+	dispbottom "Test";
+	bonus_script_clear 1;
+	bonus_script "{}",10,0,0,EFST_VIPSTATE;
+	
+    sc_end SC_VIPSTATE;
+	sc_start SC_VIPSTATE,60000,30;
+    end;
+}
