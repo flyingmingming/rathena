@@ -68,3 +68,23 @@ Body:
    Ratio: 50
  - Item: Stiletto_
    Ratio: 50
+ - Item: Valkyrja's_Shield
+   Ratio: 10
+ - Item: Valkyrie_Armor
+   Ratio: 50
+ - Item: Valkyrie_Manteau
+   Ratio: 50
+ - Item: Valkyrie_Shoes
+   Ratio: 50
+ - Item: Diabolus_Helmet
+   Ratio: 50
+ - Item: Diabolus_Robe
+   Ratio: 20
+ - Item: Diabolus_Armor
+   Ratio: 20
+ - Item: Diabolus_Manteau
+   Ratio: 70
+ - Item: Diabolus_Boots
+   Ratio: 20
+ - Item: Diabolus_Ring
+   Ratio: 70
